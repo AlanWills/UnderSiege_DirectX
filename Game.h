@@ -69,5 +69,5 @@ private:
     DX::StepTimer                                   m_timer;
 
 	// ScreenManager
-	ScreenManager* screenManager;
+	ScreenManager* m_screenManager;
 };

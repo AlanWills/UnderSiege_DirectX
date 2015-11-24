@@ -36,7 +36,7 @@ m_visible(false),
 m_acceptsInput(false),
 m_alive(false),
 m_colour(Color(1, 1, 1, 1)),
-m_opacity(0)
+m_opacity(1.0f)
 {
 
 }
@@ -55,7 +55,7 @@ void BaseObject::LoadContent(ID3D11Device* device)
 	// Put data reading code here
 
 	m_texture = new Texture2D();
-	//m_texture->Load(device, m_dataAsset.c_str());
+	m_texture->Load(device, m_dataAsset.c_str());
 
 	assert(m_texture);
 

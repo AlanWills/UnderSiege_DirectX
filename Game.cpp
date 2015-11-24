@@ -14,7 +14,8 @@ Game::Game() :
     m_window(0),
     m_outputWidth(800),
     m_outputHeight(600),
-    m_featureLevel(D3D_FEATURE_LEVEL_9_1)
+    m_featureLevel(D3D_FEATURE_LEVEL_9_1),
+	m_screenManager(nullptr)
 {
 }
 
@@ -35,6 +36,12 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
+
+	std::wstring name = L"";
+	m_screenManager = new ScreenManager(m_d3dDevice.Get(), m_d3dContext.Get(), m_outputWidth, m_outputHeight);
+	m_screenManager->AddScreen(new BaseScreen(m_screenManager, name, m_d3dDevice.Get()));
+	m_screenManager->LoadContent();
+	m_screenManager->Initialize();
 }
 
 // Executes basic game loop.
@@ -54,7 +61,8 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here
-    elapsedTime;
+	m_screenManager->Update(timer);
+	m_screenManager->HandleInput(timer);
 }
 
 // Draws the scene
@@ -67,6 +75,7 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here
+	m_screenManager->Draw();
 
     Present();
 }
@@ -140,8 +149,8 @@ void Game::OnWindowSizeChanged(int width, int height)
 void Game::GetDefaultSize(int& width, int& height) const
 {
     // TODO: Change to desired default window size (note minimum size is 320x200)
-    width = 800;
-    height = 600;
+    width = 1280;
+    height = 720;
 }
 
 // These are the resources that depend on the device.
@@ -343,7 +352,7 @@ void Game::CreateResources()
 void Game::OnDeviceLost()
 {
     // TODO: Add Direct3D resource cleanup here
-	delete screenManager;
+	delete m_screenManager;
 
     m_depthStencil.Reset();
     m_depthStencilView.Reset();

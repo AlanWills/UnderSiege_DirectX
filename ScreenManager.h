@@ -10,15 +10,14 @@ using namespace DirectX::SimpleMath;
 class ScreenManager
 {
 public:
-	ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
+	ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext, float screenWidth, float screenHeight);
 	~ScreenManager();
 
 	// Five basic game functions
 	void LoadContent();
 	void Initialize();
 	void Update(DX::StepTimer const& timer);
-	void DrawGameObjects();
-	void DrawScreenObjects();
+	void Draw();
 	void HandleInput(DX::StepTimer const& timer);
 
 	/// \brief Add a screen (will automatically load and initialize for you)

@@ -9,7 +9,7 @@ public:
 	Texture2D();
 	~Texture2D();
 
-	void Load(ID3D11Device* device, const WCHAR* filename);
+	void Load(ID3D11Device* device, const wchar_t* filename);
 
 	ID3D11ShaderResourceView* GetTexture() { return m_texture; }
 

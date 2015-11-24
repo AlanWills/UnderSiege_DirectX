@@ -10,7 +10,7 @@ using namespace DirectX;
 template <typename T> class BaseObjectManager
 {
 public:
-	BaseObjectManager();
+	BaseObjectManager(ID3D11Device* device);
 	~BaseObjectManager();
 
 	/// \brief Adds necessary objects and loads content of all active objects
@@ -41,6 +41,8 @@ private:
 	std::list<T*> m_objectsToAdd;
 	std::list<T*> m_activeObjects;
 	std::list<T*> m_objectsToRemove;
+
+	ID3D11Device* m_device;
 };
 
 
@@ -48,7 +50,8 @@ private:
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 template <typename T>
-BaseObjectManager<T>::BaseObjectManager()
+BaseObjectManager<T>::BaseObjectManager(ID3D11Device* device) :
+	m_device(device)
 {
 
 }
@@ -92,7 +95,7 @@ void BaseObjectManager<T>::LoadContent()
 
 	for (T* object : m_activeObjects)
 	{
-		object->LoadContent();
+		object->LoadContent(m_device);
 	}
 }
 
@@ -169,7 +172,7 @@ void BaseObjectManager<T>::AddObject(T* objectToAdd, bool load, bool initialize)
 {
 	if (load)
 	{
-		objectToAdd->LoadContent();
+		objectToAdd->LoadContent(m_device);
 	}
 
 	if (initialize)
@@ -177,7 +180,7 @@ void BaseObjectManager<T>::AddObject(T* objectToAdd, bool load, bool initialize)
 		objectToAdd->Initialize();
 	}
 
-	m_activeObjects->push_back(objectToAdd);
+	m_activeObjects.push_back(objectToAdd);
 }
 
 

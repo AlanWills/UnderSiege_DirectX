@@ -12,16 +12,13 @@ Vector2 ScreenManager::GetScreenCentre()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenManager::ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext) :
+ScreenManager::ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext, float screenWidth, float screenHeight) :
 m_device(device),
 m_deviceContext(deviceContext),
 m_spriteBatch(nullptr),
-m_states(nullptr)
+m_states(nullptr),
 {
-	UINT numViewports;
-	m_deviceContext->RSGetViewports(&numViewports, &m_viewport);
-
-	m_screenCentre = Vector2(m_viewport.Width, m_viewport.Height) * 0.5f;
+	m_screenCentre = Vector2(screenWidth, screenHeight) * 0.5f;
 }
 
 
@@ -64,7 +61,12 @@ void ScreenManager::LoadContent()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Initialize()
 {
+	for (BaseScreen* screen : m_screensToAdd)
+	{
+		m_activeScreens.push_back(screen);
+	}
 
+	m_screensToAdd.clear();
 }
 
 
@@ -76,11 +78,13 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 		m_activeScreens.push_back(screen);
 	}
 
-	m_activeScreens.clear();
+	m_screensToAdd.clear();
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
 		// Screen updating and input handling - can have this all in one loop as we will probably only ever have one active screen at a time
+		screen->Update(timer);
+		screen->HandleInput(timer);
 	}
 
 	for (BaseScreen* screen : m_screensToRemove)
@@ -94,18 +98,23 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void ScreenManager::DrawGameObjects()
+void ScreenManager::Draw()
 {
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+
+	for (BaseScreen* screen : m_activeScreens)
+	{
+		screen->DrawInGameObjects(m_spriteBatch);
+	}
 
 	m_spriteBatch->End();
-}
 
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-void ScreenManager::DrawScreenObjects()
-{
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+
+	for (BaseScreen* screen : m_activeScreens)
+	{
+		screen->DrawScreenObjects(m_spriteBatch);
+	}
 
 	m_spriteBatch->End();
 }
@@ -114,7 +123,10 @@ void ScreenManager::DrawScreenObjects()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::HandleInput(DX::StepTimer const& timer)
 {
-
+	for (BaseScreen* screen : m_activeScreens)
+	{
+		screen->HandleInput(timer);
+	}
 }
 
 

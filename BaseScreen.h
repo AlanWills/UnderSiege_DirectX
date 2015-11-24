@@ -13,7 +13,7 @@ class ScreenManager;
 class BaseScreen
 {
 public:
-	BaseScreen(ScreenManager* screenManager, std::wstring& dataAsset);
+	BaseScreen(ScreenManager* screenManager, std::wstring& dataAsset, ID3D11Device* device);
 	~BaseScreen();
 
 	/// \brief Loads the content of all the objects we have already set up
@@ -62,6 +62,9 @@ protected:
 	ScreenManager* m_screenManager;
 
 private:
+	// Pointer to the device for loading content
+	ID3D11Device* m_device;
+
 	// Path to an XML document containing data about this screen
 	std::wstring m_dataAsset;
 
@@ -73,8 +76,8 @@ private:
 	bool m_alive;			// if false the screen will be removed by the screen manager
 
 	// Object managers
-	BaseObjectManager<GameObject>		m_gameObjects;			// Handles all the game objects
-	BaseObjectManager<InGameUIObject>	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
-	BaseObjectManager<ScreenUIObject>	m_screenUIObjects;		// Handles all the screen UI
+	BaseObjectManager<GameObject>*		m_gameObjects;			// Handles all the game objects
+	BaseObjectManager<InGameUIObject>*	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
+	BaseObjectManager<ScreenUIObject>*	m_screenUIObjects;		// Handles all the screen UI
 };
 

@@ -2,6 +2,8 @@
 #include "Texture2D.h"
 #include "WICTextureLoader.h"
 
+using Microsoft::WRL::ComPtr;
+
 //-----------------------------------------------------------------------------------------------------------------------------------
 Texture2D::Texture2D() :
 m_texture(nullptr),
@@ -22,20 +24,22 @@ Texture2D::~Texture2D()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void Texture2D::Load(ID3D11Device* device, const wchar_t* filename)
 {
-	ID3D11Resource* resource;
+	ComPtr<ID3D11Resource> resource;
 	DX::ThrowIfFailed(CreateWICTextureFromFile(
 		device,
 		filename,
-		&resource,
+		resource.GetAddressOf(),
 		&m_texture));
 
-	ID3D11Texture2D* texture = dynamic_cast<ID3D11Texture2D*>(resource);
-	if (texture)
-	{
-		CD3D11_TEXTURE2D_DESC desc;
-		texture->GetDesc(&desc);
+	ComPtr<ID3D11Texture2D> texture;
+	DX::ThrowIfFailed(resource.As(&texture));
 
-		m_centre = Vector2(desc.Width * 0.5f, desc.Height * 0.5f);
-		m_dimensions = Vector2(desc.Width, desc.Height);
-	}
+	CD3D11_TEXTURE2D_DESC desc;
+	texture->GetDesc(&desc);
+
+	m_centre = Vector2(desc.Width * 0.5f, desc.Height * 0.5f);
+	m_dimensions = Vector2(desc.Width, desc.Height);
+
+	resource.Reset();
+	texture.Reset();
 }
