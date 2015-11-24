@@ -86,9 +86,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Object Classes</Filter>
     </ClCompile>
-    <ClCompile Include="BaseObjectManager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">

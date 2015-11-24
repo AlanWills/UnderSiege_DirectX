@@ -29,6 +29,26 @@ ScreenManager::~ScreenManager()
 {
 	delete m_spriteBatch;
 	delete m_states;
+
+	// Need to delete all the screens here
+	for (BaseScreen* screen : m_screensToAdd)
+	{
+		delete screen;
+	}
+
+	for (BaseScreen* screen : m_activeScreens)
+	{
+		delete screen;
+	}
+
+	for (BaseScreen* screen : m_screensToRemove)
+	{
+		delete screen;
+	}
+
+	m_screensToAdd.clear();
+	m_activeScreens.clear();
+	m_screensToRemove.clear();
 }
 
 
@@ -50,7 +70,23 @@ void ScreenManager::Initialize()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Update(DX::StepTimer const& timer)
 {
+	for (BaseScreen* screen : m_screensToAdd)
+	{
+		m_activeScreens.push_back(screen);
+	}
 
+	m_activeScreens.clear();
+
+	for (BaseScreen* screen : m_activeScreens)
+	{
+		// Screen updating and input handling - can have this all in one loop as we will probably only ever have one active screen at a time
+	}
+
+	for (BaseScreen* screen : m_screensToRemove)
+	{
+		m_activeScreens.remove(screen);
+		delete screen;
+	}
 }
 
 

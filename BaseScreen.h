@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ScreenManager.h"
 #include "BaseObjectManager.h"
-
 #include "GameObject.h"
 
 using namespace std;
+
+class ScreenManager;
 
 class BaseScreen
 {

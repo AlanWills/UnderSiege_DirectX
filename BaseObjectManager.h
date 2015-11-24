@@ -133,7 +133,8 @@ void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 
 	for (T* object : m_objectsToRemove)
 	{
-		m_activeObjects->erase(object);
+		m_activeObjects.remove(object);
+		delete object;
 	}
 
 	m_objectsToRemove.clear();

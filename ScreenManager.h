@@ -2,6 +2,7 @@
 
 #include "SpriteBatch.h"
 #include "StepTimer.h"
+#include "BaseScreen.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -19,7 +20,11 @@ public:
 	void Render();
 	void HandleInput(DX::StepTimer const& timer);
 
-	// Utility functions
+	/// \brief Add a screen (will automatically load and initialize for you)
+	void AddScreen(BaseScreen* screenToAdd);
+	void RemoveScreen(BaseScreen* screenToAdd);
+
+	/// \brief Utility function for obtaining the centre of back buffer
 	static Vector2 GetScreenCentre();
 
 	// Viewport
@@ -35,5 +40,9 @@ private:
 
 	// Used for alpha blending sprites
 	CommonStates* m_states;
-};
 
+	// Screens
+	std::list<BaseScreen*> m_screensToAdd;
+	std::list<BaseScreen*> m_activeScreens;
+	std::list<BaseScreen*> m_screensToRemove;
+};
