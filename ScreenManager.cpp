@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ScreenManager.h"
 
+
 // Screen centre
 static Vector2 m_screenCentre;
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -87,11 +88,22 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 		m_activeScreens.remove(screen);
 		delete screen;
 	}
+
+	m_screensToRemove.clear();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void ScreenManager::Render()
+void ScreenManager::DrawGameObjects()
+{
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+
+	m_spriteBatch->End();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void ScreenManager::DrawScreenObjects()
 {
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
@@ -103,4 +115,21 @@ void ScreenManager::Render()
 void ScreenManager::HandleInput(DX::StepTimer const& timer)
 {
 
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void ScreenManager::AddScreen(BaseScreen* screenToAdd)
+{
+	screenToAdd->LoadContent();
+	screenToAdd->Initialize();
+
+	m_screensToAdd.push_back(screenToAdd);
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void ScreenManager::RemoveScreen(BaseScreen* screenToRemove)
+{
+	m_screensToRemove.push_back(screenToRemove);
 }

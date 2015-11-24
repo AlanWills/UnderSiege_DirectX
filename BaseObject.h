@@ -11,7 +11,8 @@ public:
 	BaseObject(std::wstring& dataAsset, BaseObject* parent = nullptr);
 	BaseObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
 	BaseObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
-	~BaseObject();
+	
+	virtual ~BaseObject();
 
 	/// \brief Loads the data (if it exists) and texture for the object
 	virtual void LoadContent(ID3D11Device* device);

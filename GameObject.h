@@ -2,7 +2,7 @@
 
 #include "BaseObject.h"
 
-class GameObject : BaseObject
+class GameObject : public BaseObject
 {
 public:
 	GameObject(std::wstring& dataAsset, BaseObject* parent = nullptr);

@@ -1,32 +1,32 @@
 #include "pch.h"
-#include "GameObject.h"
+#include "ScreenUIObject.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(dataAsset, parent)
-{
-}
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(localPosition, dataAsset, parent)
+ScreenUIObject::ScreenUIObject(std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+	UIObject(dataAsset, parent, lifeTime)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(size, localPosition, dataAsset, parent)
+ScreenUIObject::ScreenUIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+	UIObject(localPosition, dataAsset, parent)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::~GameObject()
+ScreenUIObject::ScreenUIObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+	UIObject(size, localPosition, dataAsset, parent, lifeTime)
 {
-	
+
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+ScreenUIObject::~ScreenUIObject()
+{
 }

@@ -17,7 +17,8 @@ public:
 	void LoadContent();
 	void Initialize();
 	void Update(DX::StepTimer const& timer);
-	void Render();
+	void DrawGameObjects();
+	void DrawScreenObjects();
 	void HandleInput(DX::StepTimer const& timer);
 
 	/// \brief Add a screen (will automatically load and initialize for you)

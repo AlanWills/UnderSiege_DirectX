@@ -1,32 +1,32 @@
 #include "pch.h"
-#include "GameObject.h"
+#include "InGameUIObject.h"
+
+
+
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(dataAsset, parent)
+InGameUIObject::InGameUIObject(std::wstring& dataAsset, BaseObject* parent, float lifeTime) : 
+	UIObject(dataAsset, parent, lifeTime)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(localPosition, dataAsset, parent)
+InGameUIObject::InGameUIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+	UIObject(localPosition, dataAsset, parent, lifeTime)
 {
-
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
-BaseObject(size, localPosition, dataAsset, parent)
+InGameUIObject::InGameUIObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+	UIObject(size, localPosition, dataAsset, parent, lifeTime)
 {
-
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::~GameObject()
+InGameUIObject::~InGameUIObject()
 {
-	
 }
