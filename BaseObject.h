@@ -70,16 +70,16 @@ public:
 	Color m_colour;
 	float m_opacity;
 
+	// Used for handling input - variables to represent whether the mouse is over the object
+	// And whether it is selected
+	bool m_mouseOver;
+	bool m_selected;
+
 private:
 	// Data
 	std::wstring m_dataAsset;
 
 	// Parent object
 	BaseObject* m_parent;
-
-	// Used for handling input - variables to represent whether the mouse is over the object
-	// And whether it is selected
-	bool m_mouseOver;
-	bool m_selected;
 };
 

@@ -21,6 +21,8 @@ m_screenUIObjects(nullptr)
 	m_inGameUIObjects = new BaseObjectManager<InGameUIObject>(device);
 	m_screenUIObjects = new BaseObjectManager<ScreenUIObject>(device);
 
+	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), std::wstring(L"test_background.jpg"));
+
 	AddGameObject(new GameObject(Vector2(400, 300), std::wstring(L"tribase-u3-d0.png")));
 }
 
@@ -31,6 +33,8 @@ BaseScreen::~BaseScreen()
 	delete m_gameObjects;
 	delete m_inGameUIObjects;
 	delete m_screenUIObjects;
+
+	delete m_background;
 }
 
 
@@ -40,6 +44,8 @@ void BaseScreen::LoadContent()
 	m_gameObjects->LoadContent();
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
+
+	m_background->LoadContent(m_device);
 }
 
 
@@ -49,6 +55,8 @@ void BaseScreen::Initialize()
 	m_gameObjects->Initialize();
 	m_inGameUIObjects->Initialize();
 	m_screenUIObjects->Initialize();
+
+	m_background->Initialize();
 
 	m_alive = true;
 	Show();
@@ -96,6 +104,16 @@ void BaseScreen::DrawScreenObjects(SpriteBatch* spriteBatch)
 	if (m_visible)
 	{
 		m_screenUIObjects->Draw(spriteBatch);
+	}
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void BaseScreen::DrawBackground(SpriteBatch* spriteBatch)
+{
+	if (m_visible)
+	{
+		m_background->Draw(spriteBatch);
 	}
 }
 

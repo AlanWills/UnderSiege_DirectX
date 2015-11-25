@@ -75,12 +75,20 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 		m_activeScreens.remove(screen);
 		delete screen;
 	}
+
+	m_screensToDelete.clear();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Draw()
 {
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+
+	m_activeScreens.back()->DrawBackground(m_spriteBatch);
+
+	m_spriteBatch->End();
+
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
 	for (BaseScreen* screen : m_activeScreens)

@@ -34,6 +34,9 @@ public:
 	/// \brief Draws all the objects in the screen that are not dependent on camera or game world (Screen UI)
 	virtual void DrawScreenObjects(SpriteBatch* spriteBatch);
 
+	/// \brief Draws the background
+	void DrawBackground(SpriteBatch* spriteBatch);
+
 	/// \brief Handles all the input for the objects in the screen (game, then gameUI, then screenUI)
 	virtual void HandleInput(DX::StepTimer const& timer);
 
@@ -79,5 +82,8 @@ private:
 	BaseObjectManager<GameObject>*		m_gameObjects;			// Handles all the game objects
 	BaseObjectManager<InGameUIObject>*	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
 	BaseObjectManager<ScreenUIObject>*	m_screenUIObjects;		// Handles all the screen UI
+
+	// Background
+	ScreenUIObject* m_background;
 };
 

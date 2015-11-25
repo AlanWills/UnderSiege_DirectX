@@ -1,8 +1,32 @@
 #pragma once
-class Button
+
+#include "ScreenUIObject.h"
+
+class Button : public ScreenUIObject
 {
 public:
-	Button();
+	Button(Vector2 localPosition, std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 size, Vector2 localPosition, std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	~Button();
+
+	void Update(DX::StepTimer const& timer) override;
+	void HandleInput(DX::StepTimer const& timer) override;
+
+	/// \brief The function that will be executed when the button is clicked
+	std::function<void()> m_clickFunction;
+
+	enum ButtonState
+	{
+		kIdle,
+		kHighlighted,
+		kPressed,
+		kDisabled
+	};
+
+private:
+	ButtonState m_buttonState;
+
+	float m_clickResetTimer;
+	const float m_resetTime = 0.05f;
 };
 

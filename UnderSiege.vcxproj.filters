@@ -40,6 +40,9 @@
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{b7377c33-b320-4156-a18c-4f362b25556a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{95d41ea6-6a80-4d5d-9aba-bcb05a95643b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -85,7 +88,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +132,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +148,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="cursor_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="test_background.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -38,9 +38,8 @@ public:
 	void RemoveObject(T* objectToRemove);
 
 private:
-	std::list<T*> m_objectsToAdd;
 	std::list<T*> m_activeObjects;
-	std::list<T*> m_objectsToRemove;
+	std::list<T*> m_objectsToDelete;
 
 	ID3D11Device* m_device;
 };
@@ -61,24 +60,18 @@ BaseObjectManager<T>::BaseObjectManager(ID3D11Device* device) :
 template <typename T>
 BaseObjectManager<T>::~BaseObjectManager()
 {
-	for (T* object : m_objectsToAdd)
-	{
-		delete object;
-	}
-
 	for (T* object : m_activeObjects)
 	{
 		delete object;
 	}
 
-	for (T* object : m_objectsToRemove)
+	for (T* object : m_objectsToDelete)
 	{
 		delete object;
 	}
 
-	m_objectsToAdd.clear();
 	m_activeObjects.clear();
-	m_objectsToRemove.clear();
+	m_objectsToDelete.clear();
 }
 
 
@@ -86,13 +79,6 @@ BaseObjectManager<T>::~BaseObjectManager()
 template <typename T>
 void BaseObjectManager<T>::LoadContent()
 {
-	for (T* object : m_objectsToAdd)
-	{
-		m_activeObjects.push_back(object);
-	}
-
-	m_objectsToAdd.clear();
-
 	for (T* object : m_activeObjects)
 	{
 		object->LoadContent(m_device);
@@ -115,13 +101,6 @@ void BaseObjectManager<T>::Initialize()
 template <typename T>
 void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 {
-	for (T* object : m_objectsToAdd)
-	{
-		m_activeObjects.push_back(object);
-	}
-
-	m_objectsToAdd.clear();
-
 	for (T* object : m_activeObjects)
 	{
 		if (object->IsAlive())
@@ -134,13 +113,13 @@ void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 		}
 	}
 
-	for (T* object : m_objectsToRemove)
+	for (T* object : m_objectsToDelete)
 	{
 		m_activeObjects.remove(object);
 		delete object;
 	}
 
-	m_objectsToRemove.clear();
+	m_objectsToDelete.clear();
 }
 
 
@@ -195,14 +174,6 @@ T* BaseObjectManager<T>::FindObject(const std::wstring& tag)
 			return object;
 		}
 	}
-
-	for (T* object : m_objectsToAdd)
-	{
-		if (object->m_tag == tag)
-		{
-			return object;
-		}
-	}
 }
 
 
@@ -211,6 +182,6 @@ template <typename T>
 void BaseObjectManager<T>::RemoveObject(T* objectToRemove)
 {
 	objectToRemove->Die();
-	m_objectsToRemove.push_back(objectToRemove);
+	m_objectsToDelete.push_back(objectToRemove);
 }
 

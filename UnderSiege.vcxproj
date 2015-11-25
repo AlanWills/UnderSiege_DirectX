@@ -190,6 +190,7 @@
   <ItemGroup>
     <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
+    <Image Include="test_background.jpg" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>
   <ItemGroup>
