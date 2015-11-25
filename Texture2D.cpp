@@ -17,7 +17,6 @@ m_dimensions(Vector2(0, 0))
 Texture2D::~Texture2D()
 {
 	m_texture->Release();
-	delete m_texture;
 }
 
 

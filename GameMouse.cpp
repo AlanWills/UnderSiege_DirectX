@@ -9,14 +9,19 @@ GameMouse::GameMouse()
 {
 	// This hides the window cursor so that we can draw our own one instead
 	// We still maintain the functionality though (wrapped up in Mouse.h DirectXTK)
-	//ShowCursor(false);
+	ShowCursor(false);
+
+	for (int i = 0; i < MouseButton::kNumButtons; i++)
+	{
+		m_mouseClickStates[i] = false;
+	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 GameMouse::~GameMouse()
 {
-	delete[] &m_mouseClickStates;
+	
 }
 
 
@@ -30,9 +35,6 @@ void GameMouse::Update(DX::StepTimer const& timer)
 	m_currentMouseState = Mouse::Get().GetState();
 
 	// Update mouse position
-	/*POINT lpPoint;
-	GetCursorPos(&lpPoint);
-	m_localPosition = Vector2(lpPoint.x, lpPoint.y);*/
 	m_localPosition = Vector2(m_currentMouseState.x, m_currentMouseState.y);
 }
 

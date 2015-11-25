@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Additional Components">
       <UniqueIdentifier>{677d2357-1274-48d1-9953-9a6ffa24b2f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{b7377c33-b320-4156-a18c-4f362b25556a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -78,6 +81,12 @@
     <ClInclude Include="GameMouse.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -115,6 +124,12 @@
     </ClCompile>
     <ClCompile Include="GameMouse.cpp">
       <Filter>Source Files\Additional Components</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

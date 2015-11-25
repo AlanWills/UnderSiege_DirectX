@@ -150,10 +150,12 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BaseObjectManager.h" />
     <ClInclude Include="BaseScreen.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameUIObject.h" />
+    <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ScreenUIObject.h" />
@@ -164,10 +166,12 @@
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InGameUIObject.cpp" />
+    <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

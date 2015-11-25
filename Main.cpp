@@ -193,7 +193,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
 
-	case WM_MOUSEHOVER:
+	case WM_MOUSEMOVE:
 		Mouse::ProcessMessage(message, wParam, lParam);
 		break;
 

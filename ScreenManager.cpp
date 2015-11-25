@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "ScreenManager.h"
 
+// Mouse and keyboard classes
+static GameMouse m_gameMouse;
+static KeyboardInput m_keyboard;
 
 // Screen centre
 static Vector2 m_screenCentre;

@@ -71,4 +71,5 @@ private:
 	// ScreenManager
 	ScreenManager* m_screenManager;
 	Mouse m_mouse;
+	Keyboard m_keyboard;
 };
