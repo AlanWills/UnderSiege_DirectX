@@ -44,7 +44,8 @@ private:
 	CommonStates* m_states;
 
 	// Screens
-	std::list<BaseScreen*> m_screensToAdd;
 	std::list<BaseScreen*> m_activeScreens;
-	std::list<BaseScreen*> m_screensToRemove;
+	
+	// Container for screens about to be deleted
+	std::list<BaseScreen*> m_screensToDelete;
 };

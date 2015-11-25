@@ -32,24 +32,12 @@ ScreenManager::~ScreenManager()
 	delete m_states;
 
 	// Need to delete all the screens here
-	for (BaseScreen* screen : m_screensToAdd)
-	{
-		delete screen;
-	}
-
 	for (BaseScreen* screen : m_activeScreens)
 	{
 		delete screen;
 	}
 
-	for (BaseScreen* screen : m_screensToRemove)
-	{
-		delete screen;
-	}
-
-	m_screensToAdd.clear();
 	m_activeScreens.clear();
-	m_screensToRemove.clear();
 }
 
 
@@ -66,13 +54,6 @@ void ScreenManager::LoadContent()
 void ScreenManager::Initialize()
 {
 	m_gameMouse.Initialize();
-
-	for (BaseScreen* screen : m_screensToAdd)
-	{
-		m_activeScreens.push_back(screen);
-	}
-
-	m_screensToAdd.clear();
 }
 
 
@@ -81,13 +62,6 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 {
 	m_gameMouse.Update(timer);
 
-	for (BaseScreen* screen : m_screensToAdd)
-	{
-		m_activeScreens.push_back(screen);
-	}
-
-	m_screensToAdd.clear();
-
 	for (BaseScreen* screen : m_activeScreens)
 	{
 		// Screen updating and input handling - can have this all in one loop as we will probably only ever have one active screen at a time
@@ -95,13 +69,12 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 		screen->HandleInput(timer);
 	}
 
-	for (BaseScreen* screen : m_screensToRemove)
+	for (BaseScreen* screen : m_screensToDelete)
 	{
+		// Clean up dead screens
 		m_activeScreens.remove(screen);
 		delete screen;
 	}
-
-	m_screensToRemove.clear();
 }
 
 
@@ -148,12 +121,12 @@ void ScreenManager::AddScreen(BaseScreen* screenToAdd)
 	screenToAdd->LoadContent();
 	screenToAdd->Initialize();
 
-	m_screensToAdd.push_back(screenToAdd);
+	m_activeScreens.push_back(screenToAdd);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::RemoveScreen(BaseScreen* screenToRemove)
 {
-	m_screensToRemove.push_back(screenToRemove);
+	m_screensToDelete.push_back(screenToRemove);
 }
