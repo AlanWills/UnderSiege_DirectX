@@ -16,7 +16,7 @@ ScreenManager::ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 m_device(device),
 m_deviceContext(deviceContext),
 m_spriteBatch(nullptr),
-m_states(nullptr),
+m_states(nullptr)
 {
 	m_screenCentre = Vector2(screenWidth, screenHeight) * 0.5f;
 }
@@ -55,12 +55,15 @@ void ScreenManager::LoadContent()
 {
 	m_spriteBatch = new SpriteBatch(m_deviceContext);
 	m_states = new CommonStates(m_device);
+	m_gameMouse.LoadContent(m_device);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Initialize()
 {
+	m_gameMouse.Initialize();
+
 	for (BaseScreen* screen : m_screensToAdd)
 	{
 		m_activeScreens.push_back(screen);
@@ -73,6 +76,8 @@ void ScreenManager::Initialize()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Update(DX::StepTimer const& timer)
 {
+	m_gameMouse.Update(timer);
+
 	for (BaseScreen* screen : m_screensToAdd)
 	{
 		m_activeScreens.push_back(screen);
@@ -116,6 +121,8 @@ void ScreenManager::Draw()
 		screen->DrawScreenObjects(m_spriteBatch);
 	}
 
+	m_gameMouse.Draw(m_spriteBatch);
+
 	m_spriteBatch->End();
 }
 
@@ -123,6 +130,8 @@ void ScreenManager::Draw()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::HandleInput(DX::StepTimer const& timer)
 {
+	m_gameMouse.HandleInput(timer);
+
 	for (BaseScreen* screen : m_activeScreens)
 	{
 		screen->HandleInput(timer);

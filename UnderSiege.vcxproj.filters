@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{3924916a-4c7d-474a-b373-18e17b208b60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Additional Components">
+      <UniqueIdentifier>{7e098a82-7c8c-4972-a016-ef4f67d8a073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Additional Components">
+      <UniqueIdentifier>{677d2357-1274-48d1-9953-9a6ffa24b2f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -69,6 +75,9 @@
     <ClInclude Include="InGameUIObject.h">
       <Filter>Header Files\Object Classes</Filter>
     </ClInclude>
+    <ClInclude Include="GameMouse.h">
+      <Filter>Header Files\Additional Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -104,6 +113,9 @@
     <ClCompile Include="InGameUIObject.cpp">
       <Filter>Source Files\Object Classes</Filter>
     </ClCompile>
+    <ClCompile Include="GameMouse.cpp">
+      <Filter>Source Files\Additional Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -115,6 +127,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="tribase-u3-d0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="cursor_blue.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

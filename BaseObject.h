@@ -56,21 +56,9 @@ public:
 	// Local rotation from parent
 	float m_localRotation;
 
-private:
-	// Data
-	std::wstring m_dataAsset;
-
-	// Parent object
-	BaseObject* m_parent;
-
 	// Texture and size
-	Texture2D* m_texture;
+	Texture2D* m_textureHandler;
 	Vector2 m_size;
-
-	// Used for handling input - variables to represent whether the mouse is over the object
-	// And whether it is selected
-	bool m_mouseOver;
-	bool m_selected;
 
 	// State variables
 	bool m_active;			// If true the object updates
@@ -81,5 +69,17 @@ private:
 	// Colour variables
 	Color m_colour;
 	float m_opacity;
+
+private:
+	// Data
+	std::wstring m_dataAsset;
+
+	// Parent object
+	BaseObject* m_parent;
+
+	// Used for handling input - variables to represent whether the mouse is over the object
+	// And whether it is selected
+	bool m_mouseOver;
+	bool m_selected;
 };
 

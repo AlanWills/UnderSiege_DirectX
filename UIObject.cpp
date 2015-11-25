@@ -3,7 +3,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-UIObject::UIObject(std::wstring& dataAsset, BaseObject* parent = nullptr, float lifeTime) :
+UIObject::UIObject(std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
 	BaseObject(dataAsset, parent),
 	m_lifeTime(lifeTime),
 	m_currentLifeTime(0)
@@ -13,7 +13,7 @@ UIObject::UIObject(std::wstring& dataAsset, BaseObject* parent = nullptr, float 
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-UIObject::UIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr, float lifeTime) :
+UIObject::UIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
 	BaseObject(localPosition, dataAsset, parent),
 	m_lifeTime(lifeTime),
 	m_currentLifeTime(0)
@@ -23,7 +23,7 @@ UIObject::UIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* p
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-UIObject::UIObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr, float lifeTime) :
+UIObject::UIObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
 	BaseObject(size, localPosition, dataAsset, parent),
 	m_lifeTime(lifeTime),
 	m_currentLifeTime(0)

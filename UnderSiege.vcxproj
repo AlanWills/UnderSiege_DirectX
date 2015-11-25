@@ -151,6 +151,7 @@
     <ClInclude Include="BaseObjectManager.h" />
     <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InGameUIObject.h" />
     <ClInclude Include="pch.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InGameUIObject.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -182,6 +184,7 @@
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>

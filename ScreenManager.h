@@ -3,6 +3,7 @@
 #include "SpriteBatch.h"
 #include "StepTimer.h"
 #include "BaseScreen.h"
+#include "GameMouse.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -45,4 +46,7 @@ private:
 	std::list<BaseScreen*> m_screensToAdd;
 	std::list<BaseScreen*> m_activeScreens;
 	std::list<BaseScreen*> m_screensToRemove;
+
+	// Mouse
+	GameMouse m_gameMouse;
 };

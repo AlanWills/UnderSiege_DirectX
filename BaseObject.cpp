@@ -27,7 +27,7 @@ m_localPosition(localPosition),
 m_localRotation(0),
 m_dataAsset(dataAsset),
 m_parent(parent),
-m_texture(nullptr),
+m_textureHandler(nullptr),
 m_size(size),
 m_mouseOver(false),
 m_selected(false),
@@ -45,7 +45,7 @@ m_opacity(1.0f)
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseObject::~BaseObject()
 {
-	delete m_texture;
+	delete m_textureHandler;
 }
 
 
@@ -54,14 +54,14 @@ void BaseObject::LoadContent(ID3D11Device* device)
 {
 	// Put data reading code here
 
-	m_texture = new Texture2D();
-	m_texture->Load(device, m_dataAsset.c_str());
+	m_textureHandler = new Texture2D();
+	m_textureHandler->Load(device, m_dataAsset.c_str());
 
-	assert(m_texture);
+	assert(m_textureHandler);
 
 	if (m_size == Vector2::Zero)
 	{
-		m_size = m_texture->m_dimensions;
+		m_size = m_textureHandler->m_dimensions;
 	}
 }
 
@@ -97,7 +97,7 @@ void BaseObject::Draw(SpriteBatch* spriteBatch)
 	}
 
 	// Put draw code here
-	spriteBatch->Draw(m_texture->GetTexture(), GetWorldPosition(), nullptr, m_colour * m_opacity, GetWorldRotation(), m_texture->m_centre, XMVectorDivide(m_size, m_texture->m_dimensions));
+	spriteBatch->Draw(m_textureHandler->GetTexture(), GetWorldPosition(), nullptr, m_colour * m_opacity, GetWorldRotation(), m_textureHandler->m_centre, XMVectorDivide(m_size, m_textureHandler->m_dimensions));
 }
 
 

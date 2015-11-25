@@ -21,8 +21,7 @@ m_screenUIObjects(nullptr)
 	m_inGameUIObjects = new BaseObjectManager<InGameUIObject>(device);
 	m_screenUIObjects = new BaseObjectManager<ScreenUIObject>(device);
 
-	std::wstring fileName = L"tribase-u3-d0.png";
-	AddGameObject(new GameObject(Vector2(400, 300), fileName));
+	AddGameObject(new GameObject(Vector2(400, 300), std::wstring(L"tribase-u3-d0.png")));
 }
 
 

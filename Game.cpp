@@ -37,9 +37,10 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
 
-	std::wstring name = L"";
+	Mouse::Get().SetWindow(window);
+
 	m_screenManager = new ScreenManager(m_d3dDevice.Get(), m_d3dContext.Get(), m_outputWidth, m_outputHeight);
-	m_screenManager->AddScreen(new BaseScreen(m_screenManager, name, m_d3dDevice.Get()));
+	m_screenManager->AddScreen(new BaseScreen(m_screenManager, std::wstring(L""), m_d3dDevice.Get()));
 	m_screenManager->LoadContent();
 	m_screenManager->Initialize();
 }
