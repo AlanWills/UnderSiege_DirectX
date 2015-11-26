@@ -43,6 +43,12 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{95d41ea6-6a80-4d5d-9aba-bcb05a95643b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Data and Content">
+      <UniqueIdentifier>{e9688efe-d944-49b2-ac5f-6eb3ade84fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data and Content">
+      <UniqueIdentifier>{4d338cc5-b1c7-4f92-8b2a-775802e2482d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -52,9 +58,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StepTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BaseObject.h">
@@ -84,11 +87,17 @@
     <ClInclude Include="GameMouse.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
-    <ClInclude Include="KeyboardInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSerializer.h">
+      <Filter>Header Files\Data and Content</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardInput.h">
+      <Filter>Header Files\Additional Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Header Files\Data and Content</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +108,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BaseObject.cpp">
@@ -128,11 +134,17 @@
     <ClCompile Include="GameMouse.cpp">
       <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
-    <ClCompile Include="KeyboardInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSerializer.cpp">
+      <Filter>Source Files\Data and Content</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardInput.cpp">
+      <Filter>Source Files\Additional Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files\Data and Content</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,5 +170,8 @@
     <Manifest Include="settings.manifest">
       <Filter>Resource Files</Filter>
     </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

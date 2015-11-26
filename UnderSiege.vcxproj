@@ -22,6 +22,7 @@
     <RootNamespace>UnderSiege</RootNamespace>
     <ProjectGuid>{017d06fc-8eeb-44ef-84b0-16a34364c9dc}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -29,6 +30,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -151,6 +153,7 @@
     <ClInclude Include="BaseObjectManager.h" />
     <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="DataSerializer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
@@ -167,6 +170,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="DataSerializer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -201,7 +205,19 @@
       <Project>{e98944e2-b90a-4229-b3cd-ac0db668e5b2}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\tinyxml2.redist.3.0.0\build\native\tinyxml2.redist.targets" Condition="Exists('..\packages\tinyxml2.redist.3.0.0\build\native\tinyxml2.redist.targets')" />
+    <Import Project="..\packages\tinyxml2.3.0.0\build\native\tinyxml2.targets" Condition="Exists('..\packages\tinyxml2.3.0.0\build\native\tinyxml2.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\tinyxml2.redist.3.0.0\build\native\tinyxml2.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\tinyxml2.redist.3.0.0\build\native\tinyxml2.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\tinyxml2.3.0.0\build\native\tinyxml2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\tinyxml2.3.0.0\build\native\tinyxml2.targets'))" />
+  </Target>
 </Project>
