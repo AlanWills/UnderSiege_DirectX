@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseObjectData.h" />
     <ClInclude Include="BaseObjectManager.h" />
     <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="BaseScreenData.h" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BaseObjectData.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
     <ClCompile Include="BaseScreenData.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -210,6 +212,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="MainMenuBackground.xml" />
     <Xml Include="TestScreenData.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

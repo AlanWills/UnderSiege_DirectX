@@ -4,7 +4,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 GameMouse::GameMouse()
-	: ScreenUIObject("cursor_blue.png"),
+	: ScreenUIObject("cursor_blue.png", LoadType::kTexture),
 	m_clickDelayTimer(0.1f)
 {
 	// This hides the window cursor so that we can draw our own one instead

@@ -5,27 +5,29 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(const char* dataAsset, BaseObject* parent) :
-BaseObject(Vector2(0, 0), Vector2(0, 0), dataAsset, parent)
+BaseObject::BaseObject(const char* dataAsset, LoadType loadType, BaseObject* parent) :
+BaseObject(Vector2(0, 0), Vector2(0, 0), dataAsset, loadType, parent)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
-BaseObject(Vector2(0, 0), localPosition, dataAsset, parent)
+BaseObject::BaseObject(Vector2 localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent) :
+BaseObject(Vector2(0, 0), localPosition, dataAsset, loadType, parent)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
+BaseObject::BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent) :
 m_tag(L""),
 m_localPosition(localPosition),
 m_localRotation(0),
 m_dataAsset(dataAsset),
+m_loadType(loadType),
+m_baseObjectData(nullptr),
 m_parent(parent),
 m_textureHandler(nullptr),
 m_size(size),
@@ -46,16 +48,37 @@ m_opacity(1.0f)
 BaseObject::~BaseObject()
 {
 	delete m_textureHandler;
+	delete m_baseObjectData;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObject::LoadContent(ID3D11Device* device)
 {
-	// Put data reading code here
+	const char* textureAsset;
+
+	if (m_loadType == LoadType::kData)
+	{
+		m_baseObjectData = new BaseObjectData();
+		m_baseObjectData->LoadData(m_dataAsset);
+
+		textureAsset = m_baseObjectData->GetTextureAsset();
+	}
+	else
+	{
+		textureAsset = m_dataAsset;
+	}
 
 	m_textureHandler = new Texture2D();
-	//m_textureHandler->Load(device, m_dataAsset);
+	
+	const wchar_t* pwcsName;
+	// required size
+	int nChars = MultiByteToWideChar(CP_ACP, 0, textureAsset, -1, NULL, 0);
+	// allocate it
+	pwcsName = new wchar_t[nChars];
+	MultiByteToWideChar(CP_ACP, 0, textureAsset, -1, (LPWSTR)pwcsName, nChars);
+
+	m_textureHandler->Load(device, pwcsName);
 
 	assert(m_textureHandler->GetTexture());
 
@@ -63,6 +86,8 @@ void BaseObject::LoadContent(ID3D11Device* device)
 	{
 		m_size = m_textureHandler->m_dimensions;
 	}
+
+	delete[] pwcsName;
 }
 
 

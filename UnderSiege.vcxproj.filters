@@ -49,6 +49,18 @@
     <Filter Include="Source Files\Data and Content">
       <UniqueIdentifier>{4d338cc5-b1c7-4f92-8b2a-775802e2482d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Data and Content\Screens">
+      <UniqueIdentifier>{ff41fd39-8056-4cda-b376-1f8af5372d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data and Content\Objects">
+      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data and Content\Objects">
+      <UniqueIdentifier>{a331a1e3-9e5d-4075-b190-f973f39d256c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data and Content\Screens">
+      <UniqueIdentifier>{d23a9e57-861c-4803-a579-e1e40d9b5563}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -96,11 +108,14 @@
     <ClInclude Include="Texture2D.h">
       <Filter>Header Files\Data and Content</Filter>
     </ClInclude>
-    <ClInclude Include="BaseScreenData.h">
-      <Filter>Header Files\Data and Content</Filter>
-    </ClInclude>
     <ClInclude Include="tinyxml2.h">
       <Filter>Header Files\Data and Content</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScreenData.h">
+      <Filter>Header Files\Data and Content\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObjectData.h">
+      <Filter>Header Files\Data and Content\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,11 +161,14 @@
     <ClCompile Include="Texture2D.cpp">
       <Filter>Source Files\Data and Content</Filter>
     </ClCompile>
-    <ClCompile Include="BaseScreenData.cpp">
-      <Filter>Source Files\Data and Content</Filter>
-    </ClCompile>
     <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files\Data and Content</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseScreenData.cpp">
+      <Filter>Source Files\Data and Content\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObjectData.cpp">
+      <Filter>Source Files\Data and Content\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="TestScreenData.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="MainMenuBackground.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

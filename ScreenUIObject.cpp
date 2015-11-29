@@ -3,24 +3,24 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(const char* dataAsset, BaseObject* parent, float lifeTime) :
-	UIObject(dataAsset, parent, lifeTime)
+ScreenUIObject::ScreenUIObject(const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
+	UIObject(dataAsset, loadType, parent, lifeTime)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
-	UIObject(localPosition, dataAsset, parent)
+ScreenUIObject::ScreenUIObject(Vector2 localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
+	UIObject(localPosition, dataAsset, loadType, parent)
 {
 
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
-	UIObject(size, localPosition, dataAsset, parent, lifeTime)
+ScreenUIObject::ScreenUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
+	UIObject(size, localPosition, dataAsset, loadType, parent, lifeTime)
 {
 
 }

@@ -4,14 +4,14 @@
 
 using namespace tinyxml2;
 
-class BaseScreenData
+class BaseObjectData
 {
 public:
-	BaseScreenData();
-	~BaseScreenData();
+	BaseObjectData();
+	~BaseObjectData();
 
 	void LoadData(const char* filename);
-	const char* GetBackgroundAsset() const;
+	const char* GetTextureAsset() const;
 
 private:
 	tinyxml2::XMLDocument* m_document;

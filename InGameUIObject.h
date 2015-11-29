@@ -5,9 +5,9 @@
 class InGameUIObject : public UIObject
 {
 public:
-	InGameUIObject(const char* dataAsset, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
-	InGameUIObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
-	InGameUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	InGameUIObject(const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	InGameUIObject(Vector2 localPosition, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	InGameUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 
 	~InGameUIObject();
 };

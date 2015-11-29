@@ -27,7 +27,7 @@ m_screenUIObjects(nullptr)
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseScreen::~BaseScreen()
 {
-	delete m_background;
+	delete m_baseScreenData;
 
 	delete m_gameObjects;
 	delete m_inGameUIObjects;
@@ -47,7 +47,7 @@ void BaseScreen::LoadContent()
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
 
-	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset());
+	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture);
 	m_background->LoadContent(m_device);
 }
 

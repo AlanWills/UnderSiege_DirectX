@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture2D.h"
+#include "BaseObjectData.h"
 #include "StepTimer.h"
 
 using namespace DirectX::SimpleMath;
@@ -8,9 +9,15 @@ using namespace DirectX::SimpleMath;
 class BaseObject
 {
 public:
-	BaseObject(const char* dataAsset, BaseObject* parent = nullptr);
-	BaseObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
-	BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
+	enum LoadType
+	{
+		kData,
+		kTexture
+	};
+
+	BaseObject(const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
+	BaseObject(Vector2 localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
+	BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
 	
 	virtual ~BaseObject();
 
@@ -76,8 +83,12 @@ public:
 	bool m_selected;
 
 private:
+	// Used to work out whether we should load an XML file or just a texture
+	LoadType m_loadType;
+
 	// Data - must be char* for tinyxml2 parser
 	const char* m_dataAsset;
+	BaseObjectData* m_baseObjectData;
 
 	// Parent object
 	BaseObject* m_parent;
