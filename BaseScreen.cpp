@@ -4,10 +4,11 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreen::BaseScreen(ScreenManager* screenManager, std::wstring& dataAsset, ID3D11Device* device) :
+BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset, ID3D11Device* device) :
 m_screenManager(screenManager),
 m_device(device),
 m_dataAsset(dataAsset),
+m_baseScreenData(nullptr),
 m_begun(false),
 m_active(false),
 m_visible(false),
@@ -20,16 +21,14 @@ m_screenUIObjects(nullptr)
 	m_gameObjects = new BaseObjectManager<GameObject>(device);
 	m_inGameUIObjects = new BaseObjectManager<InGameUIObject>(device);
 	m_screenUIObjects = new BaseObjectManager<ScreenUIObject>(device);
-
-	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), std::wstring(L"test_background.jpg"));
-
-	AddGameObject(new GameObject(Vector2(400, 300), std::wstring(L"tribase-u3-d0.png")));
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseScreen::~BaseScreen()
 {
+	delete m_background;
+
 	delete m_gameObjects;
 	delete m_inGameUIObjects;
 	delete m_screenUIObjects;
@@ -41,10 +40,14 @@ BaseScreen::~BaseScreen()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseScreen::LoadContent()
 {
+	m_baseScreenData = new BaseScreenData();
+	m_baseScreenData->LoadData(m_dataAsset);
+
 	m_gameObjects->LoadContent();
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
 
+	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset());
 	m_background->LoadContent(m_device);
 }
 

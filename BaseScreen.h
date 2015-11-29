@@ -6,6 +6,8 @@
 #include "ScreenUIObject.h"
 #include "InGameUIObject.h"
 
+#include "BaseScreenData.h"
+
 using namespace std;
 
 class ScreenManager;
@@ -13,7 +15,7 @@ class ScreenManager;
 class BaseScreen
 {
 public:
-	BaseScreen(ScreenManager* screenManager, std::wstring& dataAsset, ID3D11Device* device);
+	BaseScreen(ScreenManager* screenManager, const char* dataAsset, ID3D11Device* device);
 	~BaseScreen();
 
 	/// \brief Loads the content of all the objects we have already set up
@@ -68,8 +70,11 @@ private:
 	// Pointer to the device for loading content
 	ID3D11Device* m_device;
 
-	// Path to an XML document containing data about this screen
-	std::wstring m_dataAsset;
+	// Path to an XML document containing data about this screen - must be char* for tinyxml2 parser
+	const char* m_dataAsset;
+
+	// Screen data
+	BaseScreenData* m_baseScreenData;
 
 	// States variables
 	bool m_begun;			// If false, we will run the Begin function in the first loop of this screen's update

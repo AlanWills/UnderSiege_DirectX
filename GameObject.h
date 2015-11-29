@@ -5,9 +5,9 @@
 class GameObject : public BaseObject
 {
 public:
-	GameObject(std::wstring& dataAsset, BaseObject* parent = nullptr);
-	GameObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
-	GameObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
+	GameObject(const char* dataAsset, BaseObject* parent = nullptr);
+	GameObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
+	GameObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
 
 	~GameObject();
 };

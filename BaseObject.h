@@ -8,9 +8,9 @@ using namespace DirectX::SimpleMath;
 class BaseObject
 {
 public:
-	BaseObject(std::wstring& dataAsset, BaseObject* parent = nullptr);
-	BaseObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
-	BaseObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent = nullptr);
+	BaseObject(const char* dataAsset, BaseObject* parent = nullptr);
+	BaseObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
+	BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent = nullptr);
 	
 	virtual ~BaseObject();
 
@@ -76,8 +76,8 @@ public:
 	bool m_selected;
 
 private:
-	// Data
-	std::wstring m_dataAsset;
+	// Data - must be char* for tinyxml2 parser
+	const char* m_dataAsset;
 
 	// Parent object
 	BaseObject* m_parent;

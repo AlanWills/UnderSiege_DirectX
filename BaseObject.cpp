@@ -5,7 +5,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(std::wstring& dataAsset, BaseObject* parent) :
+BaseObject::BaseObject(const char* dataAsset, BaseObject* parent) :
 BaseObject(Vector2(0, 0), Vector2(0, 0), dataAsset, parent)
 {
 
@@ -13,7 +13,7 @@ BaseObject(Vector2(0, 0), Vector2(0, 0), dataAsset, parent)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
+BaseObject::BaseObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
 BaseObject(Vector2(0, 0), localPosition, dataAsset, parent)
 {
 
@@ -21,7 +21,7 @@ BaseObject(Vector2(0, 0), localPosition, dataAsset, parent)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseObject::BaseObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent) :
+BaseObject::BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
 m_tag(L""),
 m_localPosition(localPosition),
 m_localRotation(0),
@@ -55,9 +55,9 @@ void BaseObject::LoadContent(ID3D11Device* device)
 	// Put data reading code here
 
 	m_textureHandler = new Texture2D();
-	m_textureHandler->Load(device, m_dataAsset.c_str());
+	//m_textureHandler->Load(device, m_dataAsset);
 
-	assert(m_textureHandler);
+	assert(m_textureHandler->GetTexture());
 
 	if (m_size == Vector2::Zero)
 	{

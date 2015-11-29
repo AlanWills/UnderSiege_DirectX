@@ -3,7 +3,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+ScreenUIObject::ScreenUIObject(const char* dataAsset, BaseObject* parent, float lifeTime) :
 	UIObject(dataAsset, parent, lifeTime)
 {
 
@@ -11,7 +11,7 @@ ScreenUIObject::ScreenUIObject(std::wstring& dataAsset, BaseObject* parent, floa
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+ScreenUIObject::ScreenUIObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
 	UIObject(localPosition, dataAsset, parent)
 {
 
@@ -19,7 +19,7 @@ ScreenUIObject::ScreenUIObject(Vector2 localPosition, std::wstring& dataAsset, B
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenUIObject::ScreenUIObject(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+ScreenUIObject::ScreenUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
 	UIObject(size, localPosition, dataAsset, parent, lifeTime)
 {
 

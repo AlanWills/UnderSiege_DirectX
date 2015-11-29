@@ -90,13 +90,16 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="DataSerializer.h">
-      <Filter>Header Files\Data and Content</Filter>
-    </ClInclude>
     <ClInclude Include="KeyboardInput.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
+      <Filter>Header Files\Data and Content</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScreenData.h">
+      <Filter>Header Files\Data and Content</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
       <Filter>Header Files\Data and Content</Filter>
     </ClInclude>
   </ItemGroup>
@@ -137,13 +140,16 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="DataSerializer.cpp">
-      <Filter>Source Files\Data and Content</Filter>
-    </ClCompile>
     <ClCompile Include="KeyboardInput.cpp">
       <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files\Data and Content</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseScreenData.cpp">
+      <Filter>Source Files\Data and Content</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files\Data and Content</Filter>
     </ClCompile>
   </ItemGroup>
@@ -172,6 +178,8 @@
     </Manifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Xml Include="TestScreenData.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

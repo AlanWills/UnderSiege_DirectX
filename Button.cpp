@@ -3,7 +3,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Button::Button(Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+Button::Button(Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
 	ScreenUIObject(localPosition, dataAsset, parent, lifeTime),
 	m_buttonState(kIdle),
 	m_clickResetTimer(m_resetTime)
@@ -13,7 +13,7 @@ Button::Button(Vector2 localPosition, std::wstring& dataAsset, BaseObject* paren
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Button::Button(Vector2 size, Vector2 localPosition, std::wstring& dataAsset, BaseObject* parent, float lifeTime) :
+Button::Button(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent, float lifeTime) :
 	ScreenUIObject(size, localPosition, dataAsset, parent, lifeTime),
 	m_buttonState(kIdle)
 {

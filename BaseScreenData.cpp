@@ -1,32 +1,32 @@
 #include "pch.h"
-#include "GameObject.h"
+#include "BaseScreenData.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(const char* dataAsset, BaseObject* parent) :
-BaseObject(dataAsset, parent)
+BaseScreenData::BaseScreenData() :
+	m_document(nullptr)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
-BaseObject(localPosition, dataAsset, parent)
+BaseScreenData::~BaseScreenData()
 {
-
+	delete m_document;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::GameObject(Vector2 size, Vector2 localPosition, const char* dataAsset, BaseObject* parent) :
-BaseObject(size, localPosition, dataAsset, parent)
+void BaseScreenData::LoadData(const char* filename)
 {
-
+	m_document = new tinyxml2::XMLDocument();
+	m_document->LoadFile(filename);
+	assert(m_document);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameObject::~GameObject()
+const char* BaseScreenData::GetBackgroundAsset() const
 {
-	
+	return m_document->FirstChildElement("BackgroundTextureAsset")->GetText();
 }

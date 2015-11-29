@@ -5,8 +5,8 @@
 class Button : public ScreenUIObject
 {
 public:
-	Button(Vector2 localPosition, std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
-	Button(Vector2 size, Vector2 localPosition, std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 localPosition, const char* text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 size, Vector2 localPosition, const char* text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	~Button();
 
 	void Update(DX::StepTimer const& timer) override;
