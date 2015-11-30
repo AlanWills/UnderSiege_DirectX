@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Data and Content\Screens">
       <UniqueIdentifier>{d23a9e57-861c-4803-a579-e1e40d9b5563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\XML">
+      <UniqueIdentifier>{0071f7f7-f9ad-4058-b52a-1da1cdbb84af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\XML\Screens">
+      <UniqueIdentifier>{69a8506a-f04b-4d10-814a-c192cf2a9fad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -200,7 +206,7 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="MainMenuBackground.xml">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\XML\Screens</Filter>
     </Xml>
   </ItemGroup>
 </Project>

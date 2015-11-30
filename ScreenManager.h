@@ -34,14 +34,17 @@ public:
 
 private:
 	// General device and device context we get from creation - will need these for a lot of things
-	ID3D11Device* m_device;
-	ID3D11DeviceContext* m_deviceContext;
+	std::unique_ptr<ID3D11Device> m_device;
+	std::unique_ptr<ID3D11DeviceContext> m_deviceContext;
 
 	// SpriteBatch
-	SpriteBatch* m_spriteBatch;
+	std::unique_ptr<SpriteBatch> m_spriteBatch;
+
+	// SpriteFont
+	std::unique_ptr<SpriteFont> m_spriteFont;
 
 	// Used for alpha blending sprites
-	CommonStates* m_states;
+	std::unique_ptr<CommonStates> m_states;
 
 	// Screens
 	std::list<BaseScreen*> m_activeScreens;

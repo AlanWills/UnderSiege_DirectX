@@ -10,13 +10,13 @@ BaseObjectData::BaseObjectData() :
 
 BaseObjectData::~BaseObjectData()
 {
-	delete m_document;
+	
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObjectData::LoadData(const char* filename)
 {
-	m_document = new tinyxml2::XMLDocument();
+	m_document.reset(new tinyxml2::XMLDocument());
 	m_document->LoadFile(filename);
 	assert(m_document);
 }

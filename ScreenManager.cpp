@@ -18,8 +18,8 @@ Vector2 ScreenManager::GetScreenCentre()
 ScreenManager::ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext, float screenWidth, float screenHeight) :
 m_device(device),
 m_deviceContext(deviceContext),
-m_spriteBatch(nullptr),
-m_states(nullptr)
+m_spriteBatch(new SpriteBatch(deviceContext)),
+m_states(new CommonStates(device))
 {
 	m_screenCentre = Vector2(screenWidth, screenHeight) * 0.5f;
 }
@@ -28,9 +28,6 @@ m_states(nullptr)
 //-----------------------------------------------------------------------------------------------------------------------------------
 ScreenManager::~ScreenManager()
 {
-	delete m_spriteBatch;
-	delete m_states;
-
 	// Need to delete all the screens here
 	for (BaseScreen* screen : m_activeScreens)
 	{
@@ -44,9 +41,7 @@ ScreenManager::~ScreenManager()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::LoadContent()
 {
-	m_spriteBatch = new SpriteBatch(m_deviceContext);
-	m_states = new CommonStates(m_device);
-	m_gameMouse.LoadContent(m_device);
+	m_gameMouse.LoadContent(m_device.get());
 }
 
 
@@ -85,7 +80,7 @@ void ScreenManager::Draw()
 {
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
-	m_activeScreens.back()->DrawBackground(m_spriteBatch);
+	m_activeScreens.back()->DrawBackground(m_spriteBatch.get());
 
 	m_spriteBatch->End();
 
@@ -93,7 +88,7 @@ void ScreenManager::Draw()
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		screen->DrawInGameObjects(m_spriteBatch);
+		screen->DrawInGameObjects(m_spriteBatch.get());
 	}
 
 	m_spriteBatch->End();
@@ -102,10 +97,10 @@ void ScreenManager::Draw()
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		screen->DrawScreenObjects(m_spriteBatch);
+		screen->DrawScreenObjects(m_spriteBatch.get());
 	}
 
-	m_gameMouse.Draw(m_spriteBatch);
+	m_gameMouse.Draw(m_spriteBatch.get());
 
 	m_spriteBatch->End();
 }

@@ -12,14 +12,14 @@ BaseScreenData::BaseScreenData() :
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseScreenData::~BaseScreenData()
 {
-	delete m_document;
+	
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseScreenData::LoadData(const char* filename)
 {
-	m_document = new tinyxml2::XMLDocument();
+	m_document.reset(new tinyxml2::XMLDocument());
 	m_document->LoadFile(filename);
 	assert(m_document);
 }

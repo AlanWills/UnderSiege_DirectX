@@ -14,6 +14,6 @@ public:
 	const char* GetBackgroundAsset() const;
 
 private:
-	tinyxml2::XMLDocument* m_document;
+	std::unique_ptr<tinyxml2::XMLDocument> m_document;
 };
 
