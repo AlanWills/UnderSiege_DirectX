@@ -12,7 +12,7 @@ using namespace DirectX::SimpleMath;
 class ScreenManager
 {
 public:
-	ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext, float screenWidth, float screenHeight);
+	ScreenManager(Microsoft::WRL::ComPtr<ID3D11Device> device, Microsoft::WRL::ComPtr<ID3D11DeviceContext> deviceContext, float screenWidth, float screenHeight);
 	~ScreenManager();
 
 	// Five basic game functions
@@ -34,8 +34,8 @@ public:
 
 private:
 	// General device and device context we get from creation - will need these for a lot of things
-	std::unique_ptr<ID3D11Device> m_device;
-	std::unique_ptr<ID3D11DeviceContext> m_deviceContext;
+	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_deviceContext;
 
 	// SpriteBatch
 	std::unique_ptr<SpriteBatch> m_spriteBatch;

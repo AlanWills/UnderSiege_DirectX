@@ -12,10 +12,14 @@ using namespace std;
 
 class ScreenManager;
 
+typedef BaseObjectManager<GameObject> GameObjects;
+typedef BaseObjectManager<InGameUIObject> InGameUIObjects;
+typedef BaseObjectManager<ScreenUIObject> ScreenUIObjects;
+
 class BaseScreen
 {
 public:
-	BaseScreen(ScreenManager* screenManager, const char* dataAsset, ID3D11Device* device);
+	BaseScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device);
 	~BaseScreen();
 
 	/// \brief Loads the content of all the objects we have already set up
@@ -68,13 +72,13 @@ protected:
 
 private:
 	// Pointer to the device for loading content
-	ID3D11Device* m_device;
+	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
 	// Path to an XML document containing data about this screen - must be char* for tinyxml2 parser
 	const char* m_dataAsset;
 
 	// Screen data
-	BaseScreenData* m_baseScreenData;
+	std::unique_ptr<BaseScreenData> m_baseScreenData;
 
 	// States variables
 	bool m_begun;			// If false, we will run the Begin function in the first loop of this screen's update
@@ -84,11 +88,11 @@ private:
 	bool m_alive;			// if false the screen will be removed by the screen manager
 
 	// Object managers
-	BaseObjectManager<GameObject>*		m_gameObjects;			// Handles all the game objects
-	BaseObjectManager<InGameUIObject>*	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
-	BaseObjectManager<ScreenUIObject>*	m_screenUIObjects;		// Handles all the screen UI
+	std::unique_ptr<GameObjects>		m_gameObjects;			// Handles all the game objects
+	std::unique_ptr<InGameUIObjects>	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
+	std::unique_ptr<ScreenUIObjects>	m_screenUIObjects;		// Handles all the screen UI
 
 	// Background
-	ScreenUIObject* m_background;
+	std::unique_ptr<ScreenUIObject> m_background;
 };
 

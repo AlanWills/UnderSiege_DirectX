@@ -10,7 +10,7 @@ using namespace DirectX;
 template <typename T> class BaseObjectManager
 {
 public:
-	BaseObjectManager(ID3D11Device* device);
+	BaseObjectManager(Microsoft::WRL::ComPtr<ID3D11Device> device);
 	~BaseObjectManager();
 
 	/// \brief Adds necessary objects and loads content of all active objects
@@ -41,7 +41,7 @@ private:
 	std::list<T*> m_activeObjects;
 	std::list<T*> m_objectsToDelete;
 
-	ID3D11Device* m_device;
+	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 };
 
 
@@ -49,7 +49,7 @@ private:
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 template <typename T>
-BaseObjectManager<T>::BaseObjectManager(ID3D11Device* device) :
+BaseObjectManager<T>::BaseObjectManager(Microsoft::WRL::ComPtr<ID3D11Device> device) :
 	m_device(device)
 {
 
@@ -81,7 +81,7 @@ void BaseObjectManager<T>::LoadContent()
 {
 	for (T* object : m_activeObjects)
 	{
-		object->LoadContent(m_device);
+		object->LoadContent(m_device.Get());
 	}
 }
 
@@ -151,7 +151,7 @@ void BaseObjectManager<T>::AddObject(T* objectToAdd, bool load, bool initialize)
 {
 	if (load)
 	{
-		objectToAdd->LoadContent(m_device);
+		objectToAdd->LoadContent(m_device.Get());
 	}
 
 	if (initialize)

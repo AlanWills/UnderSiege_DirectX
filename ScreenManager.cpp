@@ -15,11 +15,11 @@ Vector2 ScreenManager::GetScreenCentre()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScreenManager::ScreenManager(ID3D11Device* device, ID3D11DeviceContext* deviceContext, float screenWidth, float screenHeight) :
+ScreenManager::ScreenManager(Microsoft::WRL::ComPtr<ID3D11Device> device, Microsoft::WRL::ComPtr<ID3D11DeviceContext> deviceContext, float screenWidth, float screenHeight) :
 m_device(device),
 m_deviceContext(deviceContext),
-m_spriteBatch(new SpriteBatch(deviceContext)),
-m_states(new CommonStates(device))
+m_spriteBatch(new SpriteBatch(deviceContext.Get())),
+m_states(new CommonStates(device.Get()))
 {
 	m_screenCentre = Vector2(screenWidth, screenHeight) * 0.5f;
 }
@@ -41,7 +41,7 @@ ScreenManager::~ScreenManager()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::LoadContent()
 {
-	m_gameMouse.LoadContent(m_device.get());
+	m_gameMouse.LoadContent(m_device.Get());
 }
 
 

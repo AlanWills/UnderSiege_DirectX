@@ -4,7 +4,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset, ID3D11Device* device) :
+BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device) :
 m_screenManager(screenManager),
 m_device(device),
 m_dataAsset(dataAsset),
@@ -14,41 +14,33 @@ m_active(false),
 m_visible(false),
 m_acceptsInput(false),
 m_alive(false),
-m_gameObjects(nullptr),
-m_inGameUIObjects(nullptr),
-m_screenUIObjects(nullptr)
+m_background(nullptr)
 {
-	m_gameObjects = new BaseObjectManager<GameObject>(device);
-	m_inGameUIObjects = new BaseObjectManager<InGameUIObject>(device);
-	m_screenUIObjects = new BaseObjectManager<ScreenUIObject>(device);
+	m_gameObjects.reset(new GameObjects(device));
+	m_inGameUIObjects.reset(new InGameUIObjects(device));
+	m_screenUIObjects.reset(new ScreenUIObjects(device));
+
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseScreen::~BaseScreen()
 {
-	delete m_baseScreenData;
-
-	delete m_gameObjects;
-	delete m_inGameUIObjects;
-	delete m_screenUIObjects;
-
-	delete m_background;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseScreen::LoadContent()
 {
-	m_baseScreenData = new BaseScreenData();
+	m_baseScreenData.reset(new BaseScreenData());
 	m_baseScreenData->LoadData(m_dataAsset);
 
 	m_gameObjects->LoadContent();
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
 
-	m_background = new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture);
-	m_background->LoadContent(m_device);
+	m_background.reset(new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
+	m_background->LoadContent(m_device.Get());
 }
 
 
