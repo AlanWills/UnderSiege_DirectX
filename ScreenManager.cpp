@@ -19,6 +19,7 @@ ScreenManager::ScreenManager(Microsoft::WRL::ComPtr<ID3D11Device> device, Micros
 m_device(device),
 m_deviceContext(deviceContext),
 m_spriteBatch(new SpriteBatch(deviceContext.Get())),
+m_spriteFont(new SpriteFont(device.Get(), L"Font.spritefont")),
 m_states(new CommonStates(device.Get()))
 {
 	m_screenCentre = Vector2(screenWidth, screenHeight) * 0.5f;
@@ -80,7 +81,7 @@ void ScreenManager::Draw()
 {
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
-	m_activeScreens.back()->DrawBackground(m_spriteBatch.get());
+	m_activeScreens.back()->DrawBackground(m_spriteBatch.get(), m_spriteFont.get());
 
 	m_spriteBatch->End();
 
@@ -88,7 +89,7 @@ void ScreenManager::Draw()
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		screen->DrawInGameObjects(m_spriteBatch.get());
+		screen->DrawInGameObjects(m_spriteBatch.get(), m_spriteFont.get());
 	}
 
 	m_spriteBatch->End();
@@ -97,10 +98,10 @@ void ScreenManager::Draw()
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		screen->DrawScreenObjects(m_spriteBatch.get());
+		screen->DrawScreenObjects(m_spriteBatch.get(), m_spriteFont.get());
 	}
 
-	m_gameMouse.Draw(m_spriteBatch.get());
+	m_gameMouse.Draw(m_spriteBatch.get(), m_spriteFont.get());
 
 	m_spriteBatch->End();
 }

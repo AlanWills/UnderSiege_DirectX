@@ -40,7 +40,7 @@ void GameMouse::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void GameMouse::Draw(SpriteBatch* spriteBatch)
+void GameMouse::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	if (m_visible)
 	{

@@ -54,9 +54,9 @@ void UIObject::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void UIObject::Draw(SpriteBatch* spriteBatch)
+void UIObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	BaseObject::Draw(spriteBatch);
+	BaseObject::Draw(spriteBatch, spriteFont);
 
 	// draw text with spritefont here if visible
 }

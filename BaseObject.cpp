@@ -47,8 +47,6 @@ m_opacity(1.0f)
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseObject::~BaseObject()
 {
-	delete m_textureHandler;
-	delete m_baseObjectData;
 }
 
 
@@ -59,7 +57,7 @@ void BaseObject::LoadContent(ID3D11Device* device)
 
 	if (m_loadType == LoadType::kData)
 	{
-		m_baseObjectData = new BaseObjectData();
+		m_baseObjectData.reset(new BaseObjectData());
 		m_baseObjectData->LoadData(m_dataAsset);
 
 		textureAsset = m_baseObjectData->GetTextureAsset();
@@ -69,7 +67,7 @@ void BaseObject::LoadContent(ID3D11Device* device)
 		textureAsset = m_dataAsset;
 	}
 
-	m_textureHandler = new Texture2D();
+	m_textureHandler.reset(new Texture2D());
 	
 	const wchar_t* pwcsName;
 	// required size
@@ -114,7 +112,7 @@ void BaseObject::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseObject::Draw(SpriteBatch* spriteBatch)
+void BaseObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	if (!m_visible)
 	{

@@ -23,7 +23,7 @@ public:
 	void Update(DX::StepTimer const& timer);
 
 	/// \brief Draws all active objects
-	void Draw(SpriteBatch* spriteBatch);
+	void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handles input for all active objects
 	void HandleInput(DX::StepTimer const& timer);
@@ -125,11 +125,11 @@ void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 template <typename T>
-void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch)
+void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	for (T* object : m_activeObjects)
 	{
-		object->Draw(spriteBatch);
+		object->Draw(spriteBatch, spriteFont);
 	}
 }
 

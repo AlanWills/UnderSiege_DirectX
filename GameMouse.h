@@ -20,7 +20,7 @@ public:
 	void Update(DX::StepTimer const& timer);
 
 	/// \brief We have to draw the mouse so that the top left corner is the origin and so hence need to specify a custom draw function
-	void Draw(SpriteBatch* spriteBatch) override;
+	void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont) override;
 
 	void HandleInput(DX::StepTimer const& timer);
 

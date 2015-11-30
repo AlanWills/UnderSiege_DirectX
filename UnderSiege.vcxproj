@@ -215,6 +215,9 @@
     <Xml Include="MainMenuBackground.xml" />
     <Xml Include="TestScreenData.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Font.spritefont" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

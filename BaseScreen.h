@@ -35,13 +35,13 @@ public:
 	virtual void Update(DX::StepTimer const& timer);
 
 	/// \brief Draws all the objects in the screen that are dependent on camera and game world (game, then gameUI)
-	virtual void DrawInGameObjects(SpriteBatch* spriteBatch);
+	virtual void DrawInGameObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Draws all the objects in the screen that are not dependent on camera or game world (Screen UI)
-	virtual void DrawScreenObjects(SpriteBatch* spriteBatch);
+	virtual void DrawScreenObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Draws the background
-	void DrawBackground(SpriteBatch* spriteBatch);
+	void DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handles all the input for the objects in the screen (game, then gameUI, then screenUI)
 	virtual void HandleInput(DX::StepTimer const& timer);

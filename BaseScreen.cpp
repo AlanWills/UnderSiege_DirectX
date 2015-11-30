@@ -83,32 +83,32 @@ void BaseScreen::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::DrawInGameObjects(SpriteBatch* spriteBatch)
+void BaseScreen::DrawInGameObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	if (m_visible)
 	{
-		m_gameObjects->Draw(spriteBatch);
-		m_inGameUIObjects->Draw(spriteBatch);
+		m_gameObjects->Draw(spriteBatch, spriteFont);
+		m_inGameUIObjects->Draw(spriteBatch, spriteFont);
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::DrawScreenObjects(SpriteBatch* spriteBatch)
+void BaseScreen::DrawScreenObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	if (m_visible)
 	{
-		m_screenUIObjects->Draw(spriteBatch);
+		m_screenUIObjects->Draw(spriteBatch, spriteFont);
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::DrawBackground(SpriteBatch* spriteBatch)
+void BaseScreen::DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	if (m_visible)
 	{
-		m_background->Draw(spriteBatch);
+		m_background->Draw(spriteBatch, spriteFont);
 	}
 }
 

@@ -31,7 +31,7 @@ public:
 	virtual void Update(DX::StepTimer const& timer);
 
 	/// \brief Draw the object in world space
-	virtual void Draw(SpriteBatch* spriteBatch);
+	virtual void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handle input from elsewhere and update this object's mouse over and selection status
 	virtual void HandleInput(DX::StepTimer const& timer);
@@ -64,7 +64,7 @@ public:
 	float m_localRotation;
 
 	// Texture and size
-	Texture2D* m_textureHandler;
+	std::unique_ptr<Texture2D> m_textureHandler;
 	Vector2 m_size;
 
 	// State variables
@@ -88,9 +88,9 @@ private:
 
 	// Data - must be char* for tinyxml2 parser
 	const char* m_dataAsset;
-	BaseObjectData* m_baseObjectData;
+	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
 	// Parent object
-	BaseObject* m_parent;
+	std::unique_ptr<BaseObject> m_parent;
 };
 

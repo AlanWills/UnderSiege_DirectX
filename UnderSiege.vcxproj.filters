@@ -67,6 +67,9 @@
     <Filter Include="Resource Files\XML\Screens">
       <UniqueIdentifier>{69a8506a-f04b-4d10-814a-c192cf2a9fad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\SpriteFonts">
+      <UniqueIdentifier>{2e57a243-e86e-43da-bd3d-d48f0fe9a406}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -208,5 +211,10 @@
     <Xml Include="MainMenuBackground.xml">
       <Filter>Resource Files\XML\Screens</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Font.spritefont">
+      <Filter>Resource Files\SpriteFonts</Filter>
+    </None>
   </ItemGroup>
 </Project>
