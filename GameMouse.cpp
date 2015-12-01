@@ -36,7 +36,7 @@ void GameMouse::Update(DX::StepTimer const& timer)
 	m_currentMouseState = Mouse::Get().GetState();
 
 	// Update mouse position
-	m_localPosition = Vector2(m_currentMouseState.x, m_currentMouseState.y);
+	m_localPosition = Vector2((float)m_currentMouseState.x, (float)m_currentMouseState.y);
 }
 
 
@@ -69,7 +69,7 @@ void GameMouse::HandleInput(DX::StepTimer const& timer)
 	else
 	{
 		m_mouseClickStates[MouseButton::kLeftButton] = false;
-		m_clickDelayTimer += timer.GetElapsedSeconds();
+		m_clickDelayTimer += (float)timer.GetElapsedSeconds();
 	}
 
 	if (m_currentMouseState.middleButton && !m_previousMouseState.middleButton && m_clickDelayTimer >= 0.1f)
@@ -80,7 +80,7 @@ void GameMouse::HandleInput(DX::StepTimer const& timer)
 	else
 	{
 		m_mouseClickStates[MouseButton::kMiddleButton] = false;
-		m_clickDelayTimer += timer.GetElapsedSeconds();
+		m_clickDelayTimer += (float)timer.GetElapsedSeconds();
 	}
 
 	if (m_currentMouseState.rightButton && !m_previousMouseState.rightButton && m_clickDelayTimer >= 0.1f)
@@ -91,7 +91,7 @@ void GameMouse::HandleInput(DX::StepTimer const& timer)
 	else
 	{
 		m_mouseClickStates[MouseButton::kRightButton] = false;
-		m_clickDelayTimer += timer.GetElapsedSeconds();
+		m_clickDelayTimer += (float)timer.GetElapsedSeconds();
 	}
 }
 

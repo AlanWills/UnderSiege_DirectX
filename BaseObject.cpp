@@ -125,7 +125,7 @@ void BaseObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseObject::HandleInput(DX::StepTimer const& timer)
+void BaseObject::HandleInput(const Ray& ray, DX::StepTimer const& timer)
 {
 	if (!m_acceptsInput)
 	{

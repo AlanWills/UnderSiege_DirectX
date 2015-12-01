@@ -70,6 +70,18 @@
     <Filter Include="Resource Files\SpriteFonts">
       <UniqueIdentifier>{2e57a243-e86e-43da-bd3d-d48f0fe9a406}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{0da675b9-1fd2-41f4-b59c-2724a178933a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics\Colliders">
+      <UniqueIdentifier>{7d75f1fe-915e-479f-82fc-f90fcc493c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{e292e182-9d0e-4629-8f42-57b4d8538198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\Colliders">
+      <UniqueIdentifier>{6b06e804-12a3-436f-8005-3969b61987a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -129,6 +141,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Physics\Colliders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -184,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Additional Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Physics\Colliders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

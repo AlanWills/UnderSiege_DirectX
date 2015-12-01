@@ -51,7 +51,7 @@ void Camera::Update(DX::StepTimer const& timer)
 	if (diff != Vector2::Zero)
 	{
 		diff.Normalize();
-		m_position += diff * timer.GetElapsedSeconds() * m_panSpeed;
+		m_position += diff * (float)timer.GetElapsedSeconds() * m_panSpeed;
 	}
 }
 

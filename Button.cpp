@@ -33,7 +33,7 @@ void Button::Update(DX::StepTimer const& timer)
 {
 	if (m_active)
 	{
-		m_clickResetTimer += timer.GetElapsedSeconds();
+		m_clickResetTimer += (float)timer.GetElapsedSeconds();
 		if (m_clickResetTimer >= m_resetTime)
 		{
 			m_buttonState = ButtonState::kIdle;
@@ -43,7 +43,7 @@ void Button::Update(DX::StepTimer const& timer)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Button::HandleInput(DX::StepTimer const& timer)
+void Button::HandleInput(const Ray& ray, DX::StepTimer const& timer)
 {
 	if (m_acceptsInput)
 	{

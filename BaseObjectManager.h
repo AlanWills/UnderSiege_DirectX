@@ -2,10 +2,12 @@
 
 #include "StepTimer.h"
 #include "SpriteBatch.h"
+#include <DirectXCollision.h>
 #include <list>
 
 using namespace std;
 using namespace DirectX;
+using namespace DirectX::SimpleMath;
 
 template <typename T> class BaseObjectManager
 {
@@ -26,7 +28,7 @@ public:
 	void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handles input for all active objects
-	void HandleInput(DX::StepTimer const& timer);
+	void HandleInput(const Ray& ray, DX::StepTimer const& timer);
 
 	/// \brief Adds an object 
 	void AddObject(T* objectToAdd, bool load = false, bool initialize = false);
@@ -136,11 +138,11 @@ void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 template <typename T>
-void BaseObjectManager<T>::HandleInput(DX::StepTimer const& timer)
+void BaseObjectManager<T>::HandleInput(const Ray& ray, DX::StepTimer const& timer)
 {
 	for (T* object : m_activeObjects)
 	{
-		object->HandleInput(timer);
+		object->HandleInput(ray, timer);
 	}
 }
 

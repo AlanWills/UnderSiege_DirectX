@@ -34,7 +34,7 @@ public:
 	virtual void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handle input from elsewhere and update this object's mouse over and selection status
-	virtual void HandleInput(DX::StepTimer const& timer);
+	virtual void HandleInput(const Ray& ray, DX::StepTimer const& timer);
 
 	/// \brief State Utility Functions
 	bool IsActive() { return m_active; }

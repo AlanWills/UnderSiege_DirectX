@@ -10,7 +10,7 @@ public:
 	~Button();
 
 	void Update(DX::StepTimer const& timer) override;
-	void HandleInput(DX::StepTimer const& timer) override;
+	void HandleInput(const Ray& ray, DX::StepTimer const& timer);
 
 	/// \brief The function that will be executed when the button is clicked
 	std::function<void()> m_clickFunction;

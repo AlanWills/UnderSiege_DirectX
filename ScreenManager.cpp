@@ -83,9 +83,8 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		// Screen updating and input handling - can have this all in one loop as we will probably only ever have one active screen at a time
+		// Screen updating
 		screen->Update(timer);
-		screen->HandleInput(timer);
 	}
 
 	for (BaseScreen* screen : m_screensToDelete)
@@ -137,11 +136,15 @@ void ScreenManager::Draw()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::HandleInput(DX::StepTimer const& timer)
 {
+	Vector2 mouseScreenPos(m_gameMouse.GetWorldPosition());
+	Ray ray(Vector3(mouseScreenPos.x, mouseScreenPos.y, 0), Vector3(0, 0, 1));
+
 	m_gameMouse.HandleInput(timer);
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
-		screen->HandleInput(timer);
+		// Screen input handling
+		screen->HandleInput(ray, timer);
 	}
 }
 
