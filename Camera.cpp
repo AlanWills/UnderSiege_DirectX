@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Camera.h"
 #include "ScreenManager.h"
+#include "KeyboardInput.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -20,6 +21,42 @@ Camera::~Camera()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+void Camera::Update(DX::StepTimer const& timer)
+{
+	// If the camera is fixed we should not do any more updating
+	if (m_cameraMode == CameraMode::kFixed)
+	{
+		return;
+	}
+
+	Vector2 diff = Vector2::Zero;
+
+	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Left))
+	{
+		diff.x = -1;
+	}
+	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Right))
+	{
+		diff.x = 1;
+	}
+	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Up))
+	{
+		diff.y = -1;
+	}
+	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Down))
+	{
+		diff.y = 1;
+	}
+
+	if (diff != Vector2::Zero)
+	{
+		diff.Normalize();
+		m_position += diff * timer.GetElapsedSeconds() * m_panSpeed;
+	}
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 Matrix Camera::GetViewMatrix() const
 {
 	// It's -ve position because it is - don't change it
@@ -28,7 +65,7 @@ Matrix Camera::GetViewMatrix() const
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2 Camera::ScreenToGameCoords(const Vector2 screenPosition)
+Vector2 Camera::ScreenToGameCoords(const Vector2 screenPosition) const
 {
 	Vector2 screenCentre = ScreenManager::GetScreenCentre();
 	Vector2 tmp = (m_position - screenCentre) / m_zoom;				/// This is here because apparently the '/' operator returns XMVECTOR2 not Vector2
@@ -37,7 +74,7 @@ Vector2 Camera::ScreenToGameCoords(const Vector2 screenPosition)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2 Camera::GameToScreenCoords(const Vector2 gamePosition)
+Vector2 Camera::GameToScreenCoords(const Vector2 gamePosition) const
 {
 	Vector2 screenCentre = ScreenManager::GetScreenCentre();
 	return screenCentre - m_position + (m_zoom - 1) * screenCentre + (gamePosition - screenCentre) * m_zoom;

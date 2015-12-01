@@ -3,8 +3,10 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-KeyboardInput::KeyboardInput()
+KeyboardInput::KeyboardInput() :
+	m_keyboard(new Keyboard())
 {
+	
 }
 
 
@@ -18,7 +20,7 @@ KeyboardInput::~KeyboardInput()
 void KeyboardInput::Update(DX::StepTimer const& timer)
 {
 	m_previousKeyboardState = m_currentKeyboardState;
-	m_currentKeyboardState = Keyboard::Get().GetState();
+	m_currentKeyboardState = m_keyboard->GetState();
 }
 
 

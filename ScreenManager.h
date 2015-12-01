@@ -28,13 +28,19 @@ public:
 	void RemoveScreen(BaseScreen* screenToAdd);
 
 	/// \brief Utility function for obtaining the centre of back buffer
-	static Vector2 GetScreenCentre();
+	static Vector2& GetScreenCentre();
 
 	// Viewport
 	CD3D11_VIEWPORT m_viewport;
 
 	/// \brief Gets the camera
-	static Camera ScreenManager::GetCamera();
+	static Camera& GetCamera();
+
+	/// \brief Gets the GameMouse
+	static GameMouse& GetGameMouse();
+
+	/// \brief Gets the KeyboardInput
+	static KeyboardInput& GetKeyboardInput();
 
 private:
 	// General device and device context we get from creation - will need these for a lot of things

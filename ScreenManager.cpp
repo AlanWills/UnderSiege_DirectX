@@ -1,26 +1,38 @@
 #include "pch.h"
 #include "ScreenManager.h"
 
-// Mouse and keyboard classes
-static GameMouse m_gameMouse;
-static KeyboardInput m_keyboard;
 static Vector2 m_screenCentre;
 static Camera m_camera;
+static GameMouse m_gameMouse;
+static KeyboardInput m_keyboard;
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2 ScreenManager::GetScreenCentre()
+Vector2& ScreenManager::GetScreenCentre()
 {
 	return m_screenCentre;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Camera ScreenManager::GetCamera()
+Camera& ScreenManager::GetCamera()
 {
 	return m_camera;
 }
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+GameMouse& ScreenManager::GetGameMouse()
+{
+	return m_gameMouse;
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+KeyboardInput& ScreenManager::GetKeyboardInput()
+{
+	return m_keyboard;
+}
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -65,6 +77,8 @@ void ScreenManager::Initialize()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Update(DX::StepTimer const& timer)
 {
+	m_keyboard.Update(timer);
+	m_camera.Update(timer);
 	m_gameMouse.Update(timer);
 
 	for (BaseScreen* screen : m_activeScreens)
