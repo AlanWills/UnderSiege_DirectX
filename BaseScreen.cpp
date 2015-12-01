@@ -20,6 +20,7 @@ m_background(nullptr)
 	m_inGameUIObjects.reset(new InGameUIObjects(device));
 	m_screenUIObjects.reset(new ScreenUIObjects(device));
 
+	AddGameObject(new GameObject(Vector2(300, 300), "tribase-u3-d0.png", BaseObject::LoadType::kTexture));
 }
 
 

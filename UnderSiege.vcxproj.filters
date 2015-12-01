@@ -126,6 +126,9 @@
     <ClInclude Include="BaseObjectData.h">
       <Filter>Header Files\Data and Content\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Additional Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="BaseObjectData.cpp">
       <Filter>Source Files\Data and Content\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

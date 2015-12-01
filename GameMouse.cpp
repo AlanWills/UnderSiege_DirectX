@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameMouse.h"
+#include "ScreenManager.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -92,4 +93,11 @@ void GameMouse::HandleInput(DX::StepTimer const& timer)
 		m_mouseClickStates[MouseButton::kRightButton] = false;
 		m_clickDelayTimer += timer.GetElapsedSeconds();
 	}
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+Vector2 GameMouse::GetInGamePosition()
+{
+	return ScreenManager::GetCamera().ScreenToGameCoords(m_localPosition);
 }

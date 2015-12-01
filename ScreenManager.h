@@ -5,6 +5,7 @@
 #include "BaseScreen.h"
 #include "GameMouse.h"
 #include "KeyboardInput.h"
+#include "Camera.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -31,6 +32,9 @@ public:
 
 	// Viewport
 	CD3D11_VIEWPORT m_viewport;
+
+	/// \brief Gets the camera
+	static Camera ScreenManager::GetCamera();
 
 private:
 	// General device and device context we get from creation - will need these for a lot of things

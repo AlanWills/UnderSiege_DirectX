@@ -4,14 +4,23 @@
 // Mouse and keyboard classes
 static GameMouse m_gameMouse;
 static KeyboardInput m_keyboard;
-
-// Screen centre
 static Vector2 m_screenCentre;
+static Camera m_camera;
+
+
 //-----------------------------------------------------------------------------------------------------------------------------------
 Vector2 ScreenManager::GetScreenCentre()
-{ 
-	return m_screenCentre; 
+{
+	return m_screenCentre;
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+Camera ScreenManager::GetCamera()
+{
+	return m_camera;
+}
+
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -79,13 +88,15 @@ void ScreenManager::Update(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::Draw()
 {
+	// Draw the background
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
 	m_activeScreens.back()->DrawBackground(m_spriteBatch.get(), m_spriteFont.get());
 
 	m_spriteBatch->End();
 
-	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
+	// Draw the camera dependent game objects
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied(), nullptr, nullptr, nullptr, nullptr, m_camera.GetViewMatrix());
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
@@ -94,6 +105,7 @@ void ScreenManager::Draw()
 
 	m_spriteBatch->End();
 
+	// Draw the screen (camera independent) objects
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
 	for (BaseScreen* screen : m_activeScreens)
@@ -101,6 +113,7 @@ void ScreenManager::Draw()
 		screen->DrawScreenObjects(m_spriteBatch.get(), m_spriteFont.get());
 	}
 
+	// Draw the game mouse - camera independent
 	m_gameMouse.Draw(m_spriteBatch.get(), m_spriteFont.get());
 
 	m_spriteBatch->End();
