@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BaseObject.h"
+#include "RectangleCollider.h"
 
 #include <DirectXMath.h>
 
@@ -33,6 +34,7 @@ m_textureHandler(nullptr),
 m_size(size),
 m_mouseOver(false),
 m_selected(false),
+m_collider(nullptr),
 m_active(false),
 m_visible(false),
 m_acceptsInput(false),
@@ -100,6 +102,13 @@ void BaseObject::Initialize()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+void BaseObject::AddCollider()
+{
+	m_collider.reset(new RectangleCollider(this));
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObject::Update(DX::StepTimer const& timer)
 {
 	if (!m_active)
@@ -125,7 +134,7 @@ void BaseObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseObject::HandleInput(const Ray& ray, DX::StepTimer const& timer)
+void BaseObject::HandleInput(DX::StepTimer const& timer)
 {
 	if (!m_acceptsInput)
 	{
@@ -143,6 +152,8 @@ void BaseObject::Create()
 	m_active = true;
 	m_visible = true;
 	m_acceptsInput = true;
+
+	AddCollider();
 }
 
 

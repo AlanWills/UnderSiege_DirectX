@@ -32,13 +32,17 @@ public:
 	bool IsClicked(MouseButton mouseButton) { return m_mouseClickStates[mouseButton]; }
 
 private:
+	std::unique_ptr<Mouse> m_mouse;
+
 	// We do not want our mouse to be able to click too rapidly so this just spreads out mouse clicks
 	float m_clickDelayTimer;
 
 	// Hold all the information for the mouse state - can be found in Mouse.h in DirectXTK
-	Mouse::State m_previousMouseState;
 	Mouse::State m_currentMouseState;
 
 	// Array for holding mouse button click state
 	bool m_mouseClickStates[MouseButton::kNumButtons];
+
+	// Helper class for tracking mouse button clicks
+	std::unique_ptr<Mouse::ButtonStateTracker> m_mouseButtonState;
 };

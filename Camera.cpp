@@ -68,7 +68,7 @@ Matrix Camera::GetViewMatrix() const
 Vector2 Camera::ScreenToGameCoords(const Vector2 screenPosition) const
 {
 	Vector2 screenCentre = ScreenManager::GetScreenCentre();
-	Vector2 tmp = (m_position - screenCentre) / m_zoom;				/// This is here because apparently the '/' operator returns XMVECTOR2 not Vector2
+	Vector2 tmp = (screenPosition - screenCentre) / m_zoom;				/// This is here because apparently the '/' operator returns XMVECTOR2 not Vector2
 	return m_position + screenCentre - (m_zoom - 1) * screenCentre + tmp;
 }
 

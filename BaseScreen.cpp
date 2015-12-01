@@ -115,13 +115,13 @@ void BaseScreen::DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::HandleInput(const Ray& ray, DX::StepTimer const& timer)
+void BaseScreen::HandleInput(DX::StepTimer const& timer)
 {
 	if (m_acceptsInput)
 	{
-		m_gameObjects->HandleInput(ray, timer);
-		m_inGameUIObjects->HandleInput(ray, timer);
-		m_screenUIObjects->HandleInput(ray, timer);
+		m_gameObjects->HandleInput(timer);
+		m_inGameUIObjects->HandleInput(timer);
+		m_screenUIObjects->HandleInput(timer);
 	}
 }
 

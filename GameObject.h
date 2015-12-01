@@ -10,5 +10,7 @@ public:
 	GameObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr);
 
 	~GameObject();
+
+	void HandleInput(DX::StepTimer const& timer) override;
 };
 

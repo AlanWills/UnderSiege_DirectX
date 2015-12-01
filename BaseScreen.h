@@ -44,7 +44,7 @@ public:
 	void DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handles all the input for the objects in the screen (game, then gameUI, then screenUI)
-	virtual void HandleInput(const Ray& ray, DX::StepTimer const& timer);
+	virtual void HandleInput(DX::StepTimer const& timer);
 
 	/// \brief Utility function to let the screen update, draw and handle input
 	void Show();

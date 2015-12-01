@@ -3,6 +3,7 @@
 #include "Texture2D.h"
 #include "BaseObjectData.h"
 #include "StepTimer.h"
+#include "Collider.h"
 
 using namespace DirectX::SimpleMath;
 
@@ -27,6 +28,9 @@ public:
 	/// \brief Initializes data before update begins
 	virtual void Initialize();
 
+	/// \brief Adds by default a rectangle collider
+	virtual void AddCollider();
+
 	/// \brief Update the logic of the object
 	virtual void Update(DX::StepTimer const& timer);
 
@@ -34,7 +38,7 @@ public:
 	virtual void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handle input from elsewhere and update this object's mouse over and selection status
-	virtual void HandleInput(const Ray& ray, DX::StepTimer const& timer);
+	virtual void HandleInput(DX::StepTimer const& timer);
 
 	/// \brief State Utility Functions
 	bool IsActive() { return m_active; }
@@ -81,6 +85,9 @@ public:
 	// And whether it is selected
 	bool m_mouseOver;
 	bool m_selected;
+
+	// Collider
+	std::unique_ptr<Collider> m_collider;
 
 private:
 	// Used to work out whether we should load an XML file or just a texture

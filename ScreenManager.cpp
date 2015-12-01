@@ -136,15 +136,12 @@ void ScreenManager::Draw()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void ScreenManager::HandleInput(DX::StepTimer const& timer)
 {
-	Vector2 mouseScreenPos(m_gameMouse.GetWorldPosition());
-	Ray ray(Vector3(mouseScreenPos.x, mouseScreenPos.y, 0), Vector3(0, 0, 1));
-
 	m_gameMouse.HandleInput(timer);
 
 	for (BaseScreen* screen : m_activeScreens)
 	{
 		// Screen input handling
-		screen->HandleInput(ray, timer);
+		screen->HandleInput(timer);
 	}
 }
 

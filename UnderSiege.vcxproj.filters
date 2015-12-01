@@ -144,6 +144,12 @@
     <ClInclude Include="Collider.h">
       <Filter>Header Files\Physics\Colliders</Filter>
     </ClInclude>
+    <ClInclude Include="RectangleCollider.h">
+      <Filter>Header Files\Physics\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Header Files\Physics\Colliders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -201,6 +207,12 @@
       <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Physics\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangleCollider.cpp">
+      <Filter>Source Files\Physics\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
       <Filter>Source Files\Physics\Colliders</Filter>
     </ClCompile>
   </ItemGroup>

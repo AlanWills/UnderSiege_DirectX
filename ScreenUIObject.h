@@ -10,5 +10,6 @@ public:
 	ScreenUIObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 
 	~ScreenUIObject();
-};
 
+	void HandleInput(DX::StepTimer const& timer) override;
+};

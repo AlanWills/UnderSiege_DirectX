@@ -156,6 +156,7 @@
     <ClInclude Include="BaseScreenData.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="InGameUIObject.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RectangleCollider.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ScreenUIObject.h" />
     <ClInclude Include="StepTimer.h" />
@@ -177,6 +179,7 @@
     <ClCompile Include="BaseScreenData.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
@@ -190,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="RectangleCollider.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="ScreenUIObject.cpp" />
     <ClCompile Include="Texture2D.cpp" />
