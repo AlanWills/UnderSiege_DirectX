@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ScreenUIObject.h"
+#include "UIObject.h"
 
-class GameMouse : public ScreenUIObject
+class GameMouse : public UIObject
 {
 public:
 	GameMouse();

@@ -13,12 +13,13 @@ public:
 	enum LoadType
 	{
 		kData,
-		kTexture
+		kTexture,
+		kNoLoad
 	};
 
 	BaseObject(const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
-	BaseObject(Vector2 localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
-	BaseObject(Vector2 size, Vector2 localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
+	BaseObject(const Vector2& localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
+	BaseObject(const Vector2& size, const Vector2& localPosition, const char* dataAsset, LoadType = LoadType::kData, BaseObject* parent = nullptr);
 	
 	virtual ~BaseObject();
 
@@ -38,7 +39,7 @@ public:
 	virtual void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handle input from elsewhere and update this object's mouse over and selection status
-	virtual void HandleInput(DX::StepTimer const& timer);
+	virtual void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition);
 
 	/// \brief State Utility Functions
 	bool IsActive() { return m_active; }
@@ -97,7 +98,7 @@ private:
 	const char* m_dataAsset;
 	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
-	// Parent object
-	std::unique_ptr<BaseObject> m_parent;
+	// Parent object pointer
+	BaseObject* m_parent;
 };
 

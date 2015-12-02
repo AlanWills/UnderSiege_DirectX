@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ScreenUIObject.h"
+#include "UIObject.h"
 
-class Button : public ScreenUIObject
+class Button : public UIObject
 {
 public:
 	Button(Vector2 localPosition, const char* text, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);

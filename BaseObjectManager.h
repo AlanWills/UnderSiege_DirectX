@@ -7,6 +7,7 @@
 
 using namespace std;
 using namespace DirectX;
+using namespace DirectX::SimpleMath;
 
 template <typename T> class BaseObjectManager
 {
@@ -27,7 +28,7 @@ public:
 	void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont);
 
 	/// \brief Handles input for all active objects
-	void HandleInput(DX::StepTimer const& timer);
+	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition);
 
 	/// \brief Adds an object 
 	void AddObject(T* objectToAdd, bool load = false, bool initialize = false);
@@ -137,11 +138,11 @@ void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 template <typename T>
-void BaseObjectManager<T>::HandleInput(DX::StepTimer const& timer)
+void BaseObjectManager<T>::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
 	for (T* object : m_activeObjects)
 	{
-		object->HandleInput(timer);
+		object->HandleInput(timer, mousePosition);
 	}
 }
 

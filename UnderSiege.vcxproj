@@ -161,12 +161,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="InGameUIObject.h" />
     <ClInclude Include="KeyboardInput.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RectangleCollider.h" />
     <ClInclude Include="ScreenManager.h" />
-    <ClInclude Include="ScreenUIObject.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="tinyxml2.h" />
@@ -184,8 +183,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InGameUIObject.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -195,7 +194,6 @@
     </ClCompile>
     <ClCompile Include="RectangleCollider.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
-    <ClCompile Include="ScreenUIObject.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="tinyxml2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BaseScreen.h"
 #include "ScreenManager.h"
+#include "Label.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -17,10 +18,11 @@ m_alive(false),
 m_background(nullptr)
 {
 	m_gameObjects.reset(new GameObjects(device));
-	m_inGameUIObjects.reset(new InGameUIObjects(device));
-	m_screenUIObjects.reset(new ScreenUIObjects(device));
+	m_inGameUIObjects.reset(new UIObjects(device));
+	m_screenUIObjects.reset(new UIObjects(device));
 
 	AddGameObject(new GameObject(Vector2(300, 300), "tribase-u3-d0.png", BaseObject::LoadType::kTexture));
+	AddInGameUIObject(new Label(Vector2(300, 100), L"Test Label"));
 }
 
 
@@ -40,7 +42,7 @@ void BaseScreen::LoadContent()
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
 
-	m_background.reset(new ScreenUIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
+	m_background.reset(new UIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
 	m_background->LoadContent(m_device.Get());
 }
 
@@ -119,9 +121,12 @@ void BaseScreen::HandleInput(DX::StepTimer const& timer)
 {
 	if (m_acceptsInput)
 	{
-		m_gameObjects->HandleInput(timer);
-		m_inGameUIObjects->HandleInput(timer);
-		m_screenUIObjects->HandleInput(timer);
+		const Vector2 mouseScreenPosition = ScreenManager::GetGameMouse().GetWorldPosition();
+		const Vector2 mouseInGamePosition = ScreenManager::GetGameMouse().GetInGamePosition();
+
+		m_gameObjects->HandleInput(timer, mouseInGamePosition);
+		m_inGameUIObjects->HandleInput(timer, mouseInGamePosition);
+		m_screenUIObjects->HandleInput(timer, mouseScreenPosition);
 	}
 }
 
@@ -168,28 +173,28 @@ void BaseScreen::RemoveGameObject(GameObject* gameObject)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::AddInGameUIObject(InGameUIObject* inGameUIObject, bool load, bool initialize)
+void BaseScreen::AddInGameUIObject(UIObject* inGameUIObject, bool load, bool initialize)
 {
 	m_inGameUIObjects->AddObject(inGameUIObject, load, initialize);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::RemoveInGameUIObject(InGameUIObject* inGameUIObject)
+void BaseScreen::RemoveInGameUIObject(UIObject* inGameUIObject)
 {
 	m_inGameUIObjects->RemoveObject(inGameUIObject);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::AddScreenUIObject(ScreenUIObject* screenUIObject, bool load, bool initialize)
+void BaseScreen::AddScreenUIObject(UIObject* screenUIObject, bool load, bool initialize)
 {
 	m_screenUIObjects->AddObject(screenUIObject, load, initialize);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::RemoveScreenUIObject(ScreenUIObject* screenUIObject)
+void BaseScreen::RemoveScreenUIObject(UIObject* screenUIObject)
 {
 	m_screenUIObjects->RemoveObject(screenUIObject);
 }

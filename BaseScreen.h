@@ -3,8 +3,7 @@
 #include "BaseObjectManager.h"
 
 #include "GameObject.h"
-#include "ScreenUIObject.h"
-#include "InGameUIObject.h"
+#include "UIObject.h"
 
 #include "BaseScreenData.h"
 
@@ -13,8 +12,7 @@ using namespace std;
 class ScreenManager;
 
 typedef BaseObjectManager<GameObject> GameObjects;
-typedef BaseObjectManager<InGameUIObject> InGameUIObjects;
-typedef BaseObjectManager<ScreenUIObject> ScreenUIObjects;
+typedef BaseObjectManager<UIObject> UIObjects;
 
 class BaseScreen
 {
@@ -57,12 +55,12 @@ public:
 	void RemoveGameObject(GameObject* gameObject);
 
 	/// \brief Wrapper functions for adding/removing in game UI objects
-	void AddInGameUIObject(InGameUIObject* inGameUIObject, bool load = false, bool initialize = false);
-	void RemoveInGameUIObject(InGameUIObject* inGameUIObject);
+	void AddInGameUIObject(UIObject* inGameUIObject, bool load = false, bool initialize = false);
+	void RemoveInGameUIObject(UIObject* inGameUIObject);
 
 	/// \brief Wrapper functions for adding/removing screen UI objects
-	void AddScreenUIObject(ScreenUIObject* screenUIObject, bool load = false, bool initialize = false);
-	void RemoveScreenUIObject(ScreenUIObject* screenUIObject);
+	void AddScreenUIObject(UIObject* screenUIObject, bool load = false, bool initialize = false);
+	void RemoveScreenUIObject(UIObject* screenUIObject);
 
 protected:
 	void Transition(BaseScreen* transitionTo);
@@ -89,10 +87,10 @@ private:
 
 	// Object managers
 	std::unique_ptr<GameObjects>		m_gameObjects;			// Handles all the game objects
-	std::unique_ptr<InGameUIObjects>	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
-	std::unique_ptr<ScreenUIObjects>	m_screenUIObjects;		// Handles all the screen UI
+	std::unique_ptr<UIObjects>	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
+	std::unique_ptr<UIObjects>	m_screenUIObjects;		// Handles all the screen UI
 
 	// Background
-	std::unique_ptr<ScreenUIObject> m_background;
+	std::unique_ptr<UIObject> m_background;
 };
 

@@ -111,12 +111,6 @@
     <ClInclude Include="UIObject.h">
       <Filter>Header Files\Object Classes</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenUIObject.h">
-      <Filter>Header Files\Object Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="InGameUIObject.h">
-      <Filter>Header Files\Object Classes</Filter>
-    </ClInclude>
     <ClInclude Include="GameMouse.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
@@ -150,6 +144,9 @@
     <ClInclude Include="CircleCollider.h">
       <Filter>Header Files\Physics\Colliders</Filter>
     </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -174,12 +171,6 @@
       <Filter>Source Files\Object Classes</Filter>
     </ClCompile>
     <ClCompile Include="UIObject.cpp">
-      <Filter>Source Files\Object Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenUIObject.cpp">
-      <Filter>Source Files\Object Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="InGameUIObject.cpp">
       <Filter>Source Files\Object Classes</Filter>
     </ClCompile>
     <ClCompile Include="GameMouse.cpp">
@@ -214,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="CircleCollider.cpp">
       <Filter>Source Files\Physics\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 GameMouse::GameMouse()
-	: ScreenUIObject("cursor_blue.png", LoadType::kTexture),
+	: UIObject("cursor_blue.png", LoadType::kTexture),
 	m_mouse(new Mouse()),
 	m_mouseButtonState(new Mouse::ButtonStateTracker()),
 	m_clickDelayTimer(0.02f)
@@ -31,7 +31,7 @@ GameMouse::~GameMouse()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void GameMouse::Update(DX::StepTimer const& timer)
 {
-	ScreenUIObject::Update(timer);
+	UIObject::Update(timer);
 
 	// Update mouse states
 	m_currentMouseState = m_mouse->GetState();
