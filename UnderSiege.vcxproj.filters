@@ -52,9 +52,6 @@
     <Filter Include="Header Files\Data and Content\Screens">
       <UniqueIdentifier>{ff41fd39-8056-4cda-b376-1f8af5372d61}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Data and Content\Objects">
-      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Data and Content\Objects">
       <UniqueIdentifier>{a331a1e3-9e5d-4075-b190-f973f39d256c}</UniqueIdentifier>
     </Filter>
@@ -81,6 +78,9 @@
     </Filter>
     <Filter Include="Source Files\Physics\Colliders">
       <UniqueIdentifier>{6b06e804-12a3-436f-8005-3969b61987a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data and Content\ObjectData">
+      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +130,7 @@
       <Filter>Header Files\Data and Content\Screens</Filter>
     </ClInclude>
     <ClInclude Include="BaseObjectData.h">
-      <Filter>Header Files\Data and Content\Objects</Filter>
+      <Filter>Header Files\Data and Content\ObjectData</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Additional Components</Filter>
@@ -231,7 +231,10 @@
     <Image Include="cursor_blue.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="test_background.jpg">
+    <Image Include="Button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="main_menu_background.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -241,16 +244,13 @@
     </Manifest>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="TestScreenData.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
-    <Xml Include="MainMenuBackground.xml">
-      <Filter>Resource Files\XML\Screens</Filter>
-    </Xml>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Font.spritefont">
       <Filter>Resource Files\SpriteFonts</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="MainMenuScreenData.xml">
+      <Filter>Resource Files\XML\Screens</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

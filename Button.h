@@ -6,8 +6,8 @@
 class Button : public UIObject
 {
 public:
-	Button(Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
-	Button(Vector2 size, Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kData, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 size, Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	~Button();
 
 	void Initialize() override;
@@ -35,5 +35,9 @@ private:
 
 	float m_clickResetTimer;
 	const float m_resetTime = 0.05f;
+	
+	// Colours used to create an effect when mouse is hovered over
+	const Color m_defaultColour = Color(0, 0.7, 0, 1);
+	const Color m_highlightedColour = Color(0, 1.0, 0, 1);
 };
 

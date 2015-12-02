@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainMenuScreen.h"
 
+#include "ScreenManager.h"
 #include "Button.h"
 
 
@@ -20,5 +21,6 @@ MainMenuScreen::~MainMenuScreen()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void MainMenuScreen::AddInitialUI()
 {
-	Button
+	Button* startGameButton = new Button(m_screenManager->GetScreenCentre(), L"Begin", "Button.png");
+	AddScreenUIObject(startGameButton);
 }

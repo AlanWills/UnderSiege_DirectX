@@ -34,6 +34,8 @@ void BaseScreen::LoadContent()
 	m_baseScreenData.reset(new BaseScreenData());
 	m_baseScreenData->LoadData(m_dataAsset);
 
+	AddInitialUI();
+
 	m_gameObjects->LoadContent();
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
