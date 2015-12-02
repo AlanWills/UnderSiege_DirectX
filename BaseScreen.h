@@ -18,7 +18,10 @@ class BaseScreen
 {
 public:
 	BaseScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device);
-	~BaseScreen();
+	virtual ~BaseScreen();
+
+	/// \brief Adds initial UI before the load context and initialize steps
+	virtual void AddInitialUI() { }
 
 	/// \brief Loads the content of all the objects we have already set up
 	virtual void LoadContent();

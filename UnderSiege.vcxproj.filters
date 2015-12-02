@@ -147,6 +147,9 @@
     <ClInclude Include="Label.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

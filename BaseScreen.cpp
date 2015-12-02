@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "BaseScreen.h"
 #include "ScreenManager.h"
-#include "Label.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -20,9 +19,6 @@ m_background(nullptr)
 	m_gameObjects.reset(new GameObjects(device));
 	m_inGameUIObjects.reset(new UIObjects(device));
 	m_screenUIObjects.reset(new UIObjects(device));
-
-	AddGameObject(new GameObject(Vector2(300, 300), "tribase-u3-d0.png", BaseObject::LoadType::kTexture));
-	AddInGameUIObject(new Label(Vector2(300, 100), L"Test Label"));
 }
 
 
