@@ -29,21 +29,22 @@ void Camera::Update(DX::StepTimer const& timer)
 		return;
 	}
 
+	KeyboardInput& keyboard = ScreenManager::GetKeyboardInput();
 	Vector2 diff = Vector2::Zero;
 
-	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Left))
+	if (keyboard.IsKeyDown(Keyboard::Keys::Left))
 	{
 		diff.x = -1;
 	}
-	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Right))
+	if (keyboard.IsKeyDown(Keyboard::Keys::Right))
 	{
 		diff.x = 1;
 	}
-	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Up))
+	if (keyboard.IsKeyDown(Keyboard::Keys::Up))
 	{
 		diff.y = -1;
 	}
-	if (ScreenManager::GetKeyboardInput().IsKeyDown(Keyboard::Keys::Down))
+	if (keyboard.IsKeyDown(Keyboard::Keys::Down))
 	{
 		diff.y = 1;
 	}

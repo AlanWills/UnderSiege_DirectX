@@ -157,16 +157,21 @@
     <ClInclude Include="BaseScreenData.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterController.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="InputCharacterController.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RectangleCollider.h" />
+    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
@@ -180,11 +185,14 @@
     <ClCompile Include="BaseScreenData.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputCharacterController.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -195,7 +203,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RectangleCollider.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="tinyxml2.cpp">
@@ -210,6 +220,7 @@
     <Image Include="Button.png" />
     <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
+    <Image Include="HeavySoldier.png" />
     <Image Include="main_menu_background.jpg" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>
@@ -217,15 +228,15 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DirectXTK\DirectXTK_Desktop_2015.vcxproj">
-      <Project>{e98944e2-b90a-4229-b3cd-ac0db668e5b2}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="MainMenuScreenData.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DirectXTK\DirectXTK_Desktop_2015.vcxproj">
+      <Project>{e98944e2-b90a-4229-b3cd-ac0db668e5b2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

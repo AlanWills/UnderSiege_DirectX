@@ -82,6 +82,18 @@
     <Filter Include="Header Files\Data and Content\ObjectData">
       <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character Objects">
+      <UniqueIdentifier>{05973c6d-7844-4a8b-a4e4-83c4af08e4c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character Objects">
+      <UniqueIdentifier>{a6d40323-5590-4c68-b651-54a506788832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character Objects\Character Controllers">
+      <UniqueIdentifier>{218f1bb9-6775-433e-bc14-9748e1767328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character Objects\Character Controllers">
+      <UniqueIdentifier>{d6ee13d6-f91e-48da-bc5b-803c7aa07881}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -148,7 +160,22 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Character Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>Header Files\Character Objects\Character Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCharacterController.h">
+      <Filter>Header Files\Character Objects\Character Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Character Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +240,22 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Character Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>Source Files\Character Objects\Character Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCharacterController.cpp">
+      <Filter>Source Files\Character Objects\Character Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Character Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +277,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="main_menu_background.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="HeavySoldier.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

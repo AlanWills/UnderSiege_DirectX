@@ -37,7 +37,7 @@ void Texture2D::Load(ID3D11Device* device, const wchar_t* filename)
 	texture->GetDesc(&desc);
 
 	m_centre = Vector2(desc.Width * 0.5f, desc.Height * 0.5f);
-	m_dimensions = Vector2(desc.Width, desc.Height);
+	m_dimensions = Vector2((float)desc.Width, (float)desc.Height);
 
 	resource.Reset();
 	texture.Reset();

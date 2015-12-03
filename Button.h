@@ -37,7 +37,7 @@ private:
 	const float m_resetTime = 0.05f;
 	
 	// Colours used to create an effect when mouse is hovered over
-	const Color m_defaultColour = Color(0, 0.7, 0, 1);
-	const Color m_highlightedColour = Color(0, 1.0, 0, 1);
+	const Color m_defaultColour = Color(0.0f, 0.7f, 0.0f, 1.0f);
+	const Color m_highlightedColour = Color(0.0f, 1.0f, 0.0f, 1.0f);
 };
 
