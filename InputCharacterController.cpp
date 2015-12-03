@@ -24,26 +24,30 @@ void InputCharacterController::Update(DX::StepTimer const& timer)
 	KeyboardInput& keyboard = ScreenManager::GetKeyboardInput();
 	Vector2 diff(Vector2::Zero);
 
-	if (keyboard.IsKeyDown(Keyboard::Keys::Left))
-	{
-		diff.x = -1;
-	}
-	if (keyboard.IsKeyDown(Keyboard::Keys::Right))
+	if (keyboard.IsKeyDown(Keyboard::Keys::A))
 	{
 		diff.x = 1;
 	}
-	if (keyboard.IsKeyDown(Keyboard::Keys::Up))
+	if (keyboard.IsKeyDown(Keyboard::Keys::D))
 	{
-		diff.y = -1;
+		diff.x = -1;
 	}
-	if (keyboard.IsKeyDown(Keyboard::Keys::Down))
+	if (keyboard.IsKeyDown(Keyboard::Keys::W))
 	{
 		diff.y = 1;
+	}
+	if (keyboard.IsKeyDown(Keyboard::Keys::S))
+	{
+		diff.y = -1;
 	}
 
 	if (diff != Vector2::Zero)
 	{
 		diff.Normalize();
-		m_parent->GetRigidBody()->m_linearVelocity = diff * (float)timer.GetElapsedSeconds();
+		m_parent->GetRigidBody()->m_linearVelocity = diff * 100;
+	}
+	else
+	{
+		m_parent->GetRigidBody()->FullLinearStop();
 	}
 }

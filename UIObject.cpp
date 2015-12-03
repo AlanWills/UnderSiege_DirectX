@@ -4,9 +4,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 UIObject::UIObject(const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
-	BaseObject(dataAsset, loadType, parent),
-	m_lifeTime(lifeTime),
-	m_currentLifeTime(0)
+	UIObject(Vector2::Zero, Vector2::Zero, dataAsset, loadType, parent, lifeTime)
 {
 
 }
@@ -14,9 +12,7 @@ UIObject::UIObject(const char* dataAsset, LoadType loadType, BaseObject* parent,
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 UIObject::UIObject(const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
-	BaseObject(localPosition, dataAsset, loadType, parent),
-	m_lifeTime(lifeTime),
-	m_currentLifeTime(0)
+	UIObject(Vector2::Zero, localPosition, dataAsset, loadType, parent, lifeTime)
 {
 
 }

@@ -14,6 +14,7 @@ public:
 	~RigidBody();
 
 	/// \brief Updates the local position and rotation of the GameObject this rigid body is linked to by using the linear and angular velocities and accelerations
+	/// It WILL take into account elapsed time
 	void Update(DX::StepTimer const& timer);
 
 	/// \brief Performs a full angular stop by setting the angular velocities and accelerations to 0
@@ -25,11 +26,11 @@ public:
 	/// \brief Performs a full angular and linear stop immediately
 	void FullStop();
 
-	// Linear and Angular velocities
+	/// \brief Linear and Angular velocities - DO NOT MULTIPLY BY GAME TIME WHEN SETTING
 	Vector2 m_linearVelocity;
 	float m_angularVelocity;
 
-	// Linear and Angular accelerations
+	// Linear and Angular accelerations - DO NOT MULTIPLY BY GAME TIME WHEN SETTING
 	Vector2 m_linearAcceleration;
 	float m_angularAcceleration;
 

@@ -3,6 +3,7 @@
 
 #include "ScreenManager.h"
 #include "Button.h"
+#include "Player.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -21,6 +22,6 @@ MainMenuScreen::~MainMenuScreen()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void MainMenuScreen::AddInitialUI()
 {
-	Button* startGameButton = new Button(m_screenManager->GetScreenCentre(), L"Begin", "Button.png");
-	AddScreenUIObject(startGameButton);
+	Player* player = new Player(Vector2(500, 500), "HeavySoldier.png", BaseObject::LoadType::kTexture);
+	AddGameObject(player);
 }
