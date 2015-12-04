@@ -15,7 +15,6 @@ GameObject::GameObject(const char* dataAsset, LoadType loadType, BaseObject* par
 GameObject::GameObject(const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent) :
 	GameObject(Vector2::Zero, localPosition, dataAsset, loadType, parent)
 {
-
 }
 
 
@@ -25,14 +24,12 @@ GameObject::GameObject(const Vector2& size, const Vector2& localPosition, const 
 	m_rigidBody(nullptr),
 	m_health(1)
 {
-
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 GameObject::~GameObject()
 {
-	
 }
 
 

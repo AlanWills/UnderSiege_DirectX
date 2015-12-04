@@ -79,20 +79,59 @@
     <Filter Include="Source Files\Physics\Colliders">
       <UniqueIdentifier>{6b06e804-12a3-436f-8005-3969b61987a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Data and Content\ObjectData">
-      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Character Objects">
       <UniqueIdentifier>{05973c6d-7844-4a8b-a4e4-83c4af08e4c6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Character Objects">
       <UniqueIdentifier>{a6d40323-5590-4c68-b651-54a506788832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character Objects\Character Controllers">
+    <Filter Include="Header Files\Character Objects\Controllers">
       <UniqueIdentifier>{218f1bb9-6775-433e-bc14-9748e1767328}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Character Objects\Character Controllers">
+    <Filter Include="Source Files\Character Objects\Controllers">
       <UniqueIdentifier>{d6ee13d6-f91e-48da-bc5b-803c7aa07881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{b6ed5111-e130-4dd6-8c08-3d5b7faa424e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths">
+      <UniqueIdentifier>{20a13a94-cec5-4d98-a7e6-2f4e171d3346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Equipment">
+      <UniqueIdentifier>{0d55cdf5-16af-4672-8e94-17f2489132ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Equipment">
+      <UniqueIdentifier>{a53bcd6c-2ab9-48c3-97cf-d70fcb152f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data and Content\Objects">
+      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data and Content\Equipment">
+      <UniqueIdentifier>{b1ca32c7-5e24-4a36-8006-65a40db11b6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data and Content\Equipment">
+      <UniqueIdentifier>{7e6103ee-101c-4a53-978a-2c5a49351a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\XML\Loadouts">
+      <UniqueIdentifier>{1836aa1f-fd15-4b14-9171-e0849836eaeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generic Utils">
+      <UniqueIdentifier>{3e603363-d577-423c-ba6a-30983f450fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generic Utils">
+      <UniqueIdentifier>{043dcbe6-133b-480a-aaa6-1969e7eeac50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images">
+      <UniqueIdentifier>{930536b3-538c-45fc-92ba-d8e19aded4e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images\UI">
+      <UniqueIdentifier>{fce0ea27-81d8-40f3-9ce8-0f356aa3d176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images\Loadouts">
+      <UniqueIdentifier>{46ad1cd0-a34b-498e-966b-113b0efcb7e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images\Backgrounds">
+      <UniqueIdentifier>{43991ab0-2099-46eb-bc66-cbdff7ed320e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +181,7 @@
       <Filter>Header Files\Data and Content\Screens</Filter>
     </ClInclude>
     <ClInclude Include="BaseObjectData.h">
-      <Filter>Header Files\Data and Content\ObjectData</Filter>
+      <Filter>Header Files\Data and Content\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Additional Components</Filter>
@@ -165,17 +204,41 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files\Character Objects</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterController.h">
-      <Filter>Header Files\Character Objects\Character Controllers</Filter>
-    </ClInclude>
     <ClInclude Include="RigidBody.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="InputCharacterController.h">
-      <Filter>Header Files\Character Objects\Character Controllers</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Character Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files\Character Objects\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputController.h">
+      <Filter>Header Files\Character Objects\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Header Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Loadout.h">
+      <Filter>Header Files\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadoutData.h">
+      <Filter>Header Files\Data and Content\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseData.h">
+      <Filter>Header Files\Data and Content</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericUtils.h">
+      <Filter>Header Files\Generic Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectLoadoutScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadoutUI.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,17 +308,41 @@
     <ClCompile Include="Character.cpp">
       <Filter>Source Files\Character Objects</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterController.cpp">
-      <Filter>Source Files\Character Objects\Character Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="InputCharacterController.cpp">
-      <Filter>Source Files\Character Objects\Character Controllers</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Character Objects</Filter>
     </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Character Objects\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputController.cpp">
+      <Filter>Source Files\Character Objects\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Loadout.cpp">
+      <Filter>Source Files\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadoutData.cpp">
+      <Filter>Source Files\Data and Content\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseData.cpp">
+      <Filter>Source Files\Data and Content</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericUtils.cpp">
+      <Filter>Source Files\Generic Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectLoadoutScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadoutUI.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -270,17 +357,17 @@
     <Image Include="tribase-u3-d0.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="cursor_blue.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Button.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Images\UI</Filter>
     </Image>
-    <Image Include="main_menu_background.jpg">
-      <Filter>Resource Files</Filter>
+    <Image Include="cursor_blue.png">
+      <Filter>Resource Files\Images\UI</Filter>
     </Image>
-    <Image Include="HeavySoldier.png">
-      <Filter>Resource Files</Filter>
+    <Image Include="HeavyGunner.png">
+      <Filter>Resource Files\Images\Loadouts</Filter>
+    </Image>
+    <Image Include="ShrapnelMainMenuBackground.jpg">
+      <Filter>Resource Files\Images\Backgrounds</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +383,9 @@
   <ItemGroup>
     <Xml Include="MainMenuScreenData.xml">
       <Filter>Resource Files\XML\Screens</Filter>
+    </Xml>
+    <Xml Include="HeavyGunner.xml">
+      <Filter>Resource Files\XML\Loadouts</Filter>
     </Xml>
   </ItemGroup>
 </Project>

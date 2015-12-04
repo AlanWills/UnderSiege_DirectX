@@ -1,22 +1,23 @@
 #include "pch.h"
-#include "CharacterController.h"
+#include "Loadout.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-CharacterController::CharacterController(GameObject* parent) :
-	m_parent(parent)
+Loadout::Loadout(const char* dataAsset) :
+	m_dataAsset(dataAsset),
+	m_loadoutData(new LoadoutData())
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-CharacterController::~CharacterController()
+Loadout::~Loadout()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-/*void CharacterController::Update(DX::StepTimer const& timer)
+void Loadout::LoadData()
 {
-
-}*/
+	m_loadoutData->LoadData(m_dataAsset);
+}

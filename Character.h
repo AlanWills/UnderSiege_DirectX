@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "CharacterController.h"
+#include "Controller.h"
 
 class Character : public GameObject
 {
@@ -14,8 +14,8 @@ public:
 	template <typename T>
 	void SetCharacterController();
 
-private:
-	std::unique_ptr<CharacterController> m_characterController;
+protected:
+	std::unique_ptr<Controller> m_characterController;
 };
 
 template <typename T>

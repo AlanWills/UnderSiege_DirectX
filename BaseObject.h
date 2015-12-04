@@ -41,6 +41,13 @@ public:
 	/// \brief Handle input from elsewhere and update this object's mouse over and selection status
 	virtual void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition);
 
+	/// \brief Returns a pointer to the parent of this object
+	BaseObject* GetParent() { return m_parent; }
+
+	/// \brief Returns a pointer to the parent of this object as an inputted type
+	template <typename T>
+	T* GetParentAs() { return dynamic_cast<T*> m_parent; }
+
 	/// \brief State Utility Functions
 	bool IsActive() { return m_active; }
 	bool IsVisible() { return m_visible; }
@@ -53,11 +60,11 @@ public:
 	void SetAlive(bool alive) { m_alive = alive; }
 	
 	void Create();
-	void Die();
+	virtual void Die();
 
 	/// \brief Transform utility functions
-	Vector2 GetWorldPosition();
-	float GetWorldRotation();
+	Vector2 GetWorldPosition() const;
+	float GetWorldRotation() const;
 
 	// A string to identify the object
 	std::wstring m_tag;
@@ -90,12 +97,14 @@ public:
 	// Collider
 	std::unique_ptr<Collider> m_collider;
 
+	// Data asset
+	const char* m_dataAsset;
+
 private:
 	// Used to work out whether we should load an XML file or just a texture
 	LoadType m_loadType;
 
 	// Data - must be char* for tinyxml2 parser
-	const char* m_dataAsset;
 	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
 	// Parent object pointer

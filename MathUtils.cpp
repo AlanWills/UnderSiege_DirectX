@@ -1,23 +1,27 @@
 #include "pch.h"
-#include "BaseScreenData.h"
+
+#include "MathUtils.h"
+#include "BaseObject.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::BaseScreenData() :
-	BaseData()
+MathUtils::MathUtils()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::~BaseScreenData()
+MathUtils::~MathUtils()
 {
-	
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* BaseScreenData::GetBackgroundAsset() const
+const float MathUtils::GetAngleBetweenObjectAndWorldSpaceVector(const BaseObject* object, const Vector2& v)
 {
-	return m_document->FirstChildElement("BackgroundTextureAsset")->GetText();
+	Vector2 diffVector2 = v - object->GetWorldPosition();
+	float rotation = atan2(diffVector2.x, -diffVector2.y);
+	XMScalarModAngle(rotation);
+
+	return rotation;
 }

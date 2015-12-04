@@ -38,6 +38,9 @@
 #include "VertexTypes.h"
 #include "WICTextureLoader.h"
 
+#include "MathUtils.h"
+#include "GenericUtils.h"
+
 
 #include <algorithm>
 #include <exception>

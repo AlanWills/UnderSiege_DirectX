@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoadoutStats>
+  <CharacterTextureAsset>HeavyGunner.png</CharacterTextureAsset>
+  <Speed>200</Speed>
+  <Armour>100</Armour>
+  <GunDataAsset></GunDataAsset>
+</LoadoutStats>
+
+

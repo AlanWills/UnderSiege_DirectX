@@ -1,23 +1,25 @@
 #include "pch.h"
-#include "BaseScreenData.h"
+#include "BaseData.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::BaseScreenData() :
-	BaseData()
+BaseData::BaseData() :
+	m_document(nullptr)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::~BaseScreenData()
+BaseData::~BaseData()
 {
-	
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* BaseScreenData::GetBackgroundAsset() const
+void BaseData::LoadData(const char* filename)
 {
-	return m_document->FirstChildElement("BackgroundTextureAsset")->GetText();
+	m_document.reset(new tinyxml2::XMLDocument());
+	m_document->LoadFile(filename);
+
+	assert(m_document);
 }

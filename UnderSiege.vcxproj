@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseData.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BaseObjectData.h" />
     <ClInclude Include="BaseObjectManager.h" />
@@ -158,27 +159,35 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="CharacterController.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="InputCharacterController.h" />
+    <ClInclude Include="GenericUtils.h" />
+    <ClInclude Include="InputController.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="Loadout.h" />
+    <ClInclude Include="LoadoutData.h" />
+    <ClInclude Include="LoadoutUI.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RectangleCollider.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="SelectLoadoutScreen.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UIObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseData.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseObjectData.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
@@ -186,17 +195,23 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="CharacterController.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InputCharacterController.cpp" />
+    <ClCompile Include="GenericUtils.cpp" />
+    <ClCompile Include="InputController.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Loadout.cpp" />
+    <ClCompile Include="LoadoutData.cpp" />
+    <ClCompile Include="LoadoutUI.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -207,6 +222,7 @@
     <ClCompile Include="RectangleCollider.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="SelectLoadoutScreen.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="tinyxml2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -220,14 +236,15 @@
     <Image Include="Button.png" />
     <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
-    <Image Include="HeavySoldier.png" />
-    <Image Include="main_menu_background.jpg" />
+    <Image Include="HeavyGunner.png" />
+    <Image Include="ShrapnelMainMenuBackground.jpg" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="HeavyGunner.xml" />
     <Xml Include="MainMenuScreenData.xml" />
   </ItemGroup>
   <ItemGroup>

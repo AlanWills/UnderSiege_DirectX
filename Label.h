@@ -7,6 +7,7 @@ class Label : public UIObject
 public:
 	Label(const std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	Label(const Vector2& localPosition, const std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Label(const Vector2& size, const Vector2& localPosition, const std::wstring& text, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	~Label();
 
 	/// \brief Don't want to add a collider for labels

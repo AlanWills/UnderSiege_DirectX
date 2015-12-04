@@ -1,19 +1,13 @@
 #pragma once
 
-#include "tinyxml2.h"
+#include "BaseData.h"
 
-using namespace tinyxml2;
-
-class BaseScreenData
+class BaseScreenData : public BaseData
 {
 public:
 	BaseScreenData();
 	~BaseScreenData();
 
-	void LoadData(const char* filename);
 	const char* GetBackgroundAsset() const;
-
-private:
-	std::unique_ptr<tinyxml2::XMLDocument> m_document;
 };
 

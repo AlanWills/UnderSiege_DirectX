@@ -56,13 +56,15 @@ BaseObject::~BaseObject()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObject::LoadContent(ID3D11Device* device)
 {
+	m_textureHandler.reset(new Texture2D());
+
 	// If we have set this flag to kNoLoad, we do not want to perform any loading of data or textures
 	if (m_loadType == kNoLoad)
 	{
 		return;
 	}
 
-	const char* textureAsset;
+	const char* textureAsset = "";
 
 	if (m_loadType == LoadType::kData)
 	{
@@ -75,26 +77,13 @@ void BaseObject::LoadContent(ID3D11Device* device)
 	{
 		textureAsset = m_dataAsset;
 	}
-
-	m_textureHandler.reset(new Texture2D());
 	
-	const wchar_t* pwcsName;
-	// required size
-	int nChars = MultiByteToWideChar(CP_ACP, 0, textureAsset, -1, NULL, 0);
-	// allocate it
-	pwcsName = new wchar_t[nChars];
-	MultiByteToWideChar(CP_ACP, 0, textureAsset, -1, (LPWSTR)pwcsName, nChars);
-
-	m_textureHandler->Load(device, pwcsName);
+	const wchar_t* wTextureAsset = GenericUtils::CharToWChar(textureAsset);
+	m_textureHandler->Load(device, wTextureAsset);
 
 	assert(m_textureHandler->GetTexture());
 
-	if (m_size == Vector2::Zero)
-	{
-		m_size = m_textureHandler->m_dimensions;
-	}
-
-	delete[] pwcsName;
+	delete[] wTextureAsset;
 }
 
 
@@ -102,6 +91,10 @@ void BaseObject::LoadContent(ID3D11Device* device)
 void BaseObject::Initialize()
 {
 	// Put initialization code here
+	if (m_size == Vector2::Zero)
+	{
+		m_size = m_textureHandler->m_dimensions;
+	}
 
 	// All state variables for the object need to be set to true now that the object is about to be inserted into the game
 	Create();
@@ -136,6 +129,7 @@ void BaseObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 	}
 
 	// Put draw code here
+	assert(m_textureHandler->GetTexture());
 	spriteBatch->Draw(m_textureHandler->GetTexture(), GetWorldPosition(), nullptr, m_colour * m_opacity, GetWorldRotation(), m_textureHandler->m_centre, XMVectorDivide(m_size, m_textureHandler->m_dimensions));
 }
 
@@ -199,7 +193,7 @@ void BaseObject::Die()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2  BaseObject::GetWorldPosition()
+Vector2  BaseObject::GetWorldPosition() const
 {
 	if (!m_parent)
 	{
@@ -212,7 +206,7 @@ Vector2  BaseObject::GetWorldPosition()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-float BaseObject::GetWorldRotation()
+float BaseObject::GetWorldRotation() const
 {
 	if (!m_parent)
 	{
