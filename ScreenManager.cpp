@@ -152,7 +152,10 @@ void ScreenManager::AddScreen(BaseScreen* screenToAdd)
 	screenToAdd->LoadContent();
 	screenToAdd->Initialize();
 
-	m_activeScreens.push_back(screenToAdd);
+	// push_front is a MUST
+	// Subtle reason why - if we push_back, if we transition from one screen to another, we will handle input on that screen in the same update loop
+	// This can lead to automatic button clicking if we transition from one screen to another via a button
+	m_activeScreens.push_front(screenToAdd);
 }
 
 

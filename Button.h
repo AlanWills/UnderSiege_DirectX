@@ -6,8 +6,8 @@
 class Button : public UIObject
 {
 public:
-	Button(Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
-	Button(Vector2 size, Vector2 localPosition, const std::wstring& text, const char* dataAsset, LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 localPosition, const std::wstring& text, const char* dataAsset = "Button.png", LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
+	Button(Vector2 size, Vector2 localPosition, const std::wstring& text, const char* dataAsset = "Button.png", LoadType loadType = LoadType::kTexture, BaseObject* parent = nullptr, float lifeTime = FLT_MAX);
 	~Button();
 
 	void Initialize() override;

@@ -15,33 +15,40 @@ LoadoutData::~LoadoutData()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* LoadoutData::GetDisplayName() const
+const std::wstring LoadoutData::GetDisplayName() const
 {
-	return GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText();
+	return GenericUtils::CharToWChar(GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText());
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* LoadoutData::GetCharacterTextureAsset() const
+const char* LoadoutData::GetUITextureAsset() const
 {
-	return GetDocument()->RootElement()->FirstChildElement("CharacterTextureAsset")->GetText();
+	return GetDocument()->RootElement()->FirstChildElement("UITextureAsset")->GetText();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const float LoadoutData::GetSpeed() const
+const char* LoadoutData::GetGameTextureAsset() const
 {
-	float speed = 0;
-	GetDocument()->RootElement()->FirstChildElement("Speed")->QueryFloatText(&speed);
+	return GetDocument()->RootElement()->FirstChildElement("GameTextureAsset")->GetText();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const int LoadoutData::GetSpeed() const
+{
+	int speed = 0;
+	GetDocument()->RootElement()->FirstChildElement("Speed")->QueryIntText(&speed);
 	return speed;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const float LoadoutData::GetArmour() const
+const int LoadoutData::GetArmour() const
 {
-	float armour = 0;
-	GetDocument()->RootElement()->FirstChildElement("Armour")->QueryFloatText(&armour);
+	int armour = 0;
+	GetDocument()->RootElement()->FirstChildElement("Armour")->QueryIntText(&armour);
 	return armour;
 }
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LoadoutStats>
-  <CharacterTextureAsset>HeavyGunner.png</CharacterTextureAsset>
+  <DisplayName>Heavy Gunner</DisplayName>
+  <UITextureAsset>HeavyGunnerFullSize.png</UITextureAsset>
+  <GameTextureAsset>HeavyGunnerGame.png</GameTextureAsset>
   <Speed>200</Speed>
   <Armour>100</Armour>
   <GunDataAsset></GunDataAsset>

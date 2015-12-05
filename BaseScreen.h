@@ -70,6 +70,8 @@ protected:
 	ScreenManager* GetScreenManager() const { return m_screenManager; }
 	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice() const { return m_device; }
 
+	const Vector2& GetScreenCentre() const;
+
 private:
 	/// \brief Typedefs
 	typedef BaseObjectManager<GameObject> GameObjects;

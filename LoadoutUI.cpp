@@ -3,7 +3,7 @@
 #include "LoadoutUI.h"
 #include "ScreenManager.h"
 
-#include "Label"
+#include "Label.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -38,9 +38,20 @@ void LoadoutUI::AddInitialUI()
 	assert(m_loadoutData.get());
 
 	// Add all the ui for the loadout here
-	UIObject* m_playerImage = new UIObject(Vector2(-ScreenManager::GetScreenCentre().x * 0.5f, 0), m_loadoutData->GetCharacterTextureAsset(), LoadType::kTexture, this);
-	AddUIObject(m_playerImage, true);
-	m_playerImage->SetSize(m_playerImage->GetSize() * 2);
 
-	AddUIObject(new Label(Vector2(ScreenManager::GetScreenCentre()))
+	// Add the image that the player will have if they pick this loadout
+	UIObject* m_playerImage = new UIObject(Vector2(-ScreenManager::GetScreenCentre().x * 0.25f, 0), m_loadoutData->GetUITextureAsset(), LoadType::kTexture, this);
+	AddUIObject(m_playerImage, true);
+
+	// Add the loadout display name
+	Label* displayName = new Label(Vector2(ScreenManager::GetScreenCentre().x * 0.25f, -ScreenManager::GetScreenCentre().y * 0.25f), m_loadoutData->GetDisplayName(), this);
+	AddUIObject(displayName);
+
+	// Add the loadout armour text
+	Label* armour = new Label(Vector2(0, 40), L"Armour: " + to_wstring(m_loadoutData->GetArmour()), displayName);
+	AddUIObject(armour);
+
+	// Add the loadout speed text
+	Label* speed = new Label(Vector2(0, 40), L"Speed: " + to_wstring(m_loadoutData->GetSpeed()), armour);
+	AddUIObject(speed);
 }

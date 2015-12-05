@@ -26,7 +26,7 @@ void MainMenuScreen::AddInitialUI()
 {
 	BaseScreen::AddInitialUI();
 
-	Button* beginButton = new Button(GetScreenManager()->GetScreenCentre(), L"Begin", "Button.png");
+	Button* beginButton = new Button(GetScreenCentre(), L"Begin", "Button.png");
 	beginButton->SetClickFunction([this]()
 	{
 		Transition(new SelectLoadoutScreen(GetScreenManager(), "SelectLoadoutScreen.xml"));

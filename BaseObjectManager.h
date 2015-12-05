@@ -42,7 +42,7 @@ public:
 	/// \brief Calls Show() on each active object
 	void ShowAll()
 	{
-		for (auto object : m_activeObjects)
+		for (auto& object : m_activeObjects)
 		{
 			object->Show();
 		}
@@ -51,7 +51,7 @@ public:
 	/// \brief Calls Hide() on each active object
 	void HideAll()
 	{
-		for (auto object : m_activeObjects)
+		for (auto& object : m_activeObjects)
 		{
 			object->Hide();
 		}
@@ -60,15 +60,15 @@ public:
 	/// \brief Calls Die() on each active object
 	void DieAll()
 	{
-		for (auto object : m_activeObjects)
+		for (auto& object : m_activeObjects)
 		{
 			object->Die();
 		}
 	}
 
 private:
-	std::list<T*> m_activeObjects;
-	std::list<T*> m_objectsToDelete;
+	std::list<std::unique_ptr<T>> m_activeObjects;
+	std::list<std::unique_ptr<T>> m_objectsToDelete;
 
 	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 };
@@ -89,16 +89,6 @@ BaseObjectManager<T>::BaseObjectManager(Microsoft::WRL::ComPtr<ID3D11Device> dev
 template <typename T>
 BaseObjectManager<T>::~BaseObjectManager()
 {
-	for (T* object : m_activeObjects)
-	{
-		delete object;
-	}
-
-	for (T* object : m_objectsToDelete)
-	{
-		delete object;
-	}
-
 	m_activeObjects.clear();
 	m_objectsToDelete.clear();
 }
@@ -108,7 +98,7 @@ BaseObjectManager<T>::~BaseObjectManager()
 template <typename T>
 void BaseObjectManager<T>::LoadContent()
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		object->LoadContent(m_device.Get());
 	}
@@ -119,7 +109,7 @@ void BaseObjectManager<T>::LoadContent()
 template <typename T>
 void BaseObjectManager<T>::Initialize()
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		object->Initialize();
 	}
@@ -130,7 +120,7 @@ void BaseObjectManager<T>::Initialize()
 template <typename T>
 void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		if (object->IsAlive())
 		{
@@ -138,14 +128,13 @@ void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 		}
 		else
 		{
-			RemoveObject(object);
+			RemoveObject(object.get());
 		}
 	}
 
-	for (T* object : m_objectsToDelete)
+	for (auto& object : m_objectsToDelete)
 	{
 		m_activeObjects.remove(object);
-		delete object;
 	}
 
 	m_objectsToDelete.clear();
@@ -156,7 +145,7 @@ void BaseObjectManager<T>::Update(DX::StepTimer const& timer)
 template <typename T>
 void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		object->Draw(spriteBatch, spriteFont);
 	}
@@ -167,7 +156,7 @@ void BaseObjectManager<T>::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 template <typename T>
 void BaseObjectManager<T>::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		object->HandleInput(timer, mousePosition);
 	}
@@ -188,7 +177,7 @@ void BaseObjectManager<T>::AddObject(T* objectToAdd, bool load, bool initialize)
 		objectToAdd->Initialize();
 	}
 
-	m_activeObjects.push_back(objectToAdd);
+	m_activeObjects.push_back(std::unique_ptr<T>(objectToAdd));
 }
 
 
@@ -196,7 +185,7 @@ void BaseObjectManager<T>::AddObject(T* objectToAdd, bool load, bool initialize)
 template <typename T>
 T* BaseObjectManager<T>::FindObject(const std::wstring& tag)
 {
-	for (T* object : m_activeObjects)
+	for (auto& object : m_activeObjects)
 	{
 		if (object->m_tag == tag)
 		{
@@ -211,5 +200,5 @@ template <typename T>
 void BaseObjectManager<T>::RemoveObject(T* objectToRemove)
 {
 	objectToRemove->Die();
-	m_objectsToDelete.push_back(objectToRemove);
+	m_objectsToDelete.push_back(std::unique_ptr<T>(objectToRemove));
 }

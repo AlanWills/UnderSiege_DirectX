@@ -11,6 +11,8 @@ public:
 
 	/// \brief Loads the screen data and also the LoadoutData that we are using in the game
 	void LoadContent() override;
+	
+	void AddInitialUI() override;
 
 	void Initialize() override;
 
@@ -29,5 +31,5 @@ private:
 	std::vector<const char*> m_loadoutDataAssets;
 	size_t m_numLoadouts;
 
-	size_t m_currentLoadout;
+	int m_currentLoadout;
 };

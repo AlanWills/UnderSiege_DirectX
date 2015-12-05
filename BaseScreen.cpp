@@ -47,10 +47,10 @@ void BaseScreen::LoadContent()
 void BaseScreen::AddInitialUI()
 {
 	// This has to be separate so we can draw it behind all the other objects
-	m_background.reset(new UIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
+	m_background.reset(new UIObject(GetScreenCentre() * 2, GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
 	m_background->LoadContent(GetDevice().Get());
 
-	AddScreenUIObject(new Label(Vector2(300, 50), Vector2(GetScreenManager()->GetScreenCentre().x, GetScreenManager()->GetScreenCentre().y * 0.25f), GenericUtils::CharToWChar(m_baseScreenData->GetDisplayName())));
+	AddScreenUIObject(new Label(Vector2(GetScreenCentre().x, GetScreenCentre().y * 0.25f), GenericUtils::CharToWChar(m_baseScreenData->GetDisplayName())));
 }
 
 
@@ -118,7 +118,7 @@ void BaseScreen::DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 {
 	if (m_visible)
 	{
-		m_background->Draw(spriteBatch, spriteFont);
+		//m_background->Draw(spriteBatch, spriteFont);
 	}
 }
 
@@ -161,6 +161,11 @@ void BaseScreen::Hide()
 	m_active = false;
 	m_visible = false;
 	m_acceptsInput = false;
+}
+
+const Vector2& BaseScreen::GetScreenCentre() const
+{
+	return ScreenManager::GetScreenCentre();
 }
 
 /////////////// Utility function wrappers for the object managers

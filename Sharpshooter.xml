@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoadoutStats>
+  <DisplayName>Sharpshooter</DisplayName>
+  <UITextureAsset>SharpshooterFullSize.png</UITextureAsset>
+  <GameTextureAsset>SharpshooterGame.png</GameTextureAsset>
+  <Speed>500</Speed>
+  <Armour>40</Armour>
+  <GunDataAsset></GunDataAsset>
+</LoadoutStats>

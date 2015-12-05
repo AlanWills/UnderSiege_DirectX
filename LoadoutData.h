@@ -8,9 +8,10 @@ public:
 	LoadoutData();
 	~LoadoutData();
 
-	const char* GetDisplayName() const;
-	const char* GetCharacterTextureAsset() const;
-	const float GetSpeed() const;
-	const float GetArmour() const;
+	const std::wstring GetDisplayName() const;
+	const char* GetUITextureAsset() const;
+	const char* GetGameTextureAsset() const;
+	const int GetSpeed() const;
+	const int GetArmour() const;
 	const char* GetGunDataAsset() const;
 };

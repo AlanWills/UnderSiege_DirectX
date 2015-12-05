@@ -25,7 +25,7 @@ void Player::LoadContent(ID3D11Device* device)
 	m_loadout.reset(new Loadout(GetDataAsset()));
 	m_loadout->LoadData();
 
-	GetTextureHandler()->Load(device, GenericUtils::CharToWChar(m_loadout->GetData()->GetCharacterTextureAsset()));
+	GetTextureHandler()->Load(device, GenericUtils::CharToWChar(m_loadout->GetData()->GetGameTextureAsset()));
 }
 
 

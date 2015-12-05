@@ -3,6 +3,8 @@
 #include "SelectLoadoutScreen.h"
 #include "ScreenManager.h"
 
+#include "Button.h"
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 SelectLoadoutScreen::SelectLoadoutScreen(ScreenManager* screenManager, const char* dataAsset) :
@@ -11,6 +13,7 @@ SelectLoadoutScreen::SelectLoadoutScreen(ScreenManager* screenManager, const cha
 	m_numLoadouts(0)
 {
 	m_loadoutDataAssets.push_back("HeavyGunner.xml");
+	m_loadoutDataAssets.push_back("Sharpshooter.xml");
 
 	m_numLoadouts = m_loadoutDataAssets.size();
 	assert(m_numLoadouts > 0);
@@ -30,7 +33,7 @@ void SelectLoadoutScreen::LoadContent()
 
 	for (size_t i = 0; i < m_numLoadouts; i++)
 	{
-		m_loadoutUI.push_back(std::unique_ptr<LoadoutUI>(new LoadoutUI(GetDevice(), m_loadoutDataAssets[i], GetScreenManager()->GetScreenCentre())));
+		m_loadoutUI.push_back(std::unique_ptr<LoadoutUI>(new LoadoutUI(GetDevice(), m_loadoutDataAssets[i], GetScreenCentre())));
 		m_loadoutUI[i]->LoadContent(GetDevice().Get());
 	}
 
@@ -39,13 +42,24 @@ void SelectLoadoutScreen::LoadContent()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+void SelectLoadoutScreen::AddInitialUI()
+{
+	BaseScreen::AddInitialUI();
+
+	// Add the select loadout button
+	Button* selectLoadout = new Button(Vector2(GetScreenCentre().x * 1.25f, GetScreenCentre().y * 1.5f), L"Select Loadout");
+	AddScreenUIObject(selectLoadout);
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 void SelectLoadoutScreen::Initialize()
 {
 	BaseScreen::Initialize();
 
-	for (size_t i = 0; i < m_numLoadouts; ++i)
+	for (auto& loadoutUI : m_loadoutUI)
 	{
-		m_loadoutUI[i]->Initialize();
+		loadoutUI->Initialize();
 	}
 }
 
@@ -68,14 +82,14 @@ void SelectLoadoutScreen::HandleInput(DX::StepTimer const& timer)
 	if (GetScreenManager()->GetKeyboardInput().IsKeyPressed(Keyboard::Keys::Down))
 	{
 		m_currentLoadout--;
-		m_currentLoadout = MathUtils::Clamp<size_t>(m_currentLoadout, 0, m_numLoadouts - 1);
+		m_currentLoadout = MathUtils::Clamp<int>(m_currentLoadout, 0, m_numLoadouts - 1);
 
 		OnCurrentLoadoutChanged();
 	}
 	else if (GetScreenManager()->GetKeyboardInput().IsKeyPressed(Keyboard::Keys::Up))
 	{
 		m_currentLoadout++;
-		m_currentLoadout = MathUtils::Clamp<size_t>(m_currentLoadout, 0, m_numLoadouts - 1);
+		m_currentLoadout = MathUtils::Clamp<int>(m_currentLoadout, 0, m_numLoadouts - 1);
 
 		OnCurrentLoadoutChanged();
 	}
@@ -85,9 +99,9 @@ void SelectLoadoutScreen::HandleInput(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void SelectLoadoutScreen::OnCurrentLoadoutChanged()
 {
-	for (size_t i = 0; i < m_numLoadouts; ++i)
+	for (auto& loadoutUI : m_loadoutUI)
 	{
-		m_loadoutUI[i]->Hide();
+		loadoutUI->Hide();
 	}
 
 	m_loadoutUI[m_currentLoadout]->Show();

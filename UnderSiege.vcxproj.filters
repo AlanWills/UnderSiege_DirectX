@@ -363,14 +363,23 @@
     <Image Include="cursor_blue.png">
       <Filter>Resource Files\Images\UI</Filter>
     </Image>
-    <Image Include="HeavyGunner.png">
-      <Filter>Resource Files\Images\Loadouts</Filter>
-    </Image>
     <Image Include="ShrapnelMainMenuBackground.jpg">
       <Filter>Resource Files\Images\Backgrounds</Filter>
     </Image>
     <Image Include="HelicopterBlades.png">
       <Filter>Resource Files\Images</Filter>
+    </Image>
+    <Image Include="HeavyGunnerFullSize.png">
+      <Filter>Resource Files\Images\Loadouts</Filter>
+    </Image>
+    <Image Include="HeavyGunnerGame.png">
+      <Filter>Resource Files\Images\Loadouts</Filter>
+    </Image>
+    <Image Include="SharpshooterFullSize.png">
+      <Filter>Resource Files\Images\Loadouts</Filter>
+    </Image>
+    <Image Include="SharpshooterGame.png">
+      <Filter>Resource Files\Images\Loadouts</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -387,6 +396,9 @@
     </Xml>
     <Xml Include="SelectLoadoutScreen.xml">
       <Filter>Resource Files\XML\Screens</Filter>
+    </Xml>
+    <Xml Include="Sharpshooter.xml">
+      <Filter>Resource Files\XML\Loadouts</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

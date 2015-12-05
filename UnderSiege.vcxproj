@@ -236,8 +236,11 @@
     <Image Include="Button.png" />
     <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
-    <Image Include="HeavyGunner.png" />
+    <Image Include="HeavyGunnerFullSize.png" />
+    <Image Include="HeavyGunnerGame.png" />
     <Image Include="HelicopterBlades.png" />
+    <Image Include="SharpshooterFullSize.png" />
+    <Image Include="SharpshooterGame.png" />
     <Image Include="ShrapnelMainMenuBackground.jpg" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>
@@ -248,6 +251,7 @@
     <Xml Include="HeavyGunner.xml" />
     <Xml Include="MainMenuScreenData.xml" />
     <Xml Include="SelectLoadoutScreen.xml" />
+    <Xml Include="Sharpshooter.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont" />
