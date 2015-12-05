@@ -12,14 +12,17 @@ public:
 	void Update(DX::StepTimer const& timer) override;
 
 	template <typename T>
-	void SetCharacterController();
+	void SetControllerAs();
 
 protected:
+	const Controller* GetController() const { return m_characterController.get(); }
+
+private:
 	std::unique_ptr<Controller> m_characterController;
 };
 
 template <typename T>
-void Character::SetCharacterController()
+void Character::SetControllerAs()
 {
 	m_characterController.reset(new T(this));
 }

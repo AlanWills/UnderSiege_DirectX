@@ -68,12 +68,15 @@ public:
 protected:
 	void Transition(BaseScreen* transitionTo);
 
-	// ScreenManager pointer
-	ScreenManager* m_screenManager;
+	/// \brief Get a pointer to the ScreenManager
+	const ScreenManager* GetScreenManager() const { return m_screenManager; }
 
 private:
 	// Pointer to the device for loading content
 	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
+
+	// ScreenManager pointer
+	ScreenManager* m_screenManager;
 
 	// Path to an XML document containing data about this screen - must be char* for tinyxml2 parser
 	const char* m_dataAsset;

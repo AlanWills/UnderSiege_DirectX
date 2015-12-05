@@ -19,8 +19,8 @@ CircleCollider::~CircleCollider()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void CircleCollider::UpdateColliderBounds()
 {
-	Vector2 parentWorldPos = m_parent->GetWorldPosition();
-	float radius = std::max(m_parent->GetSize().x * 0.5f, m_parent->GetSize().y * 0.5f);
+	Vector2 parentWorldPos = GetParent()->GetWorldPosition();
+	float radius = std::max(GetParent()->GetSize().x * 0.5f, GetParent()->GetSize().y * 0.5f);
 
 	m_boundingSphere.Center = Vector3(parentWorldPos.x, parentWorldPos.y, 0);
 	m_boundingSphere.Radius = radius;

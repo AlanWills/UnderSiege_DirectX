@@ -13,6 +13,9 @@ public:
 	void LoadData(const char* filename);
 
 protected:
+	const tinyxml2::XMLDocument* GetDocument() const { return m_document.get(); }
+
+private:
 	std::unique_ptr<tinyxml2::XMLDocument> m_document;
 };
 

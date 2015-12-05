@@ -15,11 +15,13 @@ public:
 	virtual bool CheckCollisionWith(Vector2 point) = 0;
 
 protected:
-	// Can't use a unique_ptr because we need the header file to do so
-	BaseObject* m_parent;
+	const BaseObject* GetParent() const { return m_parent; }
 
 private:
 	/// \brief Updates the collider to match up with the parent's size and position
 	virtual void UpdateColliderBounds() = 0;
+
+	// Can't use a unique_ptr because we need the header file to do so
+	BaseObject* m_parent;
 };
 

@@ -34,5 +34,5 @@ void Player::Initialize()
 {
 	Character::Initialize();
 
-	SetCharacterController<InputController>();
+	SetControllerAs<InputController>();
 }
