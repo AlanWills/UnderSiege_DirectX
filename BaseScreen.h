@@ -22,7 +22,7 @@ public:
 	virtual void AddInitialUI();
 
 	/// \brief Loads the content of all the objects we have already set up
-	virtual void LoadContent();
+	virtual void LoadContent(ID3D11Device* device);
 
 	/// \brief Initializes all of the objects we have already set up
 	virtual void Initialize();
@@ -73,9 +73,6 @@ private:
 	/// \brief Typedefs
 	typedef BaseObjectManager<GameObject> GameObjects;
 	typedef BaseObjectManager<UIObject> UIObjects;
-
-	// Pointer to the device for loading content
-	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
 	// ScreenManager pointer
 	ScreenManager* m_screenManager;

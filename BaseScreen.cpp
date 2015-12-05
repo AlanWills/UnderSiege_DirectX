@@ -30,16 +30,16 @@ BaseScreen::~BaseScreen()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::LoadContent()
+void BaseScreen::LoadContent(ID3D11Device* device)
 {
 	m_baseScreenData.reset(new BaseScreenData());
 	m_baseScreenData->LoadData(m_dataAsset);
 
 	AddInitialUI();
 
-	m_gameObjects->LoadContent();
-	m_inGameUIObjects->LoadContent();
-	m_screenUIObjects->LoadContent();
+	m_gameObjects->LoadContent(device);
+	m_inGameUIObjects->LoadContent(device);
+	m_screenUIObjects->LoadContent(device);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------
