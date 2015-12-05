@@ -20,7 +20,7 @@ void Character::Update(DX::StepTimer const& timer)
 {
 	GameObject::Update(timer);
 
-	if (m_active)
+	if (IsActive())
 	{
 		m_characterController->Update(timer);
 	}

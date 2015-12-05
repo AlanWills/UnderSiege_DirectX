@@ -91,9 +91,9 @@ void BaseObject::LoadContent(ID3D11Device* device)
 void BaseObject::Initialize()
 {
 	// Put initialization code here
-	if (m_size == Vector2::Zero)
+	if (m_size == Vector2::Zero && m_textureHandler.get())
 	{
-		m_size = m_textureHandler->m_dimensions;
+		m_size = m_textureHandler->GetDimensions();
 	}
 
 	// All state variables for the object need to be set to true now that the object is about to be inserted into the game
@@ -130,7 +130,14 @@ void BaseObject::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 
 	// Put draw code here
 	assert(m_textureHandler->GetTexture());
-	spriteBatch->Draw(m_textureHandler->GetTexture(), GetWorldPosition(), nullptr, m_colour * m_opacity, GetWorldRotation(), m_textureHandler->m_centre, XMVectorDivide(m_size, m_textureHandler->m_dimensions));
+	spriteBatch->Draw(
+		m_textureHandler->GetTexture(), 
+		GetWorldPosition(), 
+		nullptr, 
+		m_colour * m_opacity, 
+		GetWorldRotation(), 
+		m_textureHandler->GetCentre(), 
+		XMVectorDivide(m_size, m_textureHandler->GetDimensions()));
 }
 
 
@@ -174,10 +181,8 @@ void BaseObject::HandleInput(DX::StepTimer const& timer, const Vector2& mousePos
 void BaseObject::Create()
 {
 	m_alive = true;
-	m_active = true;
-	m_visible = true;
-	m_acceptsInput = true;
-
+	
+	Show();
 	AddCollider();
 }
 
@@ -186,14 +191,13 @@ void BaseObject::Create()
 void BaseObject::Die()
 {
 	m_alive = false;
-	m_active = false;
-	m_visible = false;
-	m_acceptsInput = false;
+
+	Hide();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2  BaseObject::GetWorldPosition() const
+const Vector2 BaseObject::GetWorldPosition() const
 {
 	if (!m_parent)
 	{
@@ -206,7 +210,7 @@ Vector2  BaseObject::GetWorldPosition() const
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-float BaseObject::GetWorldRotation() const
+const float BaseObject::GetWorldRotation() const
 {
 	if (!m_parent)
 	{

@@ -12,7 +12,9 @@ GameMouse::GameMouse()
 {
 	// This hides the window cursor so that we can draw our own one instead
 	// We still maintain the functionality though (wrapped up in Mouse.h DirectXTK)
+#ifndef DEBUG
 	ShowCursor(false);
+#endif
 
 	for (int i = 0; i < MouseButton::kNumButtons; i++)
 	{
@@ -38,23 +40,23 @@ void GameMouse::Update(DX::StepTimer const& timer)
 	m_mouseButtonState->Update(m_currentMouseState);
 
 	// Update mouse position
-	m_localPosition = Vector2((float)m_currentMouseState.x, (float)m_currentMouseState.y);
+	SetLocalPosition(Vector2((float)m_currentMouseState.x, (float)m_currentMouseState.y));
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 void GameMouse::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	if (m_visible)
+	if (IsVisible())
 	{
 		spriteBatch->Draw(
-			m_textureHandler->GetTexture(), 
+			GetTextureHandler()->GetTexture(), 
 			GetWorldPosition(), 
 			nullptr, 
-			m_colour * m_opacity,
+			GetColour() * GetOpacity(),
 			GetWorldRotation(), 
 			Vector2::Zero, 
-			XMVectorDivide(m_size, m_textureHandler->m_dimensions));
+			XMVectorDivide(GetSize(), GetTextureHandler()->GetDimensions()));
 	}
 }
 
@@ -101,5 +103,5 @@ void GameMouse::HandleInput(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 Vector2 GameMouse::GetInGamePosition()
 {
-	return ScreenManager::GetCamera().ScreenToGameCoords(m_localPosition);
+	return ScreenManager::GetCamera().ScreenToGameCoords(GetLocalPosition());
 }

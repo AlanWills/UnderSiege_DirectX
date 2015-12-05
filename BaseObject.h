@@ -59,12 +59,76 @@ public:
 	void SetAcceptsInput(bool acceptsInput) { m_acceptsInput = acceptsInput; }
 	void SetAlive(bool alive) { m_alive = alive; }
 	
+	/// \brief Sets active, visible, acceptsinput and alive to true and creates a collider
 	void Create();
+
+	// \brief Sets active, visible and acceptsinput to true
+	void Show()
+	{
+		SetActive(true);
+		SetVisible(true);
+		SetAcceptsInput(true);
+	}
+
+	/// \brief Sets active, visible and acceptsinput to false
+	void Hide()
+	{
+		SetActive(false);
+		SetVisible(false);
+		SetAcceptsInput(false);
+	}
+
+	/// \brief Sets active, visible, acceptsinput and alive to false
 	virtual void Die();
 
 	/// \brief Transform utility functions
-	Vector2 GetWorldPosition() const;
-	float GetWorldRotation() const;
+	/// GetWorldPosition cannot return a reference as we are returning the result of a calculation
+	const Vector2 GetWorldPosition() const;
+	const float GetWorldRotation() const;
+
+	const Vector2& GetLocalPosition() const { return m_localPosition; }
+	void SetLocalPosition(const Vector2& localPosition) { m_localPosition = localPosition; }
+
+	float GetLocalRotation() const { return m_localRotation; }
+	void SetLocalRotation(const float localRotation) { m_localRotation = localRotation; }
+
+	const std::wstring& GetTag() const { return m_tag; }
+	void SetTag(const std::wstring& tag) { m_tag = tag; }
+
+	const Vector2& GetSize() const { return m_size; }
+	void SetSize(const Vector2& size) { m_size = size; }
+
+	const bool IsSelected() const { return m_selected; }
+	void SetSelected(const bool selected) { m_selected = selected; }
+
+	void SetColour(const Color& colour) { m_colour = colour; }
+
+	const Collider* GetCollider() const { return m_collider.get(); }
+
+protected:
+	const char* GetDataAsset() const { return m_dataAsset; }
+	const BaseObjectData* GetBaseObjectData() const { return m_baseObjectData.get(); }
+
+	/// \brief Gets the texture handler - cannot be const because draw is non-const (for now)
+	Texture2D* GetTextureHandler() const { return m_textureHandler.get(); }
+
+	const bool IsMouseOver() const { return m_mouseOver; }
+	void SetMouseOver(const bool mouseOver) { m_mouseOver = mouseOver; }
+
+	const Color& GetColour() const { return m_colour; }
+
+	const float GetOpacity() const { return m_opacity; }
+	void SetOpacity(const float opacity) { m_opacity = opacity; }
+
+private:
+	// Used to work out whether we should load an XML file or just a texture
+	LoadType m_loadType;
+
+	// Data asset
+	const char* m_dataAsset;
+
+	// Data - must be char* for tinyxml2 parser
+	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
 	// A string to identify the object
 	std::wstring m_tag;
@@ -96,16 +160,6 @@ public:
 
 	// Collider
 	std::unique_ptr<Collider> m_collider;
-
-	// Data asset
-	const char* m_dataAsset;
-
-private:
-	// Used to work out whether we should load an XML file or just a texture
-	LoadType m_loadType;
-
-	// Data - must be char* for tinyxml2 parser
-	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
 	// Parent object pointer
 	BaseObject* m_parent;

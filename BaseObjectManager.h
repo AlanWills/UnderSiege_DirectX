@@ -39,6 +39,33 @@ public:
 	/// \brief Removes an object
 	void RemoveObject(T* objectToRemove);
 
+	/// \brief Calls Show() on each active object
+	void ShowAll()
+	{
+		for (auto object : m_activeObjects)
+		{
+			object->Show();
+		}
+	}
+
+	/// \brief Calls Hide() on each active object
+	void HideAll()
+	{
+		for (auto object : m_activeObjects)
+		{
+			object->Hide();
+		}
+	}
+
+	/// \brief Calls Die() on each active object
+	void DieAll()
+	{
+		for (auto object : m_activeObjects)
+		{
+			object->Die();
+		}
+	}
+
 private:
 	std::list<T*> m_activeObjects;
 	std::list<T*> m_objectsToDelete;
@@ -186,4 +213,3 @@ void BaseObjectManager<T>::RemoveObject(T* objectToRemove)
 	objectToRemove->Die();
 	m_objectsToDelete.push_back(objectToRemove);
 }
-

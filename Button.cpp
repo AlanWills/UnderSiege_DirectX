@@ -33,8 +33,8 @@ void Button::Initialize()
 	m_label->Initialize();
 
 	// Set up the colours here
-	m_colour = m_defaultColour;
-	m_label->m_colour = Color(0, 0, 0, 1);
+	SetColour(m_defaultColour);
+	m_label->SetColour(Color(0, 0, 0, 1));
 }
 
 
@@ -43,7 +43,7 @@ void Button::Update(DX::StepTimer const& timer)
 {
 	UIObject::Update(timer);
 
-	if (m_active)
+	if (IsActive())
 	{
 		m_clickResetTimer += (float)timer.GetElapsedSeconds();
 		if (m_clickResetTimer >= m_resetTime)
@@ -52,7 +52,7 @@ void Button::Update(DX::StepTimer const& timer)
 		}
 
 		// Lerp our current colour to the default one to create effect when mouse over button
-		m_colour = Color::Lerp(m_colour, m_defaultColour, (float)timer.GetElapsedSeconds() * 3);
+		SetColour(Color::Lerp(GetColour(), m_defaultColour, (float)timer.GetElapsedSeconds() * 3));
 	}
 }
 
@@ -62,7 +62,7 @@ void Button::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	UIObject::Draw(spriteBatch, spriteFont);
 
-	if (m_visible)
+	if (IsVisible())
 	{
 		m_label->Draw(spriteBatch, spriteFont);
 	}
@@ -74,15 +74,15 @@ void Button::HandleInput(DX::StepTimer const& timer, const Vector2& mousePositio
 {
 	UIObject::HandleInput(timer, mousePosition);
 
-	if (m_acceptsInput)
+	if (AcceptsInput())
 	{
-		if (m_mouseOver && m_buttonState != ButtonState::kPressed)
+		if (IsMouseOver() && m_buttonState != ButtonState::kPressed)
 		{
 			m_buttonState = ButtonState::kHighlighted;
-			m_colour = m_highlightedColour;
+			SetColour(m_highlightedColour);
 		}
 
-		if (m_selected)
+		if (IsSelected())
 		{
 			if (m_buttonState != ButtonState::kPressed)
 			{

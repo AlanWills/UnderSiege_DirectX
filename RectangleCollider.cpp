@@ -23,7 +23,7 @@ void RectangleCollider::UpdateColliderBounds()
 	float parentWorldRot = m_parent->GetWorldRotation();
 
 	m_boundingBox.Center = Vector3(parentWorldPos.x, parentWorldPos.y, 0); 
-	m_boundingBox.Extents = Vector3(m_parent->m_size.x * 0.5f, m_parent->m_size.y * 0.5f, 0.001f);
+	m_boundingBox.Extents = Vector3(m_parent->GetSize().x * 0.5f, m_parent->GetSize().y * 0.5f, 0.001f);
 	m_boundingBox.Orientation = Quaternion::CreateFromRotationMatrix(Matrix::CreateRotationZ(parentWorldRot));
 
 	// May need to use this instead

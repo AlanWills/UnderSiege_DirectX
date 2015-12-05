@@ -34,9 +34,9 @@ Label::~Label()
 void Label::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
 	// Catches the label size being zero
-	if (m_size == Vector2::Zero)
+	if (GetSize() == Vector2::Zero)
 	{
-		m_size = spriteFont->MeasureString(m_text.c_str());
+		SetSize(spriteFont->MeasureString(m_text.c_str()));
 	}
 
 	// Do not need to do any base drawing - will just be doing a custom draw using the spritefont
@@ -44,8 +44,8 @@ void Label::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 		spriteBatch,
 		m_text.c_str(),
 		GetWorldPosition(),
-		m_colour,
+		GetColour(),
 		GetWorldRotation(),
 		spriteFont->MeasureString(m_text.c_str()) * 0.5f,
-		XMVectorDivide(m_size, spriteFont->MeasureString(m_text.c_str())));
+		XMVectorDivide(GetSize(), spriteFont->MeasureString(m_text.c_str())));
 }

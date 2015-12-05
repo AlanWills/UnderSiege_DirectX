@@ -13,10 +13,13 @@ public:
 
 	ID3D11ShaderResourceView* GetTexture() { return m_texture; }
 
-	Vector2 m_centre;
-	Vector2 m_dimensions;
+	const Vector2& GetCentre() const { return m_centre; }
+	const Vector2& GetDimensions() const { return m_dimensions; }
 
 private:
 	ID3D11ShaderResourceView* m_texture;
+
+	Vector2 m_centre;
+	Vector2 m_dimensions;
 };
 

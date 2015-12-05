@@ -8,7 +8,8 @@ typedef std::unique_ptr<BaseObjectManager<UIObject>> UIObjects;
 class Menu : public UIObject
 {
 public:
-	Menu();
+	Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime);
+	Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& size, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime);
 	~Menu();
 
 	/// \brief Set ups initial UI before load and initialize functions are called
@@ -36,8 +37,8 @@ public:
 	void Die() override;
 
 	/// \brief Wrapper functions for adding/removing in UI objects
-	void AddUIObject(UIObject* inGameUIObject, bool load = false, bool initialize = false);
-	void RemoveUIObject(UIObject* inGameUIObject);
+	void AddUIObject(UIObject* uiObject, bool load = false, bool initialize = false);
+	void RemoveUIObject(UIObject* uiObject);
 
 private:
 	/// \brief A container for UIObjects.  Will only be able to deal with

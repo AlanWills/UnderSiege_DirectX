@@ -47,7 +47,7 @@ void GameObject::Update(DX::StepTimer const& timer)
 {
 	BaseObject::Update(timer);
 
-	if (m_active)
+	if (IsActive())
 	{
 		if (m_health <= 0)
 		{

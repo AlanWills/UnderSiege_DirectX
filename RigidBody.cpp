@@ -27,11 +27,11 @@ void RigidBody::Update(DX::StepTimer const& timer)
 
 	// Update the rotation and angular components
 	m_angularVelocity += m_angularAcceleration * elapsedSeconds;
-	m_parent->m_localRotation += m_angularVelocity * elapsedSeconds;
+	m_parent->SetLocalRotation(m_angularVelocity * elapsedSeconds + m_parent->GetLocalRotation());
 
 	// Update the position and linear components (it IS minus because of the screen coords
 	m_linearVelocity += m_linearAcceleration * elapsedSeconds;
-	m_parent->m_localPosition -= Vector2::Transform(m_linearVelocity, Matrix::CreateRotationZ(m_parent->m_localRotation)) * elapsedSeconds;
+	m_parent->SetLocalPosition(m_parent->GetLocalPosition() - Vector2::Transform(m_linearVelocity, Matrix::CreateRotationZ(m_parent->GetLocalRotation())) * elapsedSeconds);
 }
 
 
