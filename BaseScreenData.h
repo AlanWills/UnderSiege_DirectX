@@ -8,6 +8,7 @@ public:
 	BaseScreenData();
 	~BaseScreenData();
 
+	const char* GetDisplayName() const;
 	const char* GetBackgroundAsset() const;
 };
 

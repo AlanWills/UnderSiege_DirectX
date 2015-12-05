@@ -5,9 +5,12 @@
 class MainMenuScreen : public BaseScreen
 {
 public:
-	MainMenuScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device);
+	MainMenuScreen(ScreenManager* screenManager, const char* dataAsset);
 	~MainMenuScreen();
 
 	void AddInitialUI() override;
+
+private:
+	void TransitionToSelectLoadoutScreen();
 };
 

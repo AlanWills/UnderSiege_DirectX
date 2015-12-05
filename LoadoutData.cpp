@@ -15,6 +15,13 @@ LoadoutData::~LoadoutData()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+const char* LoadoutData::GetDisplayName() const
+{
+	return GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 const char* LoadoutData::GetCharacterTextureAsset() const
 {
 	return GetDocument()->RootElement()->FirstChildElement("CharacterTextureAsset")->GetText();

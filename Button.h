@@ -17,7 +17,7 @@ public:
 	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;
 
 	/// \brief Set the click function for this button
-	void SetClickFunction(std::function<void()> clickFunction) { m_clickFunction = clickFunction; }
+	void SetClickFunction(const std::function<void()>& clickFunction) { m_clickFunction = clickFunction; }
 
 	enum ButtonState
 	{

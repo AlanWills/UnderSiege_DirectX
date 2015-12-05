@@ -41,7 +41,7 @@ void Game::Initialize(HWND window, int width, int height)
 	Mouse::Get().SetWindow(window);
 
 	m_screenManager = new ScreenManager(m_d3dDevice.Get(), m_d3dContext.Get(), (float)m_outputWidth, (float)m_outputHeight);
-	m_screenManager->AddScreen(new MainMenuScreen(m_screenManager, "MainMenuScreenData.xml", m_d3dDevice.Get()));
+	m_screenManager->AddScreen(new MainMenuScreen(m_screenManager, "MainMenuScreenData.xml"));
 	m_screenManager->LoadContent();
 	m_screenManager->Initialize();
 }

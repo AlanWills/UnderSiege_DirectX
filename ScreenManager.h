@@ -27,6 +27,8 @@ public:
 	void AddScreen(BaseScreen* screenToAdd);
 	void RemoveScreen(BaseScreen* screenToAdd);
 
+	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice() const { return m_device; }
+
 	/// \brief Utility function for obtaining the centre of back buffer
 	static Vector2& GetScreenCentre();
 

@@ -11,17 +11,15 @@ using namespace std;
 
 class ScreenManager;
 
-typedef BaseObjectManager<GameObject> GameObjects;
-typedef BaseObjectManager<UIObject> UIObjects;
-
 class BaseScreen
 {
 public:
-	BaseScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device);
+	BaseScreen(ScreenManager* screenManager, const char* dataAsset);
 	virtual ~BaseScreen();
 
 	/// \brief Adds initial UI before the load context and initialize steps
-	virtual void AddInitialUI() { }
+	/// Adds a title automatically from the XML Display Name element
+	virtual void AddInitialUI();
 
 	/// \brief Loads the content of all the objects we have already set up
 	virtual void LoadContent();
@@ -69,9 +67,13 @@ protected:
 	void Transition(BaseScreen* transitionTo);
 
 	/// \brief Get a pointer to the ScreenManager
-	const ScreenManager* GetScreenManager() const { return m_screenManager; }
+	ScreenManager* GetScreenManager() const { return m_screenManager; }
 
 private:
+	/// \brief Typedefs
+	typedef BaseObjectManager<GameObject> GameObjects;
+	typedef BaseObjectManager<UIObject> UIObjects;
+
 	// Pointer to the device for loading content
 	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
@@ -93,8 +95,8 @@ private:
 
 	// Object managers
 	std::unique_ptr<GameObjects>		m_gameObjects;			// Handles all the game objects
-	std::unique_ptr<UIObjects>	m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
-	std::unique_ptr<UIObjects>	m_screenUIObjects;		// Handles all the screen UI
+	std::unique_ptr<UIObjects>			m_inGameUIObjects;		// Handles all the in game (camera dependent) UI Objects
+	std::unique_ptr<UIObjects>			m_screenUIObjects;		// Handles all the screen UI
 
 	// Background
 	std::unique_ptr<UIObject> m_background;

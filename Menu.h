@@ -3,17 +3,12 @@
 #include "UIObject.h"
 #include "BaseObjectManager.h"
 
-typedef std::unique_ptr<BaseObjectManager<UIObject>> UIObjects;
-
 class Menu : public UIObject
 {
 public:
 	Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime);
 	Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& size, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime);
 	~Menu();
-
-	/// \brief Set ups initial UI before load and initialize functions are called
-	void AddInitialUI() { }
 
 	/// \brief Loads the content of all the objects we have already set up
 	void Initialize() override;
@@ -40,8 +35,15 @@ public:
 	void AddUIObject(UIObject* uiObject, bool load = false, bool initialize = false);
 	void RemoveUIObject(UIObject* uiObject);
 
+protected:
+	/// \brief Set ups initial UI before load and initialize functions are called
+	virtual void AddInitialUI() { }
+
 private:
+	/// \brief Typedefs
+	typedef BaseObjectManager<UIObject> UIObjects;
+
 	/// \brief A container for UIObjects.  Will only be able to deal with
 	/// the same type as this Menu (i.e. In-Game or Screen)
-	UIObjects m_uiObjects;
+	std::unique_ptr<UIObjects> m_uiObjects;
 };

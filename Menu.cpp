@@ -12,7 +12,7 @@ Menu::Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& localPosi
 //-----------------------------------------------------------------------------------------------------------------------------------
 Menu::Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& size, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime) :
 	UIObject(size, localPosition, dataAsset, loadType, parent, lifeTime),
-	m_uiObjects(new BaseObjectManager<UIObject>(device))
+	m_uiObjects(new UIObjects(device))
 {
 }
 

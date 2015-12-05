@@ -17,7 +17,14 @@ BaseScreenData::~BaseScreenData()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+const char* BaseScreenData::GetDisplayName() const
+{
+	return GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 const char* BaseScreenData::GetBackgroundAsset() const
 {
-	return GetDocument()->FirstChildElement("BackgroundTextureAsset")->GetText();
+	return GetDocument()->RootElement()->FirstChildElement("BackgroundTextureAsset")->GetText();
 }

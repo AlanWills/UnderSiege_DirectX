@@ -2,11 +2,12 @@
 #include "BaseScreen.h"
 #include "ScreenManager.h"
 
+#include "Label.h"
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset, Microsoft::WRL::ComPtr<ID3D11Device> device) :
+BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset) :
 m_screenManager(screenManager),
-m_device(device),
 m_dataAsset(dataAsset),
 m_baseScreenData(nullptr),
 m_begun(false),
@@ -16,9 +17,9 @@ m_acceptsInput(false),
 m_alive(false),
 m_background(nullptr)
 {
-	m_gameObjects.reset(new GameObjects(device));
-	m_inGameUIObjects.reset(new UIObjects(device));
-	m_screenUIObjects.reset(new UIObjects(device));
+	m_gameObjects.reset(new GameObjects(m_screenManager->GetDevice()));
+	m_inGameUIObjects.reset(new UIObjects(m_screenManager->GetDevice()));
+	m_screenUIObjects.reset(new UIObjects(m_screenManager->GetDevice()));
 }
 
 
@@ -39,9 +40,16 @@ void BaseScreen::LoadContent()
 	m_gameObjects->LoadContent();
 	m_inGameUIObjects->LoadContent();
 	m_screenUIObjects->LoadContent();
+}
 
+//-----------------------------------------------------------------------------------------------------------------------------------
+void BaseScreen::AddInitialUI()
+{
+	// This has to be separate so we can draw it behind all the other objects
 	m_background.reset(new UIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
-	m_background->LoadContent(m_device.Get());
+	m_background->LoadContent(m_screenManager->GetDevice().Get());
+
+	AddScreenUIObject(new Label(Vector2(300, 50), Vector2(GetScreenManager()->GetScreenCentre().x, GetScreenManager()->GetScreenCentre().y * 0.25f), GenericUtils::CharToWChar(m_baseScreenData->GetDisplayName())));
 }
 
 

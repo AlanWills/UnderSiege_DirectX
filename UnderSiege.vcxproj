@@ -247,6 +247,7 @@
   <ItemGroup>
     <Xml Include="HeavyGunner.xml" />
     <Xml Include="MainMenuScreenData.xml" />
+    <Xml Include="SelectLoadoutScreen.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont" />
