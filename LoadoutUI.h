@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "LoadoutData.h"
 
-class LoadoutUI : Menu
+class LoadoutUI : public Menu
 {
 public:
 	LoadoutUI(Microsoft::WRL::ComPtr<ID3D11Device> device, const char* loadoutDataAsset, const Vector2& localPosition);

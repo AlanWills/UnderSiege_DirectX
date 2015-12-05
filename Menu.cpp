@@ -24,6 +24,17 @@ Menu::~Menu()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+void Menu::LoadContent(ID3D11Device* device)
+{
+	UIObject::LoadContent(device);
+
+	AddInitialUI();
+
+	m_uiObjects->LoadContent();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 void Menu::Initialize()
 {
 	UIObject::Initialize();
@@ -47,7 +58,7 @@ void Menu::Update(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void Menu::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	UIObject::Draw(spriteBatch, spriteFont);
+	//UIObject::Draw(spriteBatch, spriteFont);
 
 	if (IsVisible())
 	{

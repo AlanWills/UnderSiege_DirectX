@@ -1,6 +1,9 @@
 #include "pch.h"
+
 #include "LoadoutUI.h"
 #include "ScreenManager.h"
+
+#include "Label"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -35,6 +38,9 @@ void LoadoutUI::AddInitialUI()
 	assert(m_loadoutData.get());
 
 	// Add all the ui for the loadout here
-	UIObject* m_playerImage = new UIObject(Vector2(ScreenManager::GetScreenCentre()), m_loadoutData->GetCharacterTextureAsset(), LoadType::kTexture, this);
+	UIObject* m_playerImage = new UIObject(Vector2(-ScreenManager::GetScreenCentre().x * 0.5f, 0), m_loadoutData->GetCharacterTextureAsset(), LoadType::kTexture, this);
 	AddUIObject(m_playerImage, true);
+	m_playerImage->SetSize(m_playerImage->GetSize() * 2);
+
+	AddUIObject(new Label(Vector2(ScreenManager::GetScreenCentre()))
 }

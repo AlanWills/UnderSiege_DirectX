@@ -8,6 +8,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset) :
 m_screenManager(screenManager),
+m_device(screenManager->GetDevice()),
 m_dataAsset(dataAsset),
 m_baseScreenData(nullptr),
 m_begun(false),
@@ -30,16 +31,16 @@ BaseScreen::~BaseScreen()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void BaseScreen::LoadContent(ID3D11Device* device)
+void BaseScreen::LoadContent()
 {
 	m_baseScreenData.reset(new BaseScreenData());
 	m_baseScreenData->LoadData(m_dataAsset);
 
 	AddInitialUI();
 
-	m_gameObjects->LoadContent(device);
-	m_inGameUIObjects->LoadContent(device);
-	m_screenUIObjects->LoadContent(device);
+	m_gameObjects->LoadContent();
+	m_inGameUIObjects->LoadContent();
+	m_screenUIObjects->LoadContent();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +48,7 @@ void BaseScreen::AddInitialUI()
 {
 	// This has to be separate so we can draw it behind all the other objects
 	m_background.reset(new UIObject(Vector2(m_screenManager->GetScreenCentre() * 2), m_screenManager->GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
-	m_background->LoadContent(m_screenManager->GetDevice().Get());
+	m_background->LoadContent(GetDevice().Get());
 
 	AddScreenUIObject(new Label(Vector2(300, 50), Vector2(GetScreenManager()->GetScreenCentre().x, GetScreenManager()->GetScreenCentre().y * 0.25f), GenericUtils::CharToWChar(m_baseScreenData->GetDisplayName())));
 }

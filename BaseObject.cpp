@@ -83,6 +83,12 @@ void BaseObject::LoadContent(ID3D11Device* device)
 
 	assert(m_textureHandler->GetTexture());
 
+	// Put initialization code here
+	if (m_size == Vector2::Zero && m_textureHandler.get())
+	{
+		m_size = m_textureHandler->GetDimensions();
+	}
+
 	delete[] wTextureAsset;
 }
 
@@ -90,12 +96,6 @@ void BaseObject::LoadContent(ID3D11Device* device)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObject::Initialize()
 {
-	// Put initialization code here
-	if (m_size == Vector2::Zero && m_textureHandler.get())
-	{
-		m_size = m_textureHandler->GetDimensions();
-	}
-
 	// All state variables for the object need to be set to true now that the object is about to be inserted into the game
 	Create();
 }

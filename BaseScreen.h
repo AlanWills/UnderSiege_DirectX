@@ -22,7 +22,7 @@ public:
 	virtual void AddInitialUI();
 
 	/// \brief Loads the content of all the objects we have already set up
-	virtual void LoadContent(ID3D11Device* device);
+	virtual void LoadContent();
 
 	/// \brief Initializes all of the objects we have already set up
 	virtual void Initialize();
@@ -68,6 +68,7 @@ protected:
 
 	/// \brief Get a pointer to the ScreenManager
 	ScreenManager* GetScreenManager() const { return m_screenManager; }
+	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice() const { return m_device; }
 
 private:
 	/// \brief Typedefs
@@ -76,6 +77,9 @@ private:
 
 	// ScreenManager pointer
 	ScreenManager* m_screenManager;
+
+	// Device pointer
+	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
 	// Path to an XML document containing data about this screen - must be char* for tinyxml2 parser
 	const char* m_dataAsset;

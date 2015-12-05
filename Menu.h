@@ -10,6 +10,8 @@ public:
 	Menu(Microsoft::WRL::ComPtr<ID3D11Device> device, const Vector2& size, const Vector2& localPosition, const char* dataAsset, LoadType loadType, BaseObject* parent, float lifeTime);
 	~Menu();
 
+	void LoadContent(ID3D11Device* device) override;
+
 	/// \brief Loads the content of all the objects we have already set up
 	void Initialize() override;
 
