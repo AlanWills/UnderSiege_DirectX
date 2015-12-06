@@ -165,7 +165,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameplayScreen.h" />
+    <ClInclude Include="GameplayScreenData.h" />
     <ClInclude Include="GenericUtils.h" />
+    <ClInclude Include="Gun.h" />
     <ClInclude Include="GunData.h" />
     <ClInclude Include="GunUI.h" />
     <ClInclude Include="InputController.h" />
@@ -186,6 +189,9 @@
     <ClInclude Include="SelectWeaponScreen.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Tilemap.h" />
+    <ClInclude Include="TilemapData.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UIObject.h" />
   </ItemGroup>
@@ -204,7 +210,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameplayScreen.cpp" />
+    <ClCompile Include="GameplayScreenData.cpp" />
     <ClCompile Include="GenericUtils.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="GunData.cpp" />
     <ClCompile Include="GunUI.cpp" />
     <ClCompile Include="InputController.cpp" />
@@ -230,6 +239,9 @@
     <ClCompile Include="SelectLoadoutScreen.cpp" />
     <ClCompile Include="SelectWeaponScreen.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Tilemap.cpp" />
+    <ClCompile Include="TilemapData.cpp" />
     <ClCompile Include="tinyxml2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>

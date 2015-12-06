@@ -51,7 +51,7 @@ void SelectLoadoutScreen::AddInitialUI()
 	Button* selectLoadout = new Button(Vector2(GetScreenCentre().x * 1.25f, GetScreenCentre().y * 1.5f), L"Select Loadout");
 	selectLoadout->SetClickFunction([this]()
 	{
-		Transition(new SelectWeaponScreen(m_loadoutDataAssets[m_currentLoadout], GetScreenManager()));
+		Transition(new SelectWeaponScreen(m_loadoutUI[m_currentLoadout]->GetGunDataAsset(), GetScreenManager()));
 	});
 
 	AddScreenUIObject(selectLoadout);

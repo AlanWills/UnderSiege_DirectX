@@ -9,8 +9,5 @@ public:
 	~MainMenuScreen();
 
 	void AddInitialUI() override;
-
-private:
-	void TransitionToSelectLoadoutScreen();
 };
 

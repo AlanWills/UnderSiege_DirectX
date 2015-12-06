@@ -1,25 +1,24 @@
 #include "pch.h"
-
-#include "Loadout.h"
+#include "Gun.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::Loadout(const char* dataAsset) :
-	m_loadoutData(new LoadoutData(dataAsset))
+Gun::Gun(const char* dataAsset) :
+	m_gunData(new GunData(dataAsset))
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::~Loadout()
+Gun::~Gun()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Loadout::LoadData()
+void Gun::LoadData()
 {
-	m_loadoutData->LoadData();
+	m_gunData->LoadData();
 
-	assert(m_loadoutData.get());
+	assert(m_gunData.get());
 }

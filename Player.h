@@ -2,6 +2,7 @@
 
 #include "Character.h"
 #include "Loadout.h"
+#include "Gun.h"
 
 class Player : public Character
 {
@@ -16,5 +17,6 @@ public:
 
 private:
 	std::unique_ptr<Loadout> m_loadout;
+	std::unique_ptr<Gun> m_gun;
 };
 

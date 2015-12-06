@@ -1,25 +1,23 @@
 #include "pch.h"
 
-#include "Loadout.h"
+#include "GameplayScreenData.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::Loadout(const char* dataAsset) :
-	m_loadoutData(new LoadoutData(dataAsset))
+GameplayScreenData::GameplayScreenData(const char* dataAsset) :
+	BaseScreenData(dataAsset)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::~Loadout()
+GameplayScreenData::~GameplayScreenData()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Loadout::LoadData()
+const char* GameplayScreenData::GetTilemapDataAsset() const
 {
-	m_loadoutData->LoadData();
-
-	assert(m_loadoutData.get());
+	return GetDocument()->RootElement()->FirstChildElement("TilemapDataAsset")->GetText();
 }

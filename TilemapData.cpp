@@ -1,25 +1,23 @@
 #include "pch.h"
 
-#include "Loadout.h"
+#include "TilemapData.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::Loadout(const char* dataAsset) :
-	m_loadoutData(new LoadoutData(dataAsset))
+TilemapData::TilemapData(const char* dataAsset) :
+	BaseData(dataAsset)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Loadout::~Loadout()
+TilemapData::~TilemapData()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Loadout::LoadData()
+void TilemapData::GetTiles(std::list<std::unique_ptr<Tile>>& tileData)
 {
-	m_loadoutData->LoadData();
-
-	assert(m_loadoutData.get());
+	// Push back tiles here
 }

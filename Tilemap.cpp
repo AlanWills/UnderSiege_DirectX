@@ -1,57 +1,61 @@
 #include "pch.h"
-#include "GunData.h"
+#include "Tilemap.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GunData::GunData(const char* dataAsset) :
-	BaseData(dataAsset)
+Tilemap::Tilemap(Microsoft::WRL::ComPtr<ID3D11Device> device, const char* tilemapDataAsset) :
+	m_tiles(new BaseObjectManager<Tile>(device)),
+	m_tilemapData(new TilemapData(tilemapDataAsset))
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GunData::~GunData()
+Tilemap::~Tilemap()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const std::wstring GunData::GetDisplayName() const
+void Tilemap::LoadData()
 {
-	return GenericUtils::CharToWChar(GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText());
+	// Load the tile data here and create the tiles
+	m_tilemapData->LoadData();
+	std::list<std::unique_ptr<Tile>> tiles;
+	m_tilemapData->GetTiles(tiles);
+
+	// Push back the tiles to the BaseObjectManager using the elements in 'tiles'
+
+	m_tiles->LoadContent();
+
+	// Free the memory
+	m_tilemapData.release();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* GunData::GetGunTextureAsset() const
+void Tilemap::Initialize()
 {
-	const XMLElement* text = GetDocument()->RootElement()->FirstChildElement("GunTextureAsset");
-	return text->GetText();
+	m_tiles->Initialize();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int GunData::GetDamage() const
+void Tilemap::Update(DX::StepTimer const& timer)
 {
-	int damage = 0;
-	GetDocument()->RootElement()->FirstChildElement("Damage")->QueryIntText(&damage);
-	return damage;
+	m_tiles->Update(timer);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const float GunData::GetFireRate() const
+void Tilemap::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	float fireRate = 0;
-	GetDocument()->RootElement()->FirstChildElement("FireRate")->QueryFloatText(&fireRate);
-	return fireRate;
+	m_tiles->Draw(spriteBatch, spriteFont);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int GunData::GetMagazineSize() const
+void Tilemap::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
-	int magazineSize = 0;
-	GetDocument()->RootElement()->FirstChildElement("MagazineSize")->QueryIntText(&magazineSize);
-	return magazineSize;
+	m_tiles->HandleInput(timer, mousePosition);
 }

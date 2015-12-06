@@ -5,7 +5,7 @@
   <GameTextureAsset>HeavyGunnerGame.png</GameTextureAsset>
   <Speed>200</Speed>
   <Armour>100</Armour>
-  <GunDataAsset></GunDataAsset>
+  <GunDataAsset>HeavyGunnerChaingun.xml</GunDataAsset>
 </LoadoutStats>
 
 

@@ -5,8 +5,9 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 Player::Player(const Vector2& localPosition, const char* loadoutDataAsset, BaseObject* parent)
-	: Character(localPosition, loadoutDataAsset, LoadType::kNoLoad, parent),
-	m_loadout(nullptr)
+	: Character(localPosition, "", LoadType::kNoLoad, parent),
+	m_loadout(new Loadout(loadoutDataAsset)),
+	m_gun(new Gun(m_loadout->GetData()->GetGunDataAsset()))
 {
 }
 
@@ -22,8 +23,8 @@ void Player::LoadContent(ID3D11Device* device)
 {
 	Character::LoadContent(device);
 
-	m_loadout.reset(new Loadout(GetDataAsset()));
 	m_loadout->LoadData();
+	m_gun->LoadData();
 
 	GetTextureHandler()->Load(device, GenericUtils::CharToWChar(m_loadout->GetData()->GetGameTextureAsset()));
 }

@@ -34,10 +34,3 @@ void MainMenuScreen::AddInitialUI()
 
 	AddScreenUIObject(beginButton);
 }
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-void MainMenuScreen::TransitionToSelectLoadoutScreen()
-{
-	
-}

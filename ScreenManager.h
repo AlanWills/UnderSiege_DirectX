@@ -30,7 +30,8 @@ public:
 	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice() const { return m_device; }
 
 	/// \brief Utility function for obtaining the centre of back buffer
-	static Vector2& GetScreenCentre();
+	static const Vector2& GetScreenCentre();
+	static const Vector2 GetScreenDimensions() { return 2 * GetScreenCentre(); }
 
 	// Viewport
 	CD3D11_VIEWPORT m_viewport;

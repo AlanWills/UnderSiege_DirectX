@@ -8,7 +8,7 @@ static KeyboardInput m_keyboard;
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Vector2& ScreenManager::GetScreenCentre()
+const Vector2& ScreenManager::GetScreenCentre()
 {
 	return m_screenCentre;
 }

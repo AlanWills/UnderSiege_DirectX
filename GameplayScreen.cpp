@@ -1,57 +1,62 @@
 #include "pch.h"
-#include "GunData.h"
+
+#include "GameplayScreen.h"
+#include "ScreenManager.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GunData::GunData(const char* dataAsset) :
-	BaseData(dataAsset)
+GameplayScreen::GameplayScreen(ScreenManager* screenManager, const char* levelDataAsset) :
+	BaseScreen(screenManager, levelDataAsset),
+	m_tilemap(new Tilemap(GetDevice(), m_gameplayScreenData->GetTilemapDataAsset()))
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GunData::~GunData()
+GameplayScreen::~GameplayScreen()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const std::wstring GunData::GetDisplayName() const
+void GameplayScreen::LoadContent()
 {
-	return GenericUtils::CharToWChar(GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText());
+	BaseScreen::LoadContent();
+
+	m_tilemap->LoadData();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* GunData::GetGunTextureAsset() const
+void GameplayScreen::Initialize()
 {
-	const XMLElement* text = GetDocument()->RootElement()->FirstChildElement("GunTextureAsset");
-	return text->GetText();
+	BaseScreen::Initialize();
+
+	m_tilemap->Initialize();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int GunData::GetDamage() const
+void GameplayScreen::Update(DX::StepTimer const& timer)
 {
-	int damage = 0;
-	GetDocument()->RootElement()->FirstChildElement("Damage")->QueryIntText(&damage);
-	return damage;
+	BaseScreen::Update(timer);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const float GunData::GetFireRate() const
+void GameplayScreen::DrawInGameObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	float fireRate = 0;
-	GetDocument()->RootElement()->FirstChildElement("FireRate")->QueryFloatText(&fireRate);
-	return fireRate;
+	m_tilemap->Draw(spriteBatch, spriteFont);
+
+	BaseScreen::DrawInGameObjects(spriteBatch, spriteFont);
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int GunData::GetMagazineSize() const
+void GameplayScreen::HandleInput(DX::StepTimer const& timer)
 {
-	int magazineSize = 0;
-	GetDocument()->RootElement()->FirstChildElement("MagazineSize")->QueryIntText(&magazineSize);
-	return magazineSize;
+	BaseScreen::HandleInput(timer);
+
+	const Vector2& mousePosition = GetScreenManager()->GetGameMouse().GetInGamePosition();
+	m_tilemap->HandleInput(timer, mousePosition);
 }

@@ -36,11 +36,13 @@ void LoadoutUI::AddInitialUI()
 	// Check that we have loaded the data before calling this function
 	assert(m_loadoutData.get());
 
-	// Add all the ui for the loadout here
+	// Add all the UI for the loadout here
 
 	// Add the image that the player will have if they pick this loadout
-	UIObject* m_playerImage = new UIObject(Vector2(-ScreenManager::GetScreenCentre().x * 0.25f, 0), m_loadoutData->GetUITextureAsset(), LoadType::kTexture, this);
-	AddUIObject(m_playerImage, true);
+	UIObject* playerImage = new UIObject(Vector2(-ScreenManager::GetScreenCentre().x * 0.25f, 0), m_loadoutData->GetUITextureAsset(), LoadType::kTexture, this);
+	// For some reason I have to do this to make it appear less black
+	playerImage->SetColour(Color(4, 4, 4, 1));
+	AddUIObject(playerImage);
 
 	// Add the loadout display name
 	Label* displayName = new Label(Vector2(ScreenManager::GetScreenCentre().x * 0.25f, -ScreenManager::GetScreenCentre().y * 0.25f), m_loadoutData->GetDisplayName(), this);

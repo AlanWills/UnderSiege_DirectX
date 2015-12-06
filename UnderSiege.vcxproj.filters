@@ -139,6 +139,18 @@
     <Filter Include="Resource Files\XML\Guns">
       <UniqueIdentifier>{fbc63dc3-deac-4608-b5d8-b260fa5ca05e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tilemap">
+      <UniqueIdentifier>{a158537f-725e-4ff7-8368-8e1e06fda0ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tilemap">
+      <UniqueIdentifier>{2ed231b3-247c-4b9c-9bd5-c0c1c8c7a9a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data and Content\Tilemap">
+      <UniqueIdentifier>{64ce6abe-2943-4c06-a3e7-d8ba1f464969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data and Content\Tilemap">
+      <UniqueIdentifier>{3c0e83e6-97ee-4afa-96dc-49956014c8ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -255,6 +267,24 @@
     <ClInclude Include="GunUI.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="GameplayScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>Header Files\Data and Content\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TilemapData.h">
+      <Filter>Header Files\Data and Content\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreenData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -367,6 +397,24 @@
     </ClCompile>
     <ClCompile Include="GunUI.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Gun.cpp">
+      <Filter>Source Files\Data and Content\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TilemapData.cpp">
+      <Filter>Source Files\Data and Content\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>Source Files\Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayScreenData.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

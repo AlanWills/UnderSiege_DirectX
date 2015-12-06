@@ -22,5 +22,5 @@ void BaseData::LoadData()
 	m_document.reset(new tinyxml2::XMLDocument());
 	m_document->LoadFile(m_dataAsset);
 
-	assert(m_document);
+	assert(m_document.get());
 }

@@ -12,6 +12,9 @@ public:
 	/// \brief Loads the loadout data for this menu and all uiobjects we have added
 	void LoadContent(ID3D11Device* device) override;
 
+	/// \brief Gets the data asset for this loadout
+	const char* GetGunDataAsset() const { return m_loadoutData->GetGunDataAsset(); }
+
 protected:
 	/// \brief Adds the loadout data UI
 	void AddInitialUI() override;
