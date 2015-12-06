@@ -181,6 +181,7 @@
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="SelectLoadoutScreen.h" />
+    <ClInclude Include="SelectWeaponScreen.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="tinyxml2.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="SelectLoadoutScreen.cpp" />
+    <ClCompile Include="SelectWeaponScreen.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="tinyxml2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -238,6 +240,7 @@
     <Image Include="directx.ico" />
     <Image Include="HeavyGunnerFullSize.png" />
     <Image Include="HeavyGunnerGame.png" />
+    <Image Include="HeavyGunnerGunFullSize.png" />
     <Image Include="HelicopterBlades.png" />
     <Image Include="SharpshooterFullSize.png" />
     <Image Include="SharpshooterGame.png" />

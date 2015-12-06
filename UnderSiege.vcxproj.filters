@@ -133,6 +133,9 @@
     <Filter Include="Resource Files\Images\Backgrounds">
       <UniqueIdentifier>{43991ab0-2099-46eb-bc66-cbdff7ed320e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Images\Guns">
+      <UniqueIdentifier>{7caaaad9-ee13-40e5-855d-236c9001bcae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -240,6 +243,9 @@
     <ClInclude Include="LoadoutUI.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="SelectWeaponScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -344,6 +350,9 @@
     <ClCompile Include="LoadoutUI.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="SelectWeaponScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -380,6 +389,9 @@
     </Image>
     <Image Include="SharpshooterGame.png">
       <Filter>Resource Files\Images\Loadouts</Filter>
+    </Image>
+    <Image Include="HeavyGunnerGunFullSize.png">
+      <Filter>Resource Files\Images\Guns</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
