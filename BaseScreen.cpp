@@ -9,8 +9,7 @@
 BaseScreen::BaseScreen(ScreenManager* screenManager, const char* dataAsset) :
 m_screenManager(screenManager),
 m_device(screenManager->GetDevice()),
-m_dataAsset(dataAsset),
-m_baseScreenData(nullptr),
+m_baseScreenData(new BaseScreenData(dataAsset)),
 m_begun(false),
 m_active(false),
 m_visible(false),
@@ -33,8 +32,7 @@ BaseScreen::~BaseScreen()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseScreen::LoadContent()
 {
-	m_baseScreenData.reset(new BaseScreenData());
-	m_baseScreenData->LoadData(m_dataAsset);
+	m_baseScreenData->LoadData();
 
 	AddInitialUI();
 
@@ -50,7 +48,7 @@ void BaseScreen::AddInitialUI()
 	m_background.reset(new UIObject(GetScreenCentre() * 2, GetScreenCentre(), m_baseScreenData->GetBackgroundAsset(), BaseObject::LoadType::kTexture));
 	m_background->LoadContent(GetDevice().Get());
 
-	AddScreenUIObject(new Label(Vector2(GetScreenCentre().x, GetScreenCentre().y * 0.25f), GenericUtils::CharToWChar(m_baseScreenData->GetDisplayName())));
+	AddScreenUIObject(new Label(Vector2(GetScreenCentre().x, GetScreenCentre().y * 0.25f), m_baseScreenData->GetDisplayName()));
 }
 
 

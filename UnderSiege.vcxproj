@@ -166,6 +166,8 @@
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GenericUtils.h" />
+    <ClInclude Include="GunData.h" />
+    <ClInclude Include="GunUI.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="Label.h" />
@@ -203,6 +205,8 @@
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GenericUtils.cpp" />
+    <ClCompile Include="GunData.cpp" />
+    <ClCompile Include="GunUI.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Label.cpp" />
@@ -238,9 +242,9 @@
     <Image Include="Button.png" />
     <Image Include="cursor_blue.png" />
     <Image Include="directx.ico" />
+    <Image Include="HeavyGunnerChaingunFullSize.png" />
     <Image Include="HeavyGunnerFullSize.png" />
     <Image Include="HeavyGunnerGame.png" />
-    <Image Include="HeavyGunnerGunFullSize.png" />
     <Image Include="HelicopterBlades.png" />
     <Image Include="SharpshooterFullSize.png" />
     <Image Include="SharpshooterGame.png" />
@@ -252,8 +256,10 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="HeavyGunner.xml" />
+    <Xml Include="HeavyGunnerChaingun.xml" />
     <Xml Include="MainMenuScreenData.xml" />
     <Xml Include="SelectLoadoutScreen.xml" />
+    <Xml Include="SelectWeaponScreen.xml" />
     <Xml Include="Sharpshooter.xml" />
   </ItemGroup>
   <ItemGroup>

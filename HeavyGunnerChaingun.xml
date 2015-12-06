@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <DisplayName>Chaingun</DisplayName>
+  <GunTextureAsset>HeavyGunnerChaingunFullSize.png</GunTextureAsset>
+  <Damage>3</Damage>
+  <FireRate>5</FireRate>
+  <MagazineSize>32</MagazineSize>
+</Root>

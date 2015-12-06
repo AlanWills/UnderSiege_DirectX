@@ -6,7 +6,7 @@
 class SelectLoadoutScreen : public BaseScreen
 {
 public:
-	SelectLoadoutScreen(ScreenManager* screenManager, const char* dataAsset);
+	SelectLoadoutScreen(ScreenManager* screenManager, const char* dataAsset = "SelectLoadoutScreen.xml");
 	~SelectLoadoutScreen();
 
 	/// \brief Loads the screen data and also the LoadoutData that we are using in the game
@@ -29,7 +29,7 @@ private:
 
 	LoadoutUIs m_loadoutUI;
 	std::vector<const char*> m_loadoutDataAssets;
-	size_t m_numLoadouts;
+	int m_numLoadouts;
 
 	int m_currentLoadout;
 };

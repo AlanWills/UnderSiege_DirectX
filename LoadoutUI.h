@@ -19,5 +19,4 @@ protected:
 private:
 	/// \brief The data for this loadout - we will use this to build information UI
 	std::unique_ptr<LoadoutData> m_loadoutData;
-	const char* m_loadoutDataAsset;
 };

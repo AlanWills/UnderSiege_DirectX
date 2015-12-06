@@ -136,6 +136,9 @@
     <Filter Include="Resource Files\Images\Guns">
       <UniqueIdentifier>{7caaaad9-ee13-40e5-855d-236c9001bcae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\XML\Guns">
+      <UniqueIdentifier>{fbc63dc3-deac-4608-b5d8-b260fa5ca05e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -246,6 +249,12 @@
     <ClInclude Include="SelectWeaponScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="GunData.h">
+      <Filter>Header Files\Data and Content\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="GunUI.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -353,6 +362,12 @@
     <ClCompile Include="SelectWeaponScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="GunData.cpp">
+      <Filter>Source Files\Data and Content\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="GunUI.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -390,7 +405,7 @@
     <Image Include="SharpshooterGame.png">
       <Filter>Resource Files\Images\Loadouts</Filter>
     </Image>
-    <Image Include="HeavyGunnerGunFullSize.png">
+    <Image Include="HeavyGunnerChaingunFullSize.png">
       <Filter>Resource Files\Images\Guns</Filter>
     </Image>
   </ItemGroup>
@@ -411,6 +426,12 @@
     </Xml>
     <Xml Include="Sharpshooter.xml">
       <Filter>Resource Files\XML\Loadouts</Filter>
+    </Xml>
+    <Xml Include="HeavyGunnerChaingun.xml">
+      <Filter>Resource Files\XML\Guns</Filter>
+    </Xml>
+    <Xml Include="SelectWeaponScreen.xml">
+      <Filter>Resource Files\XML\Screens</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

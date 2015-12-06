@@ -1,61 +1,56 @@
 #include "pch.h"
-#include "LoadoutData.h"
+#include "GunData.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-LoadoutData::LoadoutData(const char* dataAsset) :
+GunData::GunData(const char* dataAsset) :
 	BaseData(dataAsset)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-LoadoutData::~LoadoutData()
+GunData::~GunData()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const std::wstring LoadoutData::GetDisplayName() const
+const std::wstring GunData::GetDisplayName() const
 {
 	return GenericUtils::CharToWChar(GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText());
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* LoadoutData::GetUITextureAsset() const
+const char* GunData::GetGunTextureAsset() const
 {
-	return GetDocument()->RootElement()->FirstChildElement("UITextureAsset")->GetText();
+	return GetDocument()->RootElement()->FirstChildElement("GunTextureAsset")->GetText();
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* LoadoutData::GetGameTextureAsset() const
+const int GunData::GetDamage() const
 {
-	return GetDocument()->RootElement()->FirstChildElement("GameTextureAsset")->GetText();
+	int damage = 0;
+	GetDocument()->RootElement()->FirstChildElement("Damage")->QueryIntText(&damage);
+	return damage;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int LoadoutData::GetSpeed() const
+const float GunData::GetFireRate() const
 {
-	int speed = 0;
-	GetDocument()->RootElement()->FirstChildElement("Speed")->QueryIntText(&speed);
-	return speed;
+	float fireRate = 0;
+	GetDocument()->RootElement()->FirstChildElement("FireRate")->QueryFloatText(&fireRate);
+	return fireRate;
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const int LoadoutData::GetArmour() const
+const int GunData::GetMagazineSize() const
 {
-	int armour = 0;
-	GetDocument()->RootElement()->FirstChildElement("Armour")->QueryIntText(&armour);
-	return armour;
-}
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-const char* LoadoutData::GetGunDataAsset() const
-{
-	return GetDocument()->RootElement()->FirstChildElement("GunDataAsset")->GetText();
+	int magazineSize = 0;
+	GetDocument()->RootElement()->FirstChildElement("MagazineSize")->QueryIntText(&magazineSize);
+	return magazineSize;
 }

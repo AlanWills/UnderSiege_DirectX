@@ -1,7 +1,8 @@
 #include "pch.h"
 
-#include "SelectLoadoutScreen.h"
 #include "ScreenManager.h"
+#include "SelectLoadoutScreen.h"
+#include "SelectWeaponScreen.h"
 
 #include "Button.h"
 
@@ -15,7 +16,7 @@ SelectLoadoutScreen::SelectLoadoutScreen(ScreenManager* screenManager, const cha
 	m_loadoutDataAssets.push_back("HeavyGunner.xml");
 	m_loadoutDataAssets.push_back("Sharpshooter.xml");
 
-	m_numLoadouts = m_loadoutDataAssets.size();
+	m_numLoadouts = (int)m_loadoutDataAssets.size();
 	assert(m_numLoadouts > 0);
 }
 
@@ -31,7 +32,7 @@ void SelectLoadoutScreen::LoadContent()
 {
 	BaseScreen::LoadContent();
 
-	for (size_t i = 0; i < m_numLoadouts; i++)
+	for (int i = 0; i < m_numLoadouts; i++)
 	{
 		m_loadoutUI.push_back(std::unique_ptr<LoadoutUI>(new LoadoutUI(GetDevice(), m_loadoutDataAssets[i], GetScreenCentre())));
 		m_loadoutUI[i]->LoadContent(GetDevice().Get());
@@ -48,6 +49,11 @@ void SelectLoadoutScreen::AddInitialUI()
 
 	// Add the select loadout button
 	Button* selectLoadout = new Button(Vector2(GetScreenCentre().x * 1.25f, GetScreenCentre().y * 1.5f), L"Select Loadout");
+	selectLoadout->SetClickFunction([this]()
+	{
+		Transition(new SelectWeaponScreen(m_loadoutDataAssets[m_currentLoadout], GetScreenManager()));
+	});
+
 	AddScreenUIObject(selectLoadout);
 }
 

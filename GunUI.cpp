@@ -1,30 +1,32 @@
 #include "pch.h"
-#include "BaseScreenData.h"
+#include "GunUI.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::BaseScreenData(const char* dataAsset) :
-	BaseData(dataAsset)
+GunUI::GunUI(Microsoft::WRL::ComPtr<ID3D11Device> device, const char* gunDataAsset, const Vector2& localPosition)
+	: Menu(device, localPosition, "", BaseObject::kNoLoad, nullptr, FLT_MAX),
+	m_gunData(new GunData(gunDataAsset))
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-BaseScreenData::~BaseScreenData()
+GunUI::~GunUI()
 {
-	
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const std::wstring BaseScreenData::GetDisplayName() const
+void GunUI::AddInitialUI()
 {
-	return GenericUtils::CharToWChar(GetDocument()->RootElement()->FirstChildElement("DisplayName")->GetText());
+
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* BaseScreenData::GetBackgroundAsset() const
+void GunUI::LoadContent(ID3D11Device* device)
 {
-	return GetDocument()->RootElement()->FirstChildElement("BackgroundTextureAsset")->GetText();
+	m_gunData->LoadData();
+
+	Menu::LoadContent(device);
 }

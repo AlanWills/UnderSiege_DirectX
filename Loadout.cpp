@@ -4,8 +4,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 Loadout::Loadout(const char* dataAsset) :
-	m_dataAsset(dataAsset),
-	m_loadoutData(new LoadoutData())
+	m_loadoutData(new LoadoutData(dataAsset))
 {
 }
 
@@ -19,5 +18,5 @@ Loadout::~Loadout()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void Loadout::LoadData()
 {
-	m_loadoutData->LoadData(m_dataAsset);
+	m_loadoutData->LoadData();
 }

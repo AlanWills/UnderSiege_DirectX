@@ -2,12 +2,31 @@
 #include "SelectWeaponScreen.h"
 
 
-SelectWeaponScreen::SelectWeaponScreen(ScreenManager* screenManager, const char* dataAsset) :
-	BaseScreen(screenManager, dataAsset)
+//-----------------------------------------------------------------------------------------------------------------------------------
+SelectWeaponScreen::SelectWeaponScreen(const char* loadoutGunAsset, ScreenManager* screenManager, const char* dataAsset) :
+	BaseScreen(screenManager, dataAsset),
+	m_gunData(new GunData(loadoutGunAsset))
 {
 }
 
 
+//-----------------------------------------------------------------------------------------------------------------------------------
 SelectWeaponScreen::~SelectWeaponScreen()
 {
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void SelectWeaponScreen::AddInitialUI()
+{
+	BaseScreen::AddInitialUI();
+
+
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void SelectWeaponScreen::LoadContent()
+{
+	BaseScreen::LoadContent();
 }

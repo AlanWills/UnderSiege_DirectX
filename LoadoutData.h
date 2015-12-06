@@ -5,7 +5,7 @@
 class LoadoutData : public BaseData
 {
 public:
-	LoadoutData();
+	LoadoutData(const char* dataAsset);
 	~LoadoutData();
 
 	const std::wstring GetDisplayName() const;

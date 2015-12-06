@@ -12,8 +12,6 @@ public:
 	const LoadoutData* GetData() const { return m_loadoutData.get(); }
 
 private:
-	const char* m_dataAsset;
-
 	// Unique pointer to loadout data
 	std::unique_ptr<LoadoutData> m_loadoutData;
 };

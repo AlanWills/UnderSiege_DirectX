@@ -5,10 +5,10 @@
 class BaseScreenData : public BaseData
 {
 public:
-	BaseScreenData();
+	BaseScreenData(const char* dataAsset);
 	~BaseScreenData();
 
-	const char* GetDisplayName() const;
+	const std::wstring GetDisplayName() const;
 	const char* GetBackgroundAsset() const;
 };
 

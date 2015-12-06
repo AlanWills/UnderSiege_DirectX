@@ -61,7 +61,7 @@ void InputController::Update(DX::StepTimer const& timer)
 	if (diff != Vector2::Zero)
 	{
 		diff.Normalize();
-		m_player->GetRigidBody()->SetLinearVelocity(diff * m_player->GetLoadout()->GetData()->GetSpeed());
+		m_player->GetRigidBody()->SetLinearVelocity(diff * (float)m_player->GetLoadout()->GetData()->GetSpeed());
 	}
 	else
 	{

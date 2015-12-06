@@ -9,8 +9,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
 LoadoutUI::LoadoutUI(Microsoft::WRL::ComPtr<ID3D11Device> device, const char* loadoutDataAsset, const Vector2& localPosition) :
 	Menu(device, localPosition, "", BaseObject::kNoLoad, nullptr, FLT_MAX),
-	m_loadoutData(new LoadoutData()),
-	m_loadoutDataAsset(loadoutDataAsset)
+	m_loadoutData(new LoadoutData(loadoutDataAsset))
 {
 }
 
@@ -24,7 +23,7 @@ LoadoutUI::~LoadoutUI()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void LoadoutUI::LoadContent(ID3D11Device* device)
 {
-	m_loadoutData->LoadData(m_loadoutDataAsset);
+	m_loadoutData->LoadData();
 	assert(m_loadoutData.get());
 
 	Menu::LoadContent(device);

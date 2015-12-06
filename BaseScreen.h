@@ -83,9 +83,6 @@ private:
 	// Device pointer
 	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
-	// Path to an XML document containing data about this screen - must be char* for tinyxml2 parser
-	const char* m_dataAsset;
-
 	// Screen data
 	std::unique_ptr<BaseScreenData> m_baseScreenData;
 
