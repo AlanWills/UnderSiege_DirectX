@@ -25,3 +25,10 @@ const float MathUtils::GetAngleBetweenObjectAndWorldSpaceVector(const BaseObject
 
 	return rotation;
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const float MathUtils::LerpDown(float currentValue, float targetValue, float amount)
+{
+	return Clamp<float>(currentValue - amount, targetValue, currentValue);
+}

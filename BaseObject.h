@@ -103,6 +103,9 @@ public:
 
 	void SetColour(const Color& colour) { m_colour = colour; }
 
+	const float GetOpacity() const { return m_opacity; }
+	void SetOpacity(const float opacity) { m_opacity = opacity; }
+
 	const Collider* GetCollider() const { return m_collider.get(); }
 
 protected:
@@ -116,9 +119,6 @@ protected:
 	void SetMouseOver(const bool mouseOver) { m_mouseOver = mouseOver; }
 
 	const Color& GetColour() const { return m_colour; }
-
-	const float GetOpacity() const { return m_opacity; }
-	void SetOpacity(const float opacity) { m_opacity = opacity; }
 
 private:
 	// Used to work out whether we should load an XML file or just a texture

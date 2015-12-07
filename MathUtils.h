@@ -12,7 +12,8 @@ public:
 	~MathUtils();
 
 	static const float GetAngleBetweenObjectAndWorldSpaceVector(const BaseObject* object, const Vector2& v);
-	
+	static const float LerpDown(float currentValue, float targetValue, float amount);
+
 	/// \brief Clamps an inputted type between two numbers inclusive
 	/// e.g. clamping 5 between 0 and 5 would return 5
 	template <typename T>
