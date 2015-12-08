@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Texture2D.h"
-#include "BaseObjectData.h"
 #include "StepTimer.h"
 #include "Collider.h"
 
@@ -110,7 +109,6 @@ public:
 
 protected:
 	const char* GetDataAsset() const { return m_dataAsset; }
-	const BaseObjectData* GetBaseObjectData() const { return m_baseObjectData.get(); }
 
 	/// \brief Gets the texture handler - cannot be const because draw is non-const (for now)
 	Texture2D* GetTextureHandler() const { return m_textureHandler.get(); }
@@ -126,9 +124,6 @@ private:
 
 	// Data asset
 	const char* m_dataAsset;
-
-	// Data - must be char* for tinyxml2 parser
-	std::unique_ptr<BaseObjectData> m_baseObjectData;
 
 	// A string to identify the object
 	std::wstring m_tag;

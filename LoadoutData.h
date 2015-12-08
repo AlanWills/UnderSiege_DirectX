@@ -14,4 +14,5 @@ public:
 	const int GetSpeed() const;
 	const int GetArmour() const;
 	const char* GetGunDataAsset() const;
+	const Vector2 GetBarrelOffset() const;
 };

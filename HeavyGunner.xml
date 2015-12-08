@@ -6,6 +6,8 @@
   <Speed>200</Speed>
   <Armour>100</Armour>
   <GunDataAsset>HeavyGunnerChaingun.xml</GunDataAsset>
+  <BarrelOffsetX>-3</BarrelOffsetX>
+  <BarrelOffsetY>-53</BarrelOffsetY>
 </LoadoutStats>
 
 

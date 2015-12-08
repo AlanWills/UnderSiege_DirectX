@@ -45,7 +45,7 @@ void SelectWeaponScreen::AddInitialUI()
 	chooseWeapon->SetClickFunction([this]()
 	{
 		// Fill in the appropriate level
-		Transition(new GameplayScreen(GetScreenManager(), ""));
+		Transition(new GameplayScreen(GetScreenManager(), "GameplayScreenData.xml"));
 	});
 
 	AddScreenUIObject(chooseWeapon);

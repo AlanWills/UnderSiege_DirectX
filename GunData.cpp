@@ -25,8 +25,21 @@ const std::wstring GunData::GetDisplayName() const
 //-----------------------------------------------------------------------------------------------------------------------------------
 const char* GunData::GetGunTextureAsset() const
 {
-	const XMLElement* text = GetDocument()->RootElement()->FirstChildElement("GunTextureAsset");
-	return text->GetText();
+	return GetDocument()->RootElement()->FirstChildElement("GunTextureAsset")->GetText();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const char* GunData::GetMuzzleFlashTextureAsset() const
+{
+	return GetDocument()->RootElement()->FirstChildElement("MuzzleFlashTextureAsset")->GetText();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const char* GunData::GetBulletTrailTexureAsset() const
+{
+	return GetDocument()->RootElement()->FirstChildElement("BulletTrailTextureAsset")->GetText();
 }
 
 

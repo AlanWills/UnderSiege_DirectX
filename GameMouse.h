@@ -31,6 +31,8 @@ public:
 	/// \param Pass in the appropriate button to find whether it was pressed and released (clicked) or not
 	bool IsClicked(MouseButton mouseButton) { return m_mouseClickStates[mouseButton]; }
 
+	bool IsPressed(MouseButton mouseButton);
+
 private:
 	std::unique_ptr<Mouse> m_mouse;
 

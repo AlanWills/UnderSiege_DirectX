@@ -105,3 +105,20 @@ Vector2 GameMouse::GetInGamePosition()
 {
 	return ScreenManager::GetCamera().ScreenToGameCoords(GetLocalPosition());
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+bool GameMouse::IsPressed(MouseButton mouseButton)
+{
+	switch (mouseButton)
+	{
+		case MouseButton::kLeftButton:
+			return m_mouseButtonState->leftButton == Mouse::ButtonStateTracker::HELD;
+
+		case MouseButton::kMiddleButton:
+			return m_mouseButtonState->middleButton == Mouse::ButtonStateTracker::HELD;
+
+		case MouseButton::kRightButton:
+			return m_mouseButtonState->rightButton == Mouse::ButtonStateTracker::HELD;
+	}
+}

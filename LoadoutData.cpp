@@ -59,3 +59,14 @@ const char* LoadoutData::GetGunDataAsset() const
 {
 	return GetDocument()->RootElement()->FirstChildElement("GunDataAsset")->GetText();
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const Vector2 LoadoutData::GetBarrelOffset() const
+{
+	Vector2 barrelOffset(Vector2::Zero);
+	GetDocument()->RootElement()->FirstChildElement("BarrelOffsetX")->QueryFloatText(&barrelOffset.x);
+	GetDocument()->RootElement()->FirstChildElement("BarrelOffsetY")->QueryFloatText(&barrelOffset.y);
+
+	return barrelOffset;
+}

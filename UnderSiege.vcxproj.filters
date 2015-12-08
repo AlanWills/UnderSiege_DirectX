@@ -151,6 +151,12 @@
     <Filter Include="Header Files\Data and Content\Tilemap">
       <UniqueIdentifier>{3c0e83e6-97ee-4afa-96dc-49956014c8ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Effects">
+      <UniqueIdentifier>{ff0d1051-db86-4e61-a8d1-610736b9c14b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Effects">
+      <UniqueIdentifier>{933c2b05-ee29-4aa9-819c-b06bb831a7b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -197,9 +203,6 @@
     </ClInclude>
     <ClInclude Include="BaseScreenData.h">
       <Filter>Header Files\Data and Content\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseObjectData.h">
-      <Filter>Header Files\Data and Content\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Additional Components</Filter>
@@ -283,7 +286,10 @@
       <Filter>Header Files\Tilemap</Filter>
     </ClInclude>
     <ClInclude Include="GameplayScreenData.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Data and Content\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="GunFiringEffect.h">
+      <Filter>Header Files\Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +334,6 @@
     </ClCompile>
     <ClCompile Include="BaseScreenData.cpp">
       <Filter>Source Files\Data and Content\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseObjectData.cpp">
-      <Filter>Source Files\Data and Content\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Additional Components</Filter>
@@ -414,7 +417,10 @@
       <Filter>Source Files\Tilemap</Filter>
     </ClCompile>
     <ClCompile Include="GameplayScreenData.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Data and Content\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="GunFiringEffect.cpp">
+      <Filter>Source Files\Effects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,6 +462,12 @@
     <Image Include="HeavyGunnerChaingunFullSize.png">
       <Filter>Resource Files\Images\Guns</Filter>
     </Image>
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png">
+      <Filter>Resource Files\Images\UI</Filter>
+    </Image>
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png">
+      <Filter>Resource Files\Images\UI</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont">
@@ -479,6 +491,9 @@
       <Filter>Resource Files\XML\Guns</Filter>
     </Xml>
     <Xml Include="SelectWeaponScreen.xml">
+      <Filter>Resource Files\XML\Screens</Filter>
+    </Xml>
+    <Xml Include="GameplayScreenData.xml">
       <Filter>Resource Files\XML\Screens</Filter>
     </Xml>
   </ItemGroup>

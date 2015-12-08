@@ -6,10 +6,11 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 Gun::Gun(const Vector2& localPosition, const char* dataAsset, BaseObject* parent) :
-	GameObject(localPosition, dataAsset, LoadType::kNoLoad, parent),
+	GameObject(localPosition, dataAsset, LoadType::kData, parent),
 	m_gunData(new GunData(dataAsset)),
 	m_currentFireTimer(0),
-	m_fireTimer(0)
+	m_fireTimer(0),
+	m_muzzleFlash(nullptr)
 {
 }
 
@@ -29,6 +30,9 @@ void Gun::LoadContent(ID3D11Device* device)
 
 	assert(m_gunData.get());
 
+	// Create muzzle flash
+	// The local position for GunFiringEffect is not used to mark it's position - this is calculated later
+	m_muzzleFlash.reset(new GunFiringEffect(GetLocalPosition(), m_gunData->GetMuzzleFlashTextureAsset(), m_gunData->GetBulletTrailTexureAsset(), this));
 	m_muzzleFlash->LoadContent(device);
 }
 
@@ -40,7 +44,6 @@ void Gun::Initialize()
 
 	m_muzzleFlash->Initialize();
 	m_fireTimer = 1 / m_gunData->GetFireRate();
-	m_currentFireTimer = m_fireTimer;
 }
 
 
@@ -51,7 +54,7 @@ void Gun::Update(DX::StepTimer const& timer)
 
 	if (IsActive())
 	{
-		m_muzzleFlash->SetOpacity(MathUtils::LerpDown(m_muzzleFlash->GetOpacity(), 0, (float)timer.GetElapsedSeconds()));
+		m_muzzleFlash->Update(timer);
 		m_currentFireTimer += (float)timer.GetElapsedSeconds();
 	}
 }
@@ -60,7 +63,7 @@ void Gun::Update(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void Gun::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 {
-	GameObject::Draw(spriteBatch, spriteFont);
+	// No drawing for the gun
 
 	if (IsVisible())
 	{
@@ -74,21 +77,26 @@ void Gun::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
 	GameObject::HandleInput(timer, mousePosition);
 
-	if (ScreenManager::GetGameMouse().IsClicked(GameMouse::MouseButton::kLeftButton))
+	if (AcceptsInput())
 	{
-		if (m_currentFireTimer >= m_fireTimer)
+		if (ScreenManager::GetGameMouse().IsPressed(GameMouse::MouseButton::kLeftButton))
 		{
-			Fire();
+			if (m_currentFireTimer >= m_fireTimer)
+			{
+				Fire(mousePosition);
+			}
 		}
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Gun::Fire()
+void Gun::Fire(const Vector2& targetPosition)
 {
 	assert(m_currentFireTimer >= m_fireTimer);
-	m_muzzleFlash->SetOpacity(1);
+
+	m_muzzleFlash->OnGunFire(targetPosition);
+
 	m_currentFireTimer = 0;
 
 	// TO DO

@@ -29,7 +29,6 @@ m_localPosition(localPosition),
 m_localRotation(0),
 m_dataAsset(dataAsset),
 m_loadType(loadType),
-m_baseObjectData(nullptr),
 m_parent(parent),
 m_textureHandler(nullptr),
 m_size(size),
@@ -59,26 +58,12 @@ void BaseObject::LoadContent(ID3D11Device* device)
 	m_textureHandler.reset(new Texture2D());
 
 	// If we have set this flag to kNoLoad, we do not want to perform any loading of data or textures
-	if (m_loadType == kNoLoad)
+	if (m_loadType != kTexture)
 	{
 		return;
 	}
 
-	const char* textureAsset = "";
-
-	if (m_loadType == LoadType::kData)
-	{
-		m_baseObjectData.reset(new BaseObjectData());
-		m_baseObjectData->LoadData(m_dataAsset);
-
-		textureAsset = m_baseObjectData->GetTextureAsset();
-	}
-	else
-	{
-		textureAsset = m_dataAsset;
-	}
-	
-	const wchar_t* wTextureAsset = GenericUtils::CharToWChar(textureAsset);
+	const wchar_t* wTextureAsset = GenericUtils::CharToWChar(m_dataAsset);
 	m_textureHandler->Load(device, wTextureAsset);
 
 	assert(m_textureHandler->GetTexture());
@@ -96,6 +81,12 @@ void BaseObject::LoadContent(ID3D11Device* device)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void BaseObject::Initialize()
 {
+	// To catch any instances where this slips through the net (i.e. custom texture loading)
+	if (m_size == Vector2::Zero && m_textureHandler.get())
+	{
+		m_size = m_textureHandler->GetDimensions();
+	}
+
 	// All state variables for the object need to be set to true now that the object is about to be inserted into the game
 	Create();
 }

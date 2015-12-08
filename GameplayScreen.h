@@ -11,6 +11,10 @@ public:
 	~GameplayScreen();
 
 	void LoadContent() override;
+
+	/// \brief Do not want to add title or background to this screen
+	void AddInitialUI() override { }
+
 	void Initialize() override;
 	void Update(DX::StepTimer const& timer) override;
 	void DrawInGameObjects(SpriteBatch* spriteBatch, SpriteFont* spriteFont) override;

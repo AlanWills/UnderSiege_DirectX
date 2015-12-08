@@ -152,7 +152,6 @@
   <ItemGroup>
     <ClInclude Include="BaseData.h" />
     <ClInclude Include="BaseObject.h" />
-    <ClInclude Include="BaseObjectData.h" />
     <ClInclude Include="BaseObjectManager.h" />
     <ClInclude Include="BaseScreen.h" />
     <ClInclude Include="BaseScreenData.h" />
@@ -170,6 +169,7 @@
     <ClInclude Include="GenericUtils.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="GunData.h" />
+    <ClInclude Include="GunFiringEffect.h" />
     <ClInclude Include="GunUI.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="KeyboardInput.h" />
@@ -198,7 +198,6 @@
   <ItemGroup>
     <ClCompile Include="BaseData.cpp" />
     <ClCompile Include="BaseObject.cpp" />
-    <ClCompile Include="BaseObjectData.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
     <ClCompile Include="BaseScreenData.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -215,6 +214,7 @@
     <ClCompile Include="GenericUtils.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="GunData.cpp" />
+    <ClCompile Include="GunFiringEffect.cpp" />
     <ClCompile Include="GunUI.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
@@ -253,6 +253,8 @@
   <ItemGroup>
     <Image Include="Button.png" />
     <Image Include="cursor_blue.png" />
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png" />
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png" />
     <Image Include="directx.ico" />
     <Image Include="HeavyGunnerChaingunFullSize.png" />
     <Image Include="HeavyGunnerFullSize.png" />
@@ -267,6 +269,7 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="GameplayScreenData.xml" />
     <Xml Include="HeavyGunner.xml" />
     <Xml Include="HeavyGunnerChaingun.xml" />
     <Xml Include="MainMenuScreenData.xml" />

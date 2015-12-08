@@ -59,7 +59,10 @@ void BaseScreen::Initialize()
 	m_inGameUIObjects->Initialize();
 	m_screenUIObjects->Initialize();
 
-	m_background->Initialize();
+	if (m_background.get())
+	{
+		m_background->Initialize();
+	}
 
 	m_alive = true;
 	Show();
@@ -116,7 +119,12 @@ void BaseScreen::DrawBackground(SpriteBatch* spriteBatch, SpriteFont* spriteFont
 {
 	if (m_visible)
 	{
-		//m_background->Draw(spriteBatch, spriteFont);
+		/*
+		if (m_background.get())
+		{
+			m_background->Draw(spriteBatch, spriteFont);
+		}
+		*/
 	}
 }
 
