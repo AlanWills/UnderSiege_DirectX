@@ -4,6 +4,7 @@
 #include "ScreenManager.h"
 
 #include "Label.h"
+#include "Bar.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -49,10 +50,36 @@ void LoadoutUI::AddInitialUI()
 	AddUIObject(displayName);
 
 	// Add the loadout armour text
-	Label* armour = new Label(Vector2(0, 40), L"Armour: " + to_wstring(m_loadoutData->GetArmour()), displayName);
+	Label* armour = new Label(Vector2(0, 40), L"Armour", displayName);
 	AddUIObject(armour);
 
+	const float armourSizeMultiplier = 2.5f;
+
+	// Add the armour bar
+	float armourValue = static_cast<float>(m_loadoutData->GetArmour());
+	Bar* armourBar = new Bar(
+		armourValue,
+		Vector2(armourValue * armourSizeMultiplier, 20),
+		Vector2(armourValue * armourSizeMultiplier * 0.5f + 60, 0),
+		"ArmourBar.png", 
+		LoadType::kTexture, 
+		armour);
+	AddUIObject(armourBar);
+
 	// Add the loadout speed text
-	Label* speed = new Label(Vector2(0, 40), L"Speed: " + to_wstring(m_loadoutData->GetSpeed()), armour);
+	Label* speed = new Label(Vector2(0, 40), L"Speed", armour);
 	AddUIObject(speed);
+
+	const float speedSizeMultiplier = 0.5f;
+
+	// Add the speed bar
+	float speedValue = static_cast<float>(m_loadoutData->GetSpeed());
+	Bar* speedBar = new Bar(
+		speedValue,
+		Vector2(speedValue * speedSizeMultiplier, 20),
+		Vector2(speedValue * speedSizeMultiplier * 0.5f + 60, 0),
+		"SpeedBar.png",
+		LoadType::kTexture,
+		speed);
+	AddUIObject(speedBar);
 }

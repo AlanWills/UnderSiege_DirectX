@@ -201,6 +201,19 @@ const Vector2 BaseObject::GetWorldPosition() const
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
+const Vector2 BaseObject::GetWorldPosition(const Vector2& localPosition) const
+{
+	if (!m_parent)
+	{
+		return localPosition;
+	}
+
+	// Horrible, but like this for optimization purposes
+	return m_parent->GetWorldPosition() + Vector2::Transform(localPosition, Matrix::CreateRotationZ(GetWorldRotation()));
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 const float BaseObject::GetWorldRotation() const
 {
 	if (!m_parent)

@@ -83,6 +83,7 @@ public:
 	/// \brief Transform utility functions
 	/// GetWorldPosition cannot return a reference as we are returning the result of a calculation
 	const Vector2 GetWorldPosition() const;
+	const Vector2 GetWorldPosition(const Vector2& localPosition) const;
 	const float GetWorldRotation() const;
 
 	const Vector2& GetLocalPosition() const { return m_localPosition; }

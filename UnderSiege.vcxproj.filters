@@ -151,6 +151,27 @@
     <Filter Include="Header Files\Effects">
       <UniqueIdentifier>{933c2b05-ee29-4aa9-819c-b06bb831a7b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI\Game">
+      <UniqueIdentifier>{cbf1906c-a03b-46ab-958a-65b7a8f1c21c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\General">
+      <UniqueIdentifier>{639b7dee-0e02-491d-a3ec-5c8e3bac01fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\General">
+      <UniqueIdentifier>{b43438d0-8b94-431e-9e9a-c86c2e678fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Game">
+      <UniqueIdentifier>{2b5f04ac-7547-43c8-a37d-5104de4ca63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Images\UI\Game">
+      <UniqueIdentifier>{6c772cdc-967f-4807-9e4e-44e2a083840b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scripts">
+      <UniqueIdentifier>{52ec3cce-4e86-4290-b408-34bdb783ae42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts">
+      <UniqueIdentifier>{f2665d05-0ac8-4333-88e0-2a45c73a5c90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -183,9 +204,6 @@
     <ClInclude Include="GameMouse.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="KeyboardInput.h">
       <Filter>Header Files\Additional Components</Filter>
     </ClInclude>
@@ -209,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="CircleCollider.h">
       <Filter>Header Files\Physics\Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScreen.h">
       <Filter>Header Files\Screens</Filter>
@@ -249,20 +264,11 @@
     <ClInclude Include="SelectLoadoutScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadoutUI.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="SelectWeaponScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="GunData.h">
       <Filter>Header Files\Data and Content\Equipment</Filter>
-    </ClInclude>
-    <ClInclude Include="GunUI.h">
-      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameplayScreen.h">
       <Filter>Header Files\Screens</Filter>
@@ -284,6 +290,30 @@
     </ClInclude>
     <ClInclude Include="Gun.h">
       <Filter>Header Files\Equipment</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadoutUI.h">
+      <Filter>Header Files\UI\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GunUI.h">
+      <Filter>Header Files\UI\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\UI\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\UI\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
+      <Filter>Header Files\UI\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>Header Files\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,9 +344,6 @@
     <ClCompile Include="GameMouse.cpp">
       <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="KeyboardInput.cpp">
       <Filter>Source Files\Additional Components</Filter>
     </ClCompile>
@@ -340,9 +367,6 @@
     </ClCompile>
     <ClCompile Include="CircleCollider.cpp">
       <Filter>Source Files\Physics\Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="MainMenuScreen.cpp">
       <Filter>Source Files\Screens</Filter>
@@ -380,20 +404,11 @@
     <ClCompile Include="SelectLoadoutScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadoutUI.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="SelectWeaponScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
     <ClCompile Include="GunData.cpp">
       <Filter>Source Files\Data and Content\Equipment</Filter>
-    </ClCompile>
-    <ClCompile Include="GunUI.cpp">
-      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="GameplayScreen.cpp">
       <Filter>Source Files\Screens</Filter>
@@ -415,6 +430,30 @@
     </ClCompile>
     <ClCompile Include="Gun.cpp">
       <Filter>Source Files\Equipment</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\UI\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\UI\General</Filter>
+    </ClCompile>
+    <ClCompile Include="GunUI.cpp">
+      <Filter>Source Files\UI\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadoutUI.cpp">
+      <Filter>Source Files\UI\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Script.cpp">
+      <Filter>Source Files\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar.cpp">
+      <Filter>Source Files\UI\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,11 +495,20 @@
     <Image Include="HeavyGunnerChaingunFullSize.png">
       <Filter>Resource Files\Images\Guns</Filter>
     </Image>
-    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png">
+    <Image Include="SpeedBar.png">
       <Filter>Resource Files\Images\UI</Filter>
     </Image>
-    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png">
+    <Image Include="ArmourBar.png">
       <Filter>Resource Files\Images\UI</Filter>
+    </Image>
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png">
+      <Filter>Resource Files\Images\UI\Game</Filter>
+    </Image>
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png">
+      <Filter>Resource Files\Images\UI\Game</Filter>
+    </Image>
+    <Image Include="ChaingunBullet.png">
+      <Filter>Resource Files\Images\UI\Game</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

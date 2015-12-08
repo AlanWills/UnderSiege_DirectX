@@ -120,5 +120,8 @@ bool GameMouse::IsPressed(MouseButton mouseButton)
 
 		case MouseButton::kRightButton:
 			return m_mouseButtonState->rightButton == Mouse::ButtonStateTracker::HELD;
+			
+		default:
+			return false;
 	}
 }

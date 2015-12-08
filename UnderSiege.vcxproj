@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bar.h" />
     <ClInclude Include="BaseData.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BaseObjectManager.h" />
@@ -185,6 +186,8 @@
     <ClInclude Include="RectangleCollider.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="Script.h" />
+    <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="SelectLoadoutScreen.h" />
     <ClInclude Include="SelectWeaponScreen.h" />
     <ClInclude Include="StepTimer.h" />
@@ -196,6 +199,7 @@
     <ClInclude Include="UIObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bar.cpp" />
     <ClCompile Include="BaseData.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseScreen.cpp" />
@@ -236,6 +240,8 @@
     <ClCompile Include="RectangleCollider.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="Script.cpp" />
+    <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="SelectLoadoutScreen.cpp" />
     <ClCompile Include="SelectWeaponScreen.cpp" />
     <ClCompile Include="Texture2D.cpp" />
@@ -251,7 +257,9 @@
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="ArmourBar.png" />
     <Image Include="Button.png" />
+    <Image Include="ChaingunBullet.png" />
     <Image Include="cursor_blue.png" />
     <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png" />
     <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png" />
@@ -263,6 +271,7 @@
     <Image Include="SharpshooterFullSize.png" />
     <Image Include="SharpshooterGame.png" />
     <Image Include="ShrapnelMainMenuBackground.jpg" />
+    <Image Include="SpeedBar.png" />
     <Image Include="tribase-u3-d0.png" />
   </ItemGroup>
   <ItemGroup>
