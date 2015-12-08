@@ -11,8 +11,9 @@ public:
 	const std::wstring GetDisplayName() const;
 	const char* GetGunTextureAsset() const;
 	const char* GetMuzzleFlashTextureAsset() const;
-	const char* GetBulletTrailTexureAsset() const;
+	const char* GetBulletTexureAsset() const;
 	const int GetDamage() const;
 	const float GetFireRate() const;
 	const int GetMagazineSize() const;
+	const float GetBulletSpread() const;
 };

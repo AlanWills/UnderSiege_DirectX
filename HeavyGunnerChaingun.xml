@@ -3,8 +3,9 @@
   <DisplayName>Chaingun</DisplayName>
   <GunTextureAsset>HeavyGunnerChaingunFullSize.png</GunTextureAsset>
   <MuzzleFlashTextureAsset>MuzzleFlashGame.png</MuzzleFlashTextureAsset>
-  <BulletTrailTextureAsset>GunFiringAsset.png</BulletTrailTextureAsset>
+  <BulletTextureAsset>GunFiringAsset.png</BulletTextureAsset>
   <Damage>3</Damage>
   <FireRate>5</FireRate>
   <MagazineSize>32</MagazineSize>
+  <BulletSpread>0.1</BulletSpread>
 </Root>

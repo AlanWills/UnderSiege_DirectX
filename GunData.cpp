@@ -37,9 +37,9 @@ const char* GunData::GetMuzzleFlashTextureAsset() const
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const char* GunData::GetBulletTrailTexureAsset() const
+const char* GunData::GetBulletTexureAsset() const
 {
-	return GetDocument()->RootElement()->FirstChildElement("BulletTrailTextureAsset")->GetText();
+	return GetDocument()->RootElement()->FirstChildElement("BulletTextureAsset")->GetText();
 }
 
 
@@ -67,4 +67,13 @@ const int GunData::GetMagazineSize() const
 	int magazineSize = 0;
 	GetDocument()->RootElement()->FirstChildElement("MagazineSize")->QueryIntText(&magazineSize);
 	return magazineSize;
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const float GunData::GetBulletSpread() const
+{
+	float bulletSpread = 0;
+	GetDocument()->RootElement()->FirstChildElement("BulletSpread")->QueryFloatText(&bulletSpread);
+	return bulletSpread;
 }

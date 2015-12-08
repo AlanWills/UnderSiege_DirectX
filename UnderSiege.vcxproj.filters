@@ -52,9 +52,6 @@
     <Filter Include="Header Files\Data and Content\Screens">
       <UniqueIdentifier>{ff41fd39-8056-4cda-b376-1f8af5372d61}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Data and Content\Objects">
-      <UniqueIdentifier>{a331a1e3-9e5d-4075-b190-f973f39d256c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Data and Content\Screens">
       <UniqueIdentifier>{d23a9e57-861c-4803-a579-e1e40d9b5563}</UniqueIdentifier>
     </Filter>
@@ -102,9 +99,6 @@
     </Filter>
     <Filter Include="Header Files\Equipment">
       <UniqueIdentifier>{a53bcd6c-2ab9-48c3-97cf-d70fcb152f73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Data and Content\Objects">
-      <UniqueIdentifier>{fa59de94-2b33-4a75-a640-406662b27d18}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Data and Content\Equipment">
       <UniqueIdentifier>{b1ca32c7-5e24-4a36-8006-65a40db11b6c}</UniqueIdentifier>
@@ -273,9 +267,6 @@
     <ClInclude Include="GameplayScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Gun.h">
-      <Filter>Header Files\Data and Content\Equipment</Filter>
-    </ClInclude>
     <ClInclude Include="Tilemap.h">
       <Filter>Header Files\Tilemap</Filter>
     </ClInclude>
@@ -290,6 +281,9 @@
     </ClInclude>
     <ClInclude Include="GunFiringEffect.h">
       <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>Header Files\Equipment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -404,9 +398,6 @@
     <ClCompile Include="GameplayScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="Gun.cpp">
-      <Filter>Source Files\Data and Content\Equipment</Filter>
-    </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files\Tilemap</Filter>
     </ClCompile>
@@ -421,6 +412,9 @@
     </ClCompile>
     <ClCompile Include="GunFiringEffect.cpp">
       <Filter>Source Files\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Gun.cpp">
+      <Filter>Source Files\Equipment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
