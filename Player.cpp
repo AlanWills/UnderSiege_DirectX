@@ -20,7 +20,7 @@ Player::~Player()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void Player::Initialize()
 {
-	Character::Initialize();
+	ArmedCharacter::Initialize();
 
 	SetControllerAs<InputController>();
 }

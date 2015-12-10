@@ -36,6 +36,12 @@ void InputController::Update(DX::StepTimer const& timer)
 	{
 		LookAtWorldSpacePosition(mousePos);
 	}
+	else
+	{
+		// If we are very close to the mouse position, we do not want to move or rotate because it gives strange effects
+		m_player->GetRigidBody()->FullStop();
+		return;
+	}
 
 	// TODO
 	// Used to allow a strafing behaviour for A and D
