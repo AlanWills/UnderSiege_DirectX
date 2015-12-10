@@ -1,15 +1,16 @@
 #include "pch.h"
-#include "ScriptManager.h"
+
+#include "Enemy.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScriptManager::ScriptManager(BaseScreen* baseScreen) :
-	m_baseScreen(baseScreen)
+Enemy::Enemy(const Vector2& localPosition, const char* loadoutDataAsset, BaseObject* parent) :
+	ArmedCharacter(localPosition, loadoutDataAsset, parent)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-ScriptManager::~ScriptManager()
+Enemy::~Enemy()
 {
 }

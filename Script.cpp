@@ -8,7 +8,8 @@ Script::Script(const bool shouldUpdateGame, const bool canRun) :
 	m_shouldUpdateGame(shouldUpdateGame),
 	m_running(false),
 	m_completed(false),
-	m_timeRunFor(0)
+	m_timeRunFor(0),
+	m_previousScript(nullptr)
 {
 }
 
@@ -20,11 +21,11 @@ Script::~Script()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Script::SetCanRunOnScriptCompleted(const Script& previousScript)
+void Script::SetCanRunOnScriptCompleted(const Script* previousScript)
 {
-	m_canRunFunction = [](const Script& previousScript)
+	m_canRunFunction = [](const Script* previousScript)
 	{
-		return previousScript.IsCompleted();
+		return previousScript->IsCompleted();
 	};
 }
 
@@ -39,7 +40,8 @@ const bool Script::CanRun()
 
 	if (m_canRunFunction)
 	{
-		return m_canRunFunction();
+		assert(m_previousScript);
+		return m_canRunFunction(m_previousScript);
 	}
 
 	return m_canRun;

@@ -67,8 +67,11 @@ public:
 	}
 
 private:
-	std::list<std::unique_ptr<T>> m_activeObjects;
-	std::list<std::unique_ptr<T>> m_objectsToDelete;
+	/// \brief Typedefs
+	typedef std::list<std::unique_ptr<T>> Objects;
+
+	Objects m_activeObjects;
+	Objects m_objectsToDelete;
 
 	Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 };

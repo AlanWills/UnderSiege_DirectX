@@ -315,6 +315,18 @@
     <ClInclude Include="ScriptManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Character Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Squadmate.h">
+      <Filter>Header Files\Character Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmedCharacter.h">
+      <Filter>Header Files\Character Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SquadmateController.h">
+      <Filter>Header Files\Character Objects\Controllers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -454,6 +466,18 @@
     </ClCompile>
     <ClCompile Include="Bar.cpp">
       <Filter>Source Files\UI\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Character Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Squadmate.cpp">
+      <Filter>Source Files\Character Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmedCharacter.cpp">
+      <Filter>Source Files\Character Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SquadmateController.cpp">
+      <Filter>Source Files\Character Objects\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

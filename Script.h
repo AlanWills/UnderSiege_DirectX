@@ -10,7 +10,7 @@ public:
 
 public:
 	/// \brief Sets this script to run when the inputted script is done 
-	void SetCanRunOnScriptCompleted(const Script& previousScript);
+	void SetCanRunOnScriptCompleted(const Script* previousScript);
 
 	/// \brief Loads and Initializes
 	virtual void LoadAndInit(ID3D11Device* device) = 0;
@@ -69,6 +69,7 @@ private:
 	float m_timeRunFor;
 
 	// A custom function for specifying when a script should run
-	std::function<bool()> m_canRunFunction;
+	std::function<bool(const Script* script)> m_canRunFunction;
+	Script* m_previousScript;
 };
 

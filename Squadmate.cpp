@@ -1,26 +1,26 @@
 #include "pch.h"
 
-#include "Player.h"
-#include "InputController.h"
+#include "Squadmate.h"
+#include "SquadmateController.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Player::Player(const Vector2& localPosition, const char* loadoutDataAsset, BaseObject* parent)
-	: ArmedCharacter(localPosition, loadoutDataAsset, parent)
+Squadmate::Squadmate(const Vector2& localPosition, const char* loadoutDataAsset, BaseObject* parent) :
+	ArmedCharacter(localPosition, loadoutDataAsset, parent)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Player::~Player()
+Squadmate::~Squadmate()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Player::Initialize()
+void Squadmate::Initialize()
 {
-	Character::Initialize();
+	ArmedCharacter::Initialize();
 
-	SetControllerAs<InputController>();
+	SetControllerAs<SquadmateController>();
 }

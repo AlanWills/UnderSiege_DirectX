@@ -1,26 +1,27 @@
 #include "pch.h"
 
-#include "Player.h"
-#include "InputController.h"
+#include "SquadmateController.h"
+#include "Squadmate.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Player::Player(const Vector2& localPosition, const char* loadoutDataAsset, BaseObject* parent)
-	: ArmedCharacter(localPosition, loadoutDataAsset, parent)
+SquadmateController::SquadmateController(Character* squadmate) :
+	Controller(squadmate),
+	m_squadmate(nullptr)
+{
+	m_squadmate = dynamic_cast<Squadmate*>(squadmate);
+	assert(m_squadmate);
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+SquadmateController::~SquadmateController()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Player::~Player()
+void SquadmateController::Update(DX::StepTimer const& timer)
 {
-}
 
-
-//-----------------------------------------------------------------------------------------------------------------------------------
-void Player::Initialize()
-{
-	Character::Initialize();
-
-	SetControllerAs<InputController>();
 }

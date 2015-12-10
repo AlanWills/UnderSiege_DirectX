@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArmedCharacter.h" />
     <ClInclude Include="Bar.h" />
     <ClInclude Include="BaseData.h" />
     <ClInclude Include="BaseObject.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMouse.h" />
     <ClInclude Include="GameObject.h" />
@@ -190,6 +192,8 @@
     <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="SelectLoadoutScreen.h" />
     <ClInclude Include="SelectWeaponScreen.h" />
+    <ClInclude Include="Squadmate.h" />
+    <ClInclude Include="SquadmateController.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Tile.h" />
@@ -199,6 +203,7 @@
     <ClInclude Include="UIObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArmedCharacter.cpp" />
     <ClCompile Include="Bar.cpp" />
     <ClCompile Include="BaseData.cpp" />
     <ClCompile Include="BaseObject.cpp" />
@@ -210,6 +215,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMouse.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -244,6 +250,8 @@
     <ClCompile Include="ScriptManager.cpp" />
     <ClCompile Include="SelectLoadoutScreen.cpp" />
     <ClCompile Include="SelectWeaponScreen.cpp" />
+    <ClCompile Include="Squadmate.cpp" />
+    <ClCompile Include="SquadmateController.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tilemap.cpp" />
