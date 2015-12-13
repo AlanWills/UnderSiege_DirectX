@@ -11,6 +11,7 @@ public:
 	virtual ~Controller();
 
 	void virtual Update(DX::StepTimer const& timer) = 0;
+	void virtual HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) = 0;
 
 	/// \brief Utility functions for position the character
 	void LookInLocalSpaceDirection(const Vector2& localSpaceDir);

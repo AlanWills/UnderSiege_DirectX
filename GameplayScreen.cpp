@@ -12,8 +12,9 @@ GameplayScreen::GameplayScreen(ScreenManager* screenManager, const char* levelDa
 	BaseScreen(screenManager, levelDataAsset),
 	m_tilemap(nullptr)
 {
-	AddGameObject(new Player(GetScreenCentre(), "HeavyGunner.xml"));
-	//AddGameObject(new Squadmate(Vector2(500, 500), "HeavyGunner.xml"));
+	Player* player = new Player(GetScreenCentre(), "HeavyGunner.xml");
+	AddGameObject(player);
+	AddGameObject(new Squadmate(player, Vector2(500, 500), "HeavyGunner.xml"));
 }
 
 

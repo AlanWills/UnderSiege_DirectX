@@ -25,3 +25,15 @@ void Character::Update(DX::StepTimer const& timer)
 		m_characterController->Update(timer);
 	}
 }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+void Character::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) 
+{
+	GameObject::HandleInput(timer, mousePosition);
+
+	if (AcceptsInput())
+	{
+		m_characterController->HandleInput(timer, mousePosition);
+	}
+}

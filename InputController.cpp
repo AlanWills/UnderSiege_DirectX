@@ -26,15 +26,20 @@ InputController::~InputController()
 //-----------------------------------------------------------------------------------------------------------------------------------
 void InputController::Update(DX::StepTimer const& timer)
 {
+	
+}
+
+
+void InputController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
+{
 	KeyboardInput& keyboard = ScreenManager::GetKeyboardInput();
 
-	Vector2 mousePos = ScreenManager::GetGameMouse().GetInGamePosition();
 	Vector2 diff(Vector2::Zero);
 
 	// Orient the object at the mouse position
-	if ((mousePos - m_player->GetWorldPosition()).Length() >= 35)
+	if ((mousePosition - m_player->GetWorldPosition()).Length() >= 35)
 	{
-		LookAtWorldSpacePosition(mousePos);
+		LookAtWorldSpacePosition(mousePosition);
 	}
 	else
 	{
