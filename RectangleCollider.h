@@ -8,7 +8,7 @@ public:
 	RectangleCollider(BaseObject* parent);
 	~RectangleCollider();
 
-	bool CheckCollisionWith(Vector2 point) override;
+	bool CheckCollisionWith(const Vector2& point) override;
 
 private:
 	void UpdateColliderBounds() override;

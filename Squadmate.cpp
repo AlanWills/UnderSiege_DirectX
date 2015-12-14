@@ -2,7 +2,9 @@
 
 #include "Player.h"
 #include "Squadmate.h"
-#include "SquadmateController.h"
+
+#include "SquadmateMovementController.h"
+#include "SquadmateWeaponController.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -24,6 +26,8 @@ void Squadmate::Initialize()
 {
 	ArmedCharacter::Initialize();
 
-	SetControllerAs<SquadmateController>();
-	GetControllerAs<SquadmateController>()->SetFollowDestination(&(m_player->GetLocalPosition()));
+	SquadmateMovementController* controller = SetMovementControllerAs<SquadmateMovementController>();
+	controller->SetFollowDestination(&(m_player->GetLocalPosition()));
+
+	SetWeaponControllerAs<SquadmateWeaponController>();
 }

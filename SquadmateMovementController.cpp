@@ -2,17 +2,18 @@
 
 #include "ScreenManager.h"
 
-#include "SquadmateController.h"
+#include "SquadmateMovementController.h"
 #include "Squadmate.h"
+#include "Player.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-SquadmateController::SquadmateController(Character* squadmate) :
-	Controller(squadmate),
+SquadmateMovementController::SquadmateMovementController(Character* squadmate) :
+	MovementController(squadmate),
 	m_squadmate(nullptr),
 	m_followDestination(nullptr),
 	m_moveDestination(squadmate->GetWorldPosition()),
-	m_currentBehaviour(kMove)
+	m_currentBehaviour(kFollow)
 {
 	m_squadmate = dynamic_cast<Squadmate*>(squadmate);
 	assert(m_squadmate);
@@ -20,13 +21,13 @@ SquadmateController::SquadmateController(Character* squadmate) :
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-SquadmateController::~SquadmateController()
+SquadmateMovementController::~SquadmateMovementController()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void SquadmateController::Update(DX::StepTimer const& timer)
+void SquadmateMovementController::Update(DX::StepTimer const& timer)
 {
 	switch (m_currentBehaviour)
 	{
@@ -39,31 +40,46 @@ void SquadmateController::Update(DX::StepTimer const& timer)
 			break;
 		
 		default:
-			return;
+			break;
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void SquadmateController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
+void SquadmateMovementController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
+	if (ScreenManager::GetKeyboardInput().IsKeyPressed(Keyboard::F))
+	{
+		if (m_squadmate->GetPlayer()->GetCollider()->CheckCollisionWith(mousePosition))
+		{
+			m_currentBehaviour = kFollow;
+		}
+		else
+		{
+			m_moveDestination = mousePosition;
+			m_currentBehaviour = kMove;
+		}
+	}
+
+	// State dependent code here
 	switch (m_currentBehaviour)
 	{
+		case kFollow:
+
+			break;
+
 		case kMove:
-			if (ScreenManager::GetKeyboardInput().IsKeyPressed(Keyboard::F))
-			{
-				m_moveDestination = mousePosition;
-			}
+			
 			break;
 
 		default:
-			return;
+			break;
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void SquadmateController::Follow()
+void SquadmateMovementController::Follow()
 {
 	assert(m_followDestination);
 
@@ -83,7 +99,7 @@ void SquadmateController::Follow()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void SquadmateController::Move()
+void SquadmateMovementController::Move()
 {
 	float distanceToDestSquared = Vector2::DistanceSquared(m_squadmate->GetWorldPosition(), m_moveDestination);
 	if (distanceToDestSquared <= 30 * 30)

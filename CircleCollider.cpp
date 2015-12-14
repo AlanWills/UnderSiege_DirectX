@@ -28,7 +28,7 @@ void CircleCollider::UpdateColliderBounds()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-bool CircleCollider::CheckCollisionWith(Vector2 point)
+bool CircleCollider::CheckCollisionWith(const Vector2& point)
 {
 	ContainmentType containmentType = m_boundingSphere.Contains(point);
 	return containmentType != ContainmentType::DISJOINT;

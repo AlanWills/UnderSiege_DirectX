@@ -1,7 +1,8 @@
 #include "pch.h"
 
 #include "Player.h"
-#include "InputController.h"
+#include "InputMovementController.h"
+#include "InputWeaponController.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -22,5 +23,6 @@ void Player::Initialize()
 {
 	ArmedCharacter::Initialize();
 
-	SetControllerAs<InputController>();
+	SetMovementControllerAs<InputMovementController>();
+	SetWeaponControllerAs<InputWeaponController>();
 }

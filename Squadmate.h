@@ -12,6 +12,8 @@ public:
 
 	void Initialize() override;
 
+	const Player* GetPlayer() const { return m_player; }
+
 private:
 	const Player* m_player;
 };

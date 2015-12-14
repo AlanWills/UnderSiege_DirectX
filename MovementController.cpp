@@ -1,24 +1,24 @@
 #include "pch.h"
 
-#include "Controller.h"
+#include "MovementController.h"
 #include "Character.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Controller::Controller(Character* parent) :
+MovementController::MovementController(Character* parent) :
 	m_parent(parent)
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-Controller::~Controller()
+MovementController::~MovementController()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Controller::LookInLocalSpaceDirection(const Vector2& localSpaceDir)
+void MovementController::LookInLocalSpaceDirection(const Vector2& localSpaceDir)
 {
 	XMVECTOR angles = XMVector2AngleBetweenVectors(Vector2(0, -1), localSpaceDir);
 	m_parent->SetLocalRotation(XMVectorGetZ(angles));
@@ -26,7 +26,7 @@ void Controller::LookInLocalSpaceDirection(const Vector2& localSpaceDir)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Controller::LookAtLocalSpacePosition(const Vector2& localSpacePosition)
+void MovementController::LookAtLocalSpacePosition(const Vector2& localSpacePosition)
 {
 	XMVECTOR angles = XMVector2AngleBetweenVectors(Vector2(0, -1), localSpacePosition);
 	m_parent->SetLocalRotation(XMVectorGetZ(angles));
@@ -34,7 +34,7 @@ void Controller::LookAtLocalSpacePosition(const Vector2& localSpacePosition)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Controller::LookInWorldSpaceDirection(const Vector2& worldSpaceDir)
+void MovementController::LookInWorldSpaceDirection(const Vector2& worldSpaceDir)
 {
 	// If the object this controller is attached to has a parent, return it's world rotation, otherwise just set it to 0
 	float parentWorldRotation = m_parent->GetParent() ? m_parent->GetParent()->GetWorldRotation() : 0;
@@ -48,7 +48,7 @@ void Controller::LookInWorldSpaceDirection(const Vector2& worldSpaceDir)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Controller::LookAtWorldSpacePosition(const Vector2& worldSpacePosition)
+void MovementController::LookAtWorldSpacePosition(const Vector2& worldSpacePosition)
 {
 	// If the object this controller is attached to has a parent, return it's world rotation, otherwise just set it to 0
 	float parentWorldRotation = m_parent->GetParent() ? m_parent->GetParent()->GetWorldRotation() : 0;
@@ -61,14 +61,14 @@ void Controller::LookAtWorldSpacePosition(const Vector2& worldSpacePosition)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const Vector2 Controller::GetLocalLookDirection() const
+const Vector2 MovementController::GetLocalLookDirection() const
 {
 	return Vector2::TransformNormal(Vector2(0, -1), Matrix::CreateRotationZ(m_parent->GetLocalRotation()));
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-const Vector2 Controller::GetWorldLookDirection() const
+const Vector2 MovementController::GetWorldLookDirection() const
 {
 	return Vector2::TransformNormal(Vector2(0, -1), Matrix::CreateRotationZ(m_parent->GetWorldRotation()));
 }

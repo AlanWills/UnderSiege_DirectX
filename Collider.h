@@ -12,7 +12,7 @@ public:
 	Collider(BaseObject* m_parent);
 	virtual ~Collider();
 
-	virtual bool CheckCollisionWith(Vector2 point) = 0;
+	virtual bool CheckCollisionWith(const Vector2& point) = 0;
 
 protected:
 	const BaseObject* GetParent() const { return m_parent; }

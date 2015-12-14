@@ -18,11 +18,15 @@ public:
 	void Initialize() override;
 	void Update(DX::StepTimer const& timer) override;
 	void Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont) override;
-	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;
+
+	/// \brief Checks whether the gun can be fired.  If it can, fires the gun, reset fire timers and change muzzle flash opacity.
+	void Fire();
 
 private:
-	/// \brief Fire the gun.  Spawn a bullet, reset fire timers and change muzzle flash opacity
-	void Fire();
+	/// \brief Returns whether this gun can fire
+	const bool CanFire() const;
+
+	/// \brief  Spawn a bullet
 	void SpawnBullet();
 
 	std::unique_ptr<GunData> m_gunData;

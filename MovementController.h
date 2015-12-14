@@ -4,11 +4,11 @@
 
 class Character;
 
-class Controller
+class MovementController
 {
 public:
-	Controller(Character* parent);
-	virtual ~Controller();
+	MovementController(Character* parent);
+	virtual ~MovementController();
 
 	void virtual Update(DX::StepTimer const& timer) = 0;
 	void virtual HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) = 0;

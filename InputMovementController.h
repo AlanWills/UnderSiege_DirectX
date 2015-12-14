@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Controller.h"
+#include "MovementController.h"
 
 class Player;
 
-class InputController : public Controller
+class InputMovementController : public MovementController
 {
 public:
-	InputController(Character* parent);
-	~InputController();
+	InputMovementController(Character* parent);
+	~InputMovementController();
 
 	void Update(DX::StepTimer const& timer) override;
 	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;

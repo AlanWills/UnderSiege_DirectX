@@ -106,7 +106,7 @@ public:
 	const float GetOpacity() const { return m_opacity; }
 	void SetOpacity(const float opacity) { m_opacity = opacity; }
 
-	const Collider* GetCollider() const { return m_collider.get(); }
+	Collider* GetCollider() const { return m_collider.get(); }
 
 protected:
 	const char* GetDataAsset() const { return m_dataAsset; }

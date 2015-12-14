@@ -79,26 +79,14 @@ void Gun::Draw(SpriteBatch* spriteBatch, SpriteFont* spriteFont)
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void Gun::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
-{
-	GameObject::HandleInput(timer, mousePosition);
-
-	if (AcceptsInput())
-	{
-		if (ScreenManager::GetGameMouse().IsPressed(GameMouse::MouseButton::kLeftButton))
-		{
-			if (m_currentFireTimer >= m_fireTimer)
-			{
-				Fire();
-			}
-		}
-	}
-}
-
-
-//-----------------------------------------------------------------------------------------------------------------------------------
 void Gun::Fire()
 {
+	if (!CanFire())
+	{
+		// We cannot fire so do not continue
+		return;
+	}
+
 	assert(m_currentFireTimer >= m_fireTimer);
 
 	m_muzzleFlash->OnGunFire();
@@ -107,6 +95,13 @@ void Gun::Fire()
 
 	// Spawn bullet - would be better to clone rather than load from scratch here
 	SpawnBullet();
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+const bool Gun::CanFire() const
+{
+	return m_currentFireTimer >= m_fireTimer;
 }
 
 

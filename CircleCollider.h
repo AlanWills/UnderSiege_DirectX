@@ -8,7 +8,7 @@ public:
 	CircleCollider(BaseObject* parent);
 	~CircleCollider();
 
-	bool CheckCollisionWith(Vector2 point) override;
+	bool CheckCollisionWith(const Vector2& point) override;
 
 private:
 	void UpdateColliderBounds();

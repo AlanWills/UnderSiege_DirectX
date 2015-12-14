@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Controller.h"
+#include "MovementController.h"
 
 class Squadmate;
 
-class SquadmateController : public Controller
+class SquadmateMovementController : public MovementController
 {
 public:
 	enum MoveBehaviour
@@ -15,8 +15,8 @@ public:
 		kFlee,
 	};
 
-	SquadmateController(Character* parent);
-	~SquadmateController();
+	SquadmateMovementController(Character* parent);
+	~SquadmateMovementController();
 
 	void Update(DX::StepTimer const& timer) override;
 	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;

@@ -2,14 +2,14 @@
 
 #include "ScreenManager.h"
 #include "KeyboardInput.h"
-#include "InputController.h"
+#include "InputMovementController.h"
 
 #include "Player.h"
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-InputController::InputController(Character* parent) :
-	Controller(parent),
+InputMovementController::InputMovementController(Character* parent) :
+	MovementController(parent),
 	m_player(nullptr)
 {
 	m_player = dynamic_cast<Player*>(parent);
@@ -18,19 +18,19 @@ InputController::InputController(Character* parent) :
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-InputController::~InputController()
+InputMovementController::~InputMovementController()
 {
 }
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void InputController::Update(DX::StepTimer const& timer)
+void InputMovementController::Update(DX::StepTimer const& timer)
 {
 	
 }
 
 
-void InputController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
+void InputMovementController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
 	KeyboardInput& keyboard = ScreenManager::GetKeyboardInput();
 

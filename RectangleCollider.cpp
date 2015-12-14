@@ -32,7 +32,7 @@ void RectangleCollider::UpdateColliderBounds()
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-bool RectangleCollider::CheckCollisionWith(Vector2 point)
+bool RectangleCollider::CheckCollisionWith(const Vector2& point)
 {
 	UpdateColliderBounds();
 

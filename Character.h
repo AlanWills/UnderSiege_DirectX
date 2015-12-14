@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "Controller.h"
+#include "MovementController.h"
 
 class Character : public GameObject
 {
@@ -12,29 +12,31 @@ public:
 	void Update(DX::StepTimer const& timer) override;
 	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;
 
-	template <typename T>
-	void SetControllerAs();
-
-	template <typename T>
-	T* GetControllerAs() const;
-
 protected:
-	const Controller* GetController() const { return m_characterController.get(); }
+	/// \brief Returns a pointer to the newly set up movement controller
+	template <typename T>
+	T* SetMovementControllerAs();
+
+	template <typename T>
+	T* GetMovementControllerAs() const;
+
+	const MovementController* GetMovementController() const { return m_characterController.get(); }
 
 private:
-	std::unique_ptr<Controller> m_characterController;
+	std::unique_ptr<MovementController> m_characterController;
 };
 
 
 template <typename T>
-void Character::SetControllerAs()
+T* Character::SetMovementControllerAs()
 {
 	m_characterController.reset(new T(this));
+	return dynamic_cast<T*>(m_characterController.get());
 }
 
 
 template <typename T>
-T* Character::GetControllerAs() const
+T* Character::GetMovementControllerAs() const
 {
 	return dynamic_cast<T*>(m_characterController.get());
 }

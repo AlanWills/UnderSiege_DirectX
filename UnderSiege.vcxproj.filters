@@ -82,12 +82,6 @@
     <Filter Include="Source Files\Character Objects">
       <UniqueIdentifier>{a6d40323-5590-4c68-b651-54a506788832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character Objects\Controllers">
-      <UniqueIdentifier>{218f1bb9-6775-433e-bc14-9748e1767328}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Character Objects\Controllers">
-      <UniqueIdentifier>{d6ee13d6-f91e-48da-bc5b-803c7aa07881}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Maths">
       <UniqueIdentifier>{b6ed5111-e130-4dd6-8c08-3d5b7faa424e}</UniqueIdentifier>
     </Filter>
@@ -172,6 +166,18 @@
     <Filter Include="Source Files\Scripts">
       <UniqueIdentifier>{f2665d05-0ac8-4333-88e0-2a45c73a5c90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Character Objects\Movement Controllers">
+      <UniqueIdentifier>{d6ee13d6-f91e-48da-bc5b-803c7aa07881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character Objects\Movement Controllers">
+      <UniqueIdentifier>{218f1bb9-6775-433e-bc14-9748e1767328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character Objects\Weapon Controllers">
+      <UniqueIdentifier>{b9a0eb95-bc99-4c1e-bc90-f540b21c708d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character Objects\Weapon Controllers">
+      <UniqueIdentifier>{00698b98-01c2-4581-aebe-8cfdcd13bc34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -239,12 +245,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Character Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>Header Files\Character Objects\Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="InputController.h">
-      <Filter>Header Files\Character Objects\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="MathUtils.h">
       <Filter>Header Files\Maths</Filter>
@@ -324,8 +324,23 @@
     <ClInclude Include="ArmedCharacter.h">
       <Filter>Header Files\Character Objects</Filter>
     </ClInclude>
-    <ClInclude Include="SquadmateController.h">
-      <Filter>Header Files\Character Objects\Controllers</Filter>
+    <ClInclude Include="MovementController.h">
+      <Filter>Header Files\Character Objects\Movement Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputMovementController.h">
+      <Filter>Header Files\Character Objects\Movement Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SquadmateMovementController.h">
+      <Filter>Header Files\Character Objects\Movement Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponController.h">
+      <Filter>Header Files\Character Objects\Weapon Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputWeaponController.h">
+      <Filter>Header Files\Character Objects\Weapon Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SquadmateWeaponController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -391,12 +406,6 @@
     </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <Filter>Source Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>Source Files\Character Objects\Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="InputController.cpp">
-      <Filter>Source Files\Character Objects\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="MathUtils.cpp">
       <Filter>Source Files\Maths</Filter>
@@ -476,8 +485,23 @@
     <ClCompile Include="ArmedCharacter.cpp">
       <Filter>Source Files\Character Objects</Filter>
     </ClCompile>
-    <ClCompile Include="SquadmateController.cpp">
-      <Filter>Source Files\Character Objects\Controllers</Filter>
+    <ClCompile Include="MovementController.cpp">
+      <Filter>Source Files\Character Objects\Movement Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputMovementController.cpp">
+      <Filter>Source Files\Character Objects\Movement Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SquadmateMovementController.cpp">
+      <Filter>Source Files\Character Objects\Movement Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponController.cpp">
+      <Filter>Source Files\Character Objects\Weapon Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputWeaponController.cpp">
+      <Filter>Source Files\Character Objects\Weapon Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SquadmateWeaponController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

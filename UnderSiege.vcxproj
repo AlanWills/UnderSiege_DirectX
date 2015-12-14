@@ -160,7 +160,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="Controller.h" />
+    <ClInclude Include="InputWeaponController.h" />
+    <ClInclude Include="MovementController.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
@@ -174,7 +175,7 @@
     <ClInclude Include="GunData.h" />
     <ClInclude Include="GunFiringEffect.h" />
     <ClInclude Include="GunUI.h" />
-    <ClInclude Include="InputController.h" />
+    <ClInclude Include="InputMovementController.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Loadout.h" />
@@ -193,7 +194,8 @@
     <ClInclude Include="SelectLoadoutScreen.h" />
     <ClInclude Include="SelectWeaponScreen.h" />
     <ClInclude Include="Squadmate.h" />
-    <ClInclude Include="SquadmateController.h" />
+    <ClInclude Include="SquadmateMovementController.h" />
+    <ClInclude Include="SquadmateWeaponController.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Tile.h" />
@@ -201,6 +203,7 @@
     <ClInclude Include="TilemapData.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UIObject.h" />
+    <ClInclude Include="WeaponController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArmedCharacter.cpp" />
@@ -212,7 +215,8 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="InputWeaponController.cpp" />
+    <ClCompile Include="MovementController.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -226,7 +230,7 @@
     <ClCompile Include="GunData.cpp" />
     <ClCompile Include="GunFiringEffect.cpp" />
     <ClCompile Include="GunUI.cpp" />
-    <ClCompile Include="InputController.cpp" />
+    <ClCompile Include="InputMovementController.cpp" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Loadout.cpp" />
@@ -251,7 +255,8 @@
     <ClCompile Include="SelectLoadoutScreen.cpp" />
     <ClCompile Include="SelectWeaponScreen.cpp" />
     <ClCompile Include="Squadmate.cpp" />
-    <ClCompile Include="SquadmateController.cpp" />
+    <ClCompile Include="SquadmateMovementController.cpp" />
+    <ClCompile Include="SquadmateWeaponController.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tilemap.cpp" />
@@ -260,6 +265,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UIObject.cpp" />
+    <ClCompile Include="WeaponController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
