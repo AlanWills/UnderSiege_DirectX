@@ -20,6 +20,15 @@ public:
 
 	void HandleInput(DX::StepTimer const& timer) override;
 
+	static const std::vector<const char*>& GetLoadoutAssets()
+	{
+		static std::vector<const char*> m_loadoutDataAssets;
+		m_loadoutDataAssets.push_back("HeavyGunner.xml");
+		m_loadoutDataAssets.push_back("Sharpshooter.xml");
+
+		return m_loadoutDataAssets;
+	}
+
 private:
 	/// \brief Toggles the states of the loadouts so that only the current loadout UI is active, visible and accepts input
 	void OnCurrentLoadoutChanged();
@@ -28,7 +37,6 @@ private:
 	typedef std::vector<std::unique_ptr<LoadoutUI>> LoadoutUIs;
 
 	LoadoutUIs m_loadoutUI;
-	std::vector<const char*> m_loadoutDataAssets;
 	int m_numLoadouts;
 
 	int m_currentLoadout;

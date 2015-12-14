@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "GameplayScreen.h"
+#include "SelectLoadoutScreen.h"
 #include "ScreenManager.h"
 
 #include "Player.h"
@@ -8,13 +9,20 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-GameplayScreen::GameplayScreen(ScreenManager* screenManager, const char* levelDataAsset) :
+GameplayScreen::GameplayScreen(const char* loadoutAsset, ScreenManager* screenManager, const char* levelDataAsset) :
 	BaseScreen(screenManager, levelDataAsset),
 	m_tilemap(nullptr)
 {
-	Player* player = new Player(GetScreenCentre(), "HeavyGunner.xml");
+	Player* player = new Player(GetScreenCentre(), loadoutAsset);
 	AddGameObject(player);
-	AddGameObject(new Squadmate(player, Vector2(500, 500), "HeavyGunner.xml"));
+
+	for (const char* asset : SelectLoadoutScreen::GetLoadoutAssets())
+	{
+		if (asset != loadoutAsset)
+		{
+			AddGameObject(new Squadmate(player, Vector2(500, 500), asset));
+		}
+	}
 }
 
 

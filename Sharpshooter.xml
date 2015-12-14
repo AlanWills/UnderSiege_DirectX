@@ -3,7 +3,9 @@
   <DisplayName>Sharpshooter</DisplayName>
   <UITextureAsset>SharpshooterFullSize.png</UITextureAsset>
   <GameTextureAsset>SharpshooterGame.png</GameTextureAsset>
-  <Speed>500</Speed>
-  <Armour>40</Armour>
-  <GunDataAsset></GunDataAsset>
+  <Speed>250</Speed>
+  <Armour>50</Armour>
+  <GunDataAsset>SharpshooterSniperRifle.xml</GunDataAsset>
+  <BarrelOffsetX>-3</BarrelOffsetX>
+  <BarrelOffsetY>-45</BarrelOffsetY>
 </LoadoutStats>

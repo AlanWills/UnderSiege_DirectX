@@ -340,7 +340,7 @@
       <Filter>Header Files\Character Objects\Weapon Controllers</Filter>
     </ClInclude>
     <ClInclude Include="SquadmateWeaponController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Character Objects\Weapon Controllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -501,7 +501,7 @@
       <Filter>Source Files\Character Objects\Weapon Controllers</Filter>
     </ClCompile>
     <ClCompile Include="SquadmateWeaponController.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Character Objects\Weapon Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -558,6 +558,9 @@
     <Image Include="ChaingunBullet.png">
       <Filter>Resource Files\Images\UI\Game</Filter>
     </Image>
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\SharpshooterSniperRifleFullSize.png">
+      <Filter>Resource Files\Images\Guns</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont">
@@ -585,6 +588,9 @@
     </Xml>
     <Xml Include="GameplayScreenData.xml">
       <Filter>Resource Files\XML\Screens</Filter>
+    </Xml>
+    <Xml Include="SharpshooterSniperRifle.xml">
+      <Filter>Resource Files\XML\Guns</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

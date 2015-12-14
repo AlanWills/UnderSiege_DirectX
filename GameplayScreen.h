@@ -7,7 +7,7 @@
 class GameplayScreen : public BaseScreen
 {
 public:
-	GameplayScreen(ScreenManager* screenManager, const char* levelDataAsset);
+	GameplayScreen(const char* loadoutAsset, ScreenManager* screenManager, const char* levelDataAsset);
 	~GameplayScreen();
 
 	void LoadContent() override;

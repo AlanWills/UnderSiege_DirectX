@@ -3,15 +3,17 @@
 #include "BaseScreen.h"
 #include "GunData.h"
 
+class LoadoutData;
+
 class SelectWeaponScreen : public BaseScreen
 {
 public:
-	SelectWeaponScreen(const char* loadoutGunDataAsset, ScreenManager* screenManager, const char* dataAsset = "SelectWeaponScreen.xml");
+	SelectWeaponScreen(const char* loadoutAsset, ScreenManager* screenManager, const char* dataAsset = "SelectWeaponScreen.xml");
 	~SelectWeaponScreen();
 
 	void AddInitialUI() override;
 
 private:
-	const char* m_loadoutGunDataAsset;
+	std::unique_ptr<LoadoutData> m_loadoutData;
 };
 

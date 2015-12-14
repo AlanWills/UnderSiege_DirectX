@@ -6,13 +6,15 @@
 #include "SelectLoadoutScreen.h"
 #include "GameplayScreen.h"
 
+#include "LoadoutData.h"
+
 #include "GunUI.h"
 #include "Button.h"
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-SelectWeaponScreen::SelectWeaponScreen(const char* loadoutGunAsset, ScreenManager* screenManager, const char* dataAsset) :
+SelectWeaponScreen::SelectWeaponScreen(const char* loadoutAsset, ScreenManager* screenManager, const char* dataAsset) :
 	BaseScreen(screenManager, dataAsset),
-	m_loadoutGunDataAsset(loadoutGunAsset)
+	m_loadoutData(new LoadoutData(loadoutAsset))
 {
 }
 
@@ -28,8 +30,10 @@ void SelectWeaponScreen::AddInitialUI()
 {
 	BaseScreen::AddInitialUI();
 
+	m_loadoutData->LoadData();
+
 	// Add the gunUI
-	AddScreenUIObject(new GunUI(GetDevice(), m_loadoutGunDataAsset, GetScreenCentre()));
+	AddScreenUIObject(new GunUI(GetDevice(), m_loadoutData->GetGunDataAsset(), GetScreenCentre()));
 
 	// Button to transition back to the select loadout screen
 	Button* backToLoadoutScreen = new Button(Vector2(200, ScreenManager::GetScreenDimensions().y - 100), L"Back");
@@ -45,7 +49,7 @@ void SelectWeaponScreen::AddInitialUI()
 	chooseWeapon->SetClickFunction([this]()
 	{
 		// Fill in the appropriate level
-		Transition(new GameplayScreen(GetScreenManager(), "GameplayScreenData.xml"));
+		Transition(new GameplayScreen(m_loadoutData->getDataAsset(), GetScreenManager(), "GameplayScreenData.xml"));
 	});
 
 	AddScreenUIObject(chooseWeapon);

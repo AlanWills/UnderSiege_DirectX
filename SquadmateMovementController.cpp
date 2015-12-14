@@ -48,7 +48,7 @@ void SquadmateMovementController::Update(DX::StepTimer const& timer)
 //-----------------------------------------------------------------------------------------------------------------------------------
 void SquadmateMovementController::HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition)
 {
-	if (ScreenManager::GetKeyboardInput().IsKeyPressed(Keyboard::F))
+	if (ScreenManager::GetKeyboardInput().IsKeyPressed(Keyboard::Q))
 	{
 		if (m_squadmate->GetPlayer()->GetCollider()->CheckCollisionWith(mousePosition))
 		{
@@ -65,11 +65,9 @@ void SquadmateMovementController::HandleInput(DX::StepTimer const& timer, const 
 	switch (m_currentBehaviour)
 	{
 		case kFollow:
-
 			break;
 
 		case kMove:
-			
 			break;
 
 		default:

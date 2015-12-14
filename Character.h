@@ -12,7 +12,6 @@ public:
 	void Update(DX::StepTimer const& timer) override;
 	void HandleInput(DX::StepTimer const& timer, const Vector2& mousePosition) override;
 
-protected:
 	/// \brief Returns a pointer to the newly set up movement controller
 	template <typename T>
 	T* SetMovementControllerAs();

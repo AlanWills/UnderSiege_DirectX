@@ -11,6 +11,7 @@ public:
 	~BaseData();
 
 	void LoadData();
+	const char* getDataAsset() const { return m_dataAsset; }
 
 protected:
 	const tinyxml2::XMLDocument* GetDocument() const { return m_document.get(); }

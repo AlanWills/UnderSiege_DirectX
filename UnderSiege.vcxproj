@@ -277,6 +277,7 @@
     <Image Include="cursor_blue.png" />
     <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\GunFiringAsset.png" />
     <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\MuzzleFlashGame.png" />
+    <Image Include="D:\Sprites\Survival Game\ModernWeapon\Gun Pack\SharpshooterSniperRifleFullSize.png" />
     <Image Include="directx.ico" />
     <Image Include="HeavyGunnerChaingunFullSize.png" />
     <Image Include="HeavyGunnerFullSize.png" />
@@ -299,6 +300,7 @@
     <Xml Include="SelectLoadoutScreen.xml" />
     <Xml Include="SelectWeaponScreen.xml" />
     <Xml Include="Sharpshooter.xml" />
+    <Xml Include="SharpshooterSniperRifle.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Font.spritefont" />

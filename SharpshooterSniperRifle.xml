@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <DisplayName>Lance Rifle</DisplayName>
+  <GunTextureAsset>SharpshooterSniperRifleFullSize.png</GunTextureAsset>
+  <MuzzleFlashTextureAsset>MuzzleFlashGame.png</MuzzleFlashTextureAsset>
+  <BulletTextureAsset>GunFiringAsset.png</BulletTextureAsset>
+  <Damage>15</Damage>
+  <FireRate>0.5</FireRate>
+  <MagazineSize>6</MagazineSize>
+  <BulletSpread>0.0</BulletSpread>
+</Root>
